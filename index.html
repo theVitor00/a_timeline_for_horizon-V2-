@@ -399,6 +399,7 @@
     @keyframes dotPulse {
       0%,
       100% {
+        transform: translateY(0);
         background: var(--color-primary);
         box-shadow: 0 0 0 4px rgba(255, 126, 95, var(--opacity-medium)),
           0 2px 8px rgba(255, 126, 95, var(--opacity-medium));
@@ -857,7 +858,7 @@
 
     .timeline-event.active .event-marker {
       position: absolute;
-      top: 48.9% !important;
+      top: 50% !important;
       left: -7px;
       width: 15px;
       height: 15px;
