@@ -1,0 +1,2358 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="Content-Type" content="text/html;charset=UTF-8" />
+    <title>Timeline of events</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fira+Sans:wght@700;800&display=swap" rel="stylesheet">
+  </head>
+
+  <style>
+    :root {
+      /* Cores principais */
+      --color-primary: #ff7e5f;
+      --color-primary-light: #ff9d7c;
+      --color-secondary: #feb47b;
+      --color-accent: #00ff80;
+      --color-accent-light: rgb(95, 255, 111);
+      --color-accent-alt: rgb(119, 255, 95);
+
+      /* Novas cores adicionadas */
+      --color-gold: #ffd700;
+      --color-gold-light: #ffed4e;
+      --color-orange: #ffa500;
+      --color-orange-light: #fea869;
+      --color-primary-dark: #ff6b4a;
+
+      /* Cores de texto */
+      --color-text-primary: #fff;
+      --color-text-secondary: #e0e0e0;
+      --color-text-muted: #a0a0a0;
+
+      /* Cores de fundo */
+      --color-bg-primary: #2e231a;
+      --color-bg-secondary: #2f163e;
+      --color-bg-card: rgba(255, 255, 255, 0.1);
+      --color-bg-card-hover: rgba(255, 255, 255, 0.12);
+      --color-bg-card-active: rgba(255, 255, 255, 0.15);
+
+      /* Cores de borda e sombra */
+      --color-border: rgba(255, 255, 255, 0.1);
+      --color-border-hover: rgba(255, 255, 255, 0.2);
+      --color-border-active: rgba(255, 126, 95, 0.6);
+      --color-border-accent: rgba(95, 255, 159, 0.8);
+
+      /* Opacidades */
+      --opacity-low: 0.1;
+      --opacity-medium: 0.3;
+      --opacity-high: 0.6;
+      --opacity-very-high: 0.8;
+
+      /* popup */
+      --popup-bg: rgba(26, 26, 46, 0.95);
+      --popup-border: rgba(255, 126, 95, 0.3);
+      --popup-shadow: 0 20px 60px rgba(0, 0, 0, 0.5);
+      --popup-overlay: rgba(0, 0, 0, 0.8);
+
+      /* Cores para períodos históricos */
+      --color-period-line: rgba(255, 215, 0, 0.3);
+      --color-period-range-start: rgba(255, 215, 0, 0.3);
+      --color-period-range-end: rgba(255, 165, 0, 0.5);
+      --color-period-dot: #ffd700;
+      --color-period-dot-border: #ffa500;
+      --color-period-label: #ffd700;
+      --color-period-active: rgba(255, 215, 0, 0.4);
+
+      --scale-title: 2rem; /* Era 2.5rem */
+      --scale-subtitle: 1rem; /* Era 1.1rem */
+      --scale-year-title: 2.2rem; /* Era 3rem */
+      --scale-event-card: 260px; /* Era 300px */
+      --scale-year-marker: 0.9rem; /* Era 1.1rem */
+
+      --font-family-primary: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      --font-size-base: 16px;
+      --line-height-base: 1.5;
+      --gradient-bg: linear-gradient(135deg, #2e231a 0%, #2f163e 100%);
+
+      --header-max-width: 1200px;
+      --title-font-size: 2.5rem;
+      --title-line-height: 1.2;
+      --subtitle-font-size: 1.1rem;
+      --subtitle-max-width: 600px;
+      --subtitle-line-height: 1.4;
+    }
+
+    * {
+      font-family: inherit;
+      font-size: inherit;
+      line-height: inherit;
+      color: inherit;
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      /* Dimensões */
+      min-height: 100vh;
+      overflow-x: hidden;
+      width: 100%;
+
+      /* Tipografia */
+      font-family: var(--font-family-primary);
+      font-size: var(--font-size-base);
+      line-height: var(--line-height-base);
+      color: var(--color-text-primary);
+
+      /* Visual */
+      background: var(--gradient-bg);
+
+      /* Otimizações */
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+      text-rendering: optimizeLegibility;
+    }
+
+    /* CONTAINER PRINCIPAL QUE CENTRALIZA TUDO */
+    .container {
+      width: 100%;
+      max-width: 1200px;
+      margin: 0 auto;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      overflow: visible; /* Mude para visible */
+    }
+
+    footer {
+      width: 100%;
+      max-width: 1200px;
+      margin-left: auto;
+      margin-right: auto;
+      padding: 0 1rem; /* Padding consistente */
+    }
+
+    /* ===== CABEÇALHO OTIMIZADO ===== */
+    header {      
+      width: 100%;
+      max-width: var(--header-max-width);
+      margin: 0 auto 2rem auto;
+      text-align: center;
+      contain: layout;
+    }
+
+    @font-face {
+      font-family: 'Futura PT';
+      src: url('fonts/FuturaPT-Bold.woff2') format('woff2'),
+           url('fonts/FuturaPT-Bold.woff') format('woff');
+      font-weight: 700;
+      font-style: normal;
+    }
+    
+    @font-face {
+      font-family: 'Futura PT';
+      src: url('fonts/FuturaPT-ExtraBold.woff2') format('woff2'),
+           url('fonts/FuturaPT-ExtraBold.woff') format('woff');
+      font-weight: 800;
+      font-style: normal;
+    }
+
+    h1 {
+      font-size: var(--title-font-size);
+      font-weight: 700;
+      line-height: var(--title-line-height);
+      background: linear-gradient(
+        90deg,
+        var(--color-primary),
+        var(--color-secondary)
+      );
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+      width: 100%;
+      margin: 0 0 0.5rem 0;
+      text-rendering: optimizeLegibility;
+      -webkit-font-smoothing: antialiased;
+      font-family: 'Futura PT', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  font-weight: 800;
+    }
+
+    .subtitle {
+      color: var(--color-text-muted);
+      font-size: var(--subtitle-font-size);
+      font-weight: 400;
+      line-height: var(--subtitle-line-height);
+      max-width: var(--subtitle-max-width);
+      margin: 0 auto;
+      padding: 0 1rem;
+      text-align: center;
+      letter-spacing: 0.01em;
+    }
+
+    .quote {
+      color: var(--color-text-muted);
+      font-size: var(--subtitle-font-size);
+      font-weight: 200;
+      line-height: var(--subtitle-line-height);
+      max-width: var(--subtitle-max-width);
+      margin: 0 auto;
+      padding: 0 1rem;
+      text-align: center;
+      letter-spacing: 0.01em;
+    }
+
+    .timeline-section-title {
+  color: var(--color-primary-light);  
+  font-size: 1.1rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.15em;
+  margin-bottom: 1rem;
+  text-align: center;
+  position: relative;
+  z-index: 5;
+  background: rgba(255, 126, 95, 0.1);
+  padding: 0.5rem 1.5rem;
+  border-radius: 25px;
+  border: 1px solid rgba(255, 126, 95, 0.3);
+  display: inline-block;
+  backdrop-filter: blur(10px);
+}
+
+.historical-periods .timeline-section-title {
+  top: 50px;
+  left: 50px;
+  width: 1200px;  
+  background: rgba(255, 215, 0, 0.1);
+  border-color: rgba(255, 215, 0, 0.3);
+  color: var(--color-period-label);  
+}
+
+.year-timeline .timeline-section-title {
+  width: 1200px;
+  background: rgba(255, 126, 95, 0.1);
+  border-color: rgba(255, 126, 95, 0.3);
+}
+
+.timeline-container .timeline-section-title {
+  top: 45px;
+  width: 1200px;
+  background: rgba(0, 255, 128, 0.1);
+  border-color: rgba(0, 255, 128, 0.3);
+  color: var(--color-accent-light);
+}
+
+/* Centralizar os títulos */
+.historical-periods,
+.year-timeline,
+.timeline-container {
+  text-align: center;
+}
+
+    /* Year Navigation Timeline */
+    .year-navigation-container {
+      width: 90%;
+      max-width: 1200px;
+      margin: 0 auto 3rem auto; /* Centraliza horizontalmente */
+      position: relative;
+    }
+
+    .year-timeline {
+      top: 75px;
+      position: relative;
+      padding: 2rem 0;
+    }
+
+    .year-timeline-line {
+      position: absolute;
+      top: 50%;
+      left: 40px; /* Ajustado */
+      right: 40px; /* Ajustado */
+      height: 3px;
+      background: linear-gradient(
+        90deg,
+        var(--color-primary),
+        var(--color-secondary)
+      );
+      transform: translateY(-50%);
+      z-index: 1;
+    }
+
+    .year-markers {
+      top: 19px;
+      display: flex;
+      justify-content: space-between;
+      position: relative;
+      z-index: 2;
+      padding: 0 20px; /* Padding para alinhamento */
+    }
+
+    .year-marker {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      position: relative;
+    }
+
+    .year-marker.active {
+      animation: yearPulse 2s ease-in-out infinite;
+    }
+
+    .year-marker.active .year-dot {
+      transform: scale(1.3);
+      background: var(--color-primary);
+      box-shadow: 0 0 0 6px rgba(255, 126, 95, var(--opacity-medium));
+      animation: dotPulse 2s ease-in-out infinite;
+    }
+
+    .year-marker.active .year-label {
+      color: var(--color-primary);
+      font-weight: bold;
+      transform: scale(1.1);
+      animation: labelPulse 2s ease-in-out infinite;
+    }
+
+    @keyframes yearPulse {
+      0%,
+      100% {
+        transform: translateY(0);
+      }
+      50% {
+        transform: translateY(-3px);
+      }
+    }
+
+    @keyframes dotPulse {
+      0%,
+      100% {
+        background: var(--color-primary);
+        box-shadow: 0 0 0 4px rgba(255, 126, 95, var(--opacity-medium)),
+          0 2px 8px rgba(255, 126, 95, var(--opacity-medium));
+      }
+      50% {
+        background: var(--color-accent-light);
+        box-shadow: 0 0 0 6px rgba(255, 126, 95, var(--opacity-medium)),
+          0 4px 12px rgba(255, 126, 95, var(--opacity-high));
+      }
+    }
+
+    @keyframes labelPulse {
+      0%,
+      100% {
+        color: var(--color-primary);
+        transform: scale(1);
+      }
+      50% {
+        color: var(--color-accent-light);
+        transform: scale(1.05);
+      }
+    }
+
+    .year-dot {
+      width: 18px; /* Aumentado de 16px */
+      height: 18px; /* Aumentado de 16px */
+      background: var(--color-secondary);
+      border-radius: 50%;
+      transition: all 0.3s ease;
+      margin-bottom: 0.5rem;
+    }
+
+    .year-label {
+      color: var(--color-text-muted);
+      font-size: 1.3rem; /* Aumentado de 1.1rem */
+      font-weight: 600; /* Aumentado de 500 */
+      transition: all 0.3s ease;
+      white-space: nowrap;
+    }
+
+    .year-marker:hover .year-dot {
+      transform: scale(1.2);
+      background: var(--color-accent);
+    }
+
+    .year-marker:hover .year-label {
+      color: var(--color-accent);
+      transform: scale(1.1); /* Aumentado de scale(1) */
+      font-weight: 700;
+    }
+
+    /* Main Events Timeline */
+    .timeline-container {
+      position: relative;
+      width: 100vw; /* Largura total da viewport */
+      margin: 2rem 0; /* Remove margin auto */
+      overflow: hidden !important;
+      padding: 0;
+      left: 50%;
+      transform: translateX(-50%);
+    }
+
+    .timeline {
+      display: flex;
+      transition: transform 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+      padding: 3rem 0;
+      align-items: center;
+      gap: 2rem;
+      margin: 0;
+      width: max-content; /* Largura baseada no conteúdo */
+      min-width: 100%; /* Garante pelo menos 100% de largura */
+      overflow: visible !important;
+      padding-left: 385px;
+      padding-right: 385px;      
+    }
+
+    .timeline-event.active::before {
+      content: '';
+      position: absolute;
+      top: 50%;
+      left: 0;
+      right: 0;
+      height: 4px;
+      background: transparent;
+      z-index: 5;
+      pointer-events: none;
+    }
+
+    .timeline-event.active:first-child,
+    .timeline-event.active:last-child {
+      margin-left: 0;
+      margin-right: 0;
+    }
+
+    /* Button states for better feedback */
+    .nav-btn:not(:disabled) {
+      position: relative;
+      overflow: hidden;
+    }
+
+    .nav-btn:not(:disabled)::after {
+      content: '';
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      width: 0;
+      height: 0;
+      background: rgba(255, 255, 255, 0.2);
+      border-radius: 50%;
+      transform: translate(-50%, -50%);
+      transition: width 0.3s, height 0.3s;
+    }
+
+    .nav-btn:not(:disabled):active::after {
+      width: 100px;
+      height: 100px;
+    }
+
+    .year-container {
+      display: contents;
+    }
+
+    .year-title {
+      flex: 0 0 220px;
+      margin: 0 1rem; /* Reduzido de 2rem */
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: var(--scale-year-title);
+      font-weight: 800;
+      color: var(--color-primary);
+      background: linear-gradient(
+        135deg,
+        rgba(255, 126, 95, 0.15) 0%,
+        rgba(254, 180, 123, 0.1) 100%
+      );
+      border-radius: 20px;
+      padding: 1.5rem 0.8rem; /* Reduzido */
+      border: 3px solid rgba(255, 126, 95, var(--opacity-medium));
+      position: relative;
+      box-shadow: 0 10px 30px rgba(255, 126, 95, 0.2),
+        inset 0 1px 0 rgba(255, 255, 255, var(--opacity-low));
+      backdrop-filter: blur(15px);
+      text-shadow: 0 2px 10px rgba(255, 126, 95, var(--opacity-medium));
+      transition: all 0.4s ease;
+      z-index: 3;
+      transform: scale(1);
+    }
+
+    .year-title::before {
+      content: '';
+      position: absolute;
+      top: 50%;
+      left: -25px;
+      width: 35px;
+      height: 35px;
+      background: linear-gradient(
+        135deg,
+        var(--color-primary),
+        var(--color-secondary)
+      );
+      border-radius: 50%;
+      transform: translateY(-50%);
+      z-index: 4;
+      box-shadow: 0 0 0 8px rgba(255, 126, 95, var(--opacity-medium)),
+        0 0 20px rgba(255, 126, 95, 0.5);
+      transition: all 0.4s ease;
+    }
+
+    .year-title::after {
+      content: '';
+      position: absolute;
+      top: 50%;
+      left: -15px;
+      width: 15px;
+      height: 3px;
+      background: var(--color-primary);
+      z-index: 2;
+    }
+
+    .year-title:hover {
+      transform: translateY(-5px) scale(1.02);
+      box-shadow: 0 15px 40px rgba(255, 126, 95, var(--opacity-medium)),
+        inset 0 1px 0 rgba(255, 255, 255, 0.2);
+      border-color: rgba(255, 126, 95, var(--opacity-high));
+    }
+
+    .year-title-container {
+      position: relative;
+      display: contents;
+    }
+
+    .year-title.integrated {
+      background: rgba(255, 126, 95, var(--opacity-low));
+      border: 2px dashed rgba(255, 126, 95, 0.5);
+      color: var(--color-primary);
+      font-size: 2.8rem;
+      font-weight: 600;
+      border-radius: 15px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .year-title.integrated::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 3px;
+      background: linear-gradient(
+        90deg,
+        var(--color-primary),
+        var(--color-secondary)
+      );
+    }
+
+    .year-title.integrated::after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      height: 3px;
+      background: linear-gradient(
+        90deg,
+        var(--color-primary),
+        var(--color-secondary)
+      );
+    }
+
+    .year-title.active-year {
+      background: linear-gradient(
+        135deg,
+        rgba(255, 126, 95, 0.25) 0%,
+        rgba(254, 180, 123, 0.2) 100%
+      );
+      border-color: var(--color-primary);
+      box-shadow: 0 0 30px rgba(255, 126, 95, var(--opacity-medium)),
+        inset 0 1px 0 rgba(255, 255, 255, 0.2);
+      transform: scale(1.05);
+    }
+
+    .year-title.active-year::before {
+      transform: translateY(-50%) scale(1.2);
+      box-shadow: 0 0 0 10px rgba(255, 126, 95, var(--opacity-medium)),
+        0 0 30px rgba(255, 126, 95, var(--opacity-high));
+    }
+
+    .year-decoration {
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      top: 0;
+      left: 0;
+      pointer-events: none;
+      border-radius: 20px;
+      overflow: hidden;
+    }
+
+    .year-decoration::before {
+      content: '';
+      position: absolute;
+      top: -50%;
+      left: -50%;
+      width: 200%;
+      height: 200%;
+      background: linear-gradient(
+        45deg,
+        transparent,
+        rgba(255, 255, 255, var(--opacity-low)),
+        transparent
+      );
+      transform: rotate(45deg);
+      animation: shine 3s infinite;
+    }
+
+    @keyframes shine {
+      0% {
+        transform: rotate(45deg) translateX(-100%);
+      }
+      100% {
+        transform: rotate(45deg) translateX(100%);
+      }
+    }
+
+    .timeline-event {
+      opacity: 0.3;
+      transition: opacity 0.3s ease;
+      flex: 0 0 328px;
+      transition: all 0.4s ease;
+      position: relative;
+      z-index: 2; /* Acima da máscara */
+      background: var(--color-bg-primary); /* Fundo sólido para conteúdo */
+    }
+
+    .timeline-event.active {
+      opacity: 1;
+      transform: scale(1.05);
+      filter: brightness(1);
+      z-index: 1000; /* Alto z-index para ficar acima de tudo */
+      position: relative;
+    }
+
+    .timeline-event:not(.active) {
+      opacity: 0.6;
+      transform: scale(0.95);
+      transition: all 0.4s ease;
+      z-index: 2; /* Não negativo */
+    }
+
+    .event-content {
+      background: var(--color-bg-card);
+      backdrop-filter: blur(10px);
+      border-radius: 15px;
+      padding: 1.2rem; /* Era 1.5rem */
+      box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+      transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+      height: 100%;
+      border: 1px solid var(--color-border);
+      position: relative;
+      text-align: left;
+    }
+
+    .event-date {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      margin-bottom: 0.8rem;
+      font-size: 1rem;
+      line-height: 1.4;
+      color: var(--color-secondary);
+      flex-wrap: wrap;
+      transition: all 0.4s ease;
+    }
+
+    .timeline-event.active .event-date {
+      font-size: 1.1rem;
+      margin-bottom: 1rem;
+    }
+
+    .event-month {
+      font-size: 1.1rem;
+      font-weight: 600;
+      color: var(--color-primary-light);
+      background: rgba(254, 180, 123, var(--opacity-low));
+      padding: 0.2rem 0.8rem;
+      border-radius: 8px;
+      transition: all 0.4s ease;
+    }
+
+    .timeline-event.active .event-month {
+      font-size: 1.2rem;
+      background: rgba(254, 180, 123, 0.15);
+    }
+
+    .event-day {
+      font-size: 1.4rem;
+      font-weight: bold;
+      color: var(--color-primary);
+      background: rgba(255, 126, 95, var(--opacity-low));
+      padding: 0.2rem 0.5rem;
+      border-radius: 8px;
+      min-width: 40px;
+      text-align: center;
+      transition: all 0.4s ease;
+    }
+
+    .timeline-event.active .event-day {
+      font-size: 1.6rem;
+      background: rgba(255, 126, 95, 0.15);
+    }
+
+    .event-title {
+      font-size: 1.1rem; /* Era 1.2rem */
+      margin-bottom: 0.6rem; /* Era 0.8rem */
+      color: var(--color-text-primary);
+      line-height: 1.3;
+      transition: all 0.4s ease;
+    }
+
+    .timeline-event.active .event-title {
+      font-weight: 700;
+      font-size: 1.4rem;
+      margin-bottom: 1rem;
+    }
+
+    .event-description {
+      font-size: 0.85rem; /* Era 0.9rem */
+      line-height: 1.4; /* Era 1.5 */
+      color: var(--color-text-secondary);
+      transition: all 0.4s ease;
+    }
+
+    .timeline-event.active .event-description {
+      font-size: 0.95rem;
+      line-height: 1.6;
+    }
+
+    .timeline-event:not(.active):hover {
+      transform: scale(0.95);
+      opacity: 0.9;
+      filter: brightness(1);
+    }
+
+    .timeline-event:not(.active):hover .event-content {
+      background: var(--color-bg-card-hover);
+      border-color: var(--color-border-hover);
+      box-shadow: 0 12px 24px rgba(0, 0, 0, 0.3);
+    }
+
+    .timeline-line {
+      opacity: 0.3;
+      position: absolute;
+      top: 56% !important;
+      left: 0 !important; /* Começa na borda esquerda */
+      right: 0 !important; /* Vai até a borda direita */
+      width: 100vw !important; /* Largura total */
+      height: 4px;
+      background: linear-gradient(
+        90deg,
+        rgba(255, 126, 95, 0.8),
+        rgba(254, 180, 123, 0.8)
+      ) !important;
+      transform: translateY(-50%);
+      z-index: 1 !important;
+      border-radius: 2px;
+    }
+
+    /*Pontos da linha temporal de baixo */
+    .event-marker {
+      position: absolute;
+      top: 50% !important;
+      left: 0.1px;
+      width: 22px;
+      height: 22px;
+      background: linear-gradient(135deg, #ff7e5f, #feb47b) !important;
+      border-radius: 50%;
+      transform: translate(-50%, -50%);
+      z-index: 10 !important; /* Alto z-index */
+      border: 4px solid rgba(255, 255, 255, 0.9);
+      opacity: 0.7; /* Reduz opacidade padrão */
+      transition: all 0.3s ease;
+    }
+
+    .timeline-event:not(.active):not(:hover) .event-marker {
+      opacity: 0.3; /* Muito transparente */
+      transform: translate(-50%, -50%) scale(0.9);
+    }
+
+    .timeline-event .event-content {
+      width: fit-content;
+      position: relative;
+      z-index: 2; /* Abaixo dos marcadores mas acima da linha */
+    }
+
+    .timeline-event.active .event-marker {
+      position: absolute;
+      top: 48.90% !important;
+      left: -7px;
+      width: 15px;
+      height: 15px;
+      opacity: 1;
+      transform: translate(-50%, -50%);
+      border-radius: 50%;
+      border: 4px solid rgba(255, 255, 255, 0.9);
+      z-index: 10 !important; /* Alto z-index */
+      pointer-events: none;
+      transition: all 0.3s ease;
+      animation: periodPulse 2s ease-in-out infinite;
+    }
+
+    .timeline-event:not(.active):hover .event-marker {
+      opacity: 0.8;
+      transform: translate(-50%, -50%) scale(1.1);
+      background: rgba(255, 126, 95, var(--opacity-high));
+      box-shadow: 0 0 0 5px rgba(255, 126, 95, var(--opacity-medium)),
+        0 4px 12px rgba(255, 126, 95, var(--opacity-medium));
+    }
+
+    .timeline-event:not(.active):hover .event-content {
+      background: var(--color-bg-card-hover);
+      border-color: var(--color-border-hover);
+    }
+
+    .event-marker::before {
+      content: '';
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      width: 60%;
+      height: 60%;
+      background: radial-gradient(
+        circle,
+        rgba(255, 255, 255, var(--opacity-medium)) 0%,
+        transparent 70%
+      );
+      border-radius: 50%;
+      transform: translate(-50%, -50%);
+      opacity: 0.6;
+    }
+
+    .timeline-event:hover .event-marker {
+      transform: translate(-50%, -50%) scale(1.1);
+      background: rgba(255, 126, 95, var(--opacity-medium));
+    }
+
+    .timeline-event.active:hover .event-marker {
+      transform: translate(-50%, -50%) scale(1.15);
+    }
+
+    .navigation {
+      display: flex;
+      justify-content: center; /* Centraliza os botões */
+      align-items: center;
+      gap: 2rem; /* Espaço consistente entre botões */
+      margin-top: 2rem;
+      width: 100%;
+      padding: 0 1rem;
+    }
+
+    .nav-btn {
+      background: rgba(255, 255, 255, 0.1);
+      border: 2px solid rgba(255, 255, 255, 0.3);
+      color: var(--color-text-primary);
+      padding: 1rem 2rem;
+      border-radius: 50px;
+      cursor: pointer;
+      font-size: 1rem;
+      font-weight: 600;
+      transition: all 0.3s ease;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      backdrop-filter: blur(10px);
+      min-width: 140px; /* Largura mínima consistente */
+      justify-content: center;
+    }
+
+    .nav-btn:hover {
+      background: rgba(255, 255, 255, 0.2);
+      border-color: var(--color-primary);
+      transform: translateY(-2px);
+      box-shadow: 0 4px 15px rgba(255, 126, 95, 0.3);
+    }
+
+    .nav-btn:disabled {
+      opacity: 0.4;
+      cursor: not-allowed;
+      transform: none;
+    }
+
+    footer {
+      margin-top: 3rem;
+      text-align: center;
+      color: var(--color-text-muted);
+      font-size: 1rem;
+      width: 100%;
+      padding: 2rem 1rem;
+      border-top: 1px solid var(--color-border);
+      line-height: 1.6;
+    }
+
+    .timeline-event.active .event-content {
+      width: fit-content;
+      background: var(--color-bg-card-active);
+      box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4),
+        0 0 0 1px rgba(255, 126, 95, var(--opacity-medium));
+      animation: pulseBorder 2s infinite;
+    }
+
+    @keyframes pulseBorder {
+      0% {
+        border-color: rgba(255, 126, 95, var(--opacity-medium));
+        box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4),
+          0 0 0 1px rgba(255, 126, 95, 0.2);
+      }
+      50% {
+        border-color: rgba(119, 255, 95, var(--opacity-high));
+        box-shadow: 0 25px 50px rgba(0, 0, 0, 0.5),
+          0 0 0 3px var(--color-accent-light);
+      }
+      100% {
+        border-color: rgba(255, 126, 95, var(--opacity-medium));
+        box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4),
+          0 0 0 1px rgba(255, 126, 95, 0.2);
+      }
+    }
+
+    .footer-disclaimer {
+      font-size: 0.9rem;
+      color: var(--color-text-muted);
+      line-height: 1.6;
+      text-align: center;
+      max-width: 800px;
+      margin: 0 auto;
+      padding: 0 1rem;
+    }
+
+    .footer-disclaimer a {
+      color: var(--color-secondary);
+      text-decoration: none;
+      font-weight: 600; /* Adicionado destaque */
+    }
+
+    .footer-disclaimer a:hover {
+      text-decoration: underline;
+      color: var(--color-primary);
+    }
+
+    /* Estilos do Popup */
+    .popup-overlay {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: var(--popup-overlay);
+      display: none;
+      justify-content: center;
+      align-items: center;
+      z-index: 10000;
+      backdrop-filter: blur(5px);
+    }
+
+    .popup-overlay.active {
+      display: flex !important;
+      animation: fadeIn 0.3s ease-out;
+    }
+
+    .popup-container {
+      background: var(--popup-bg);
+      border: 1px solid var(--popup-border);
+      border-radius: 20px;
+      padding: 0;
+      max-width: 500px;
+      width: 90%;
+      max-height: 80vh;
+      overflow-y: auto;
+      box-shadow: var(--popup-shadow);
+      animation: slideUp 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+      backdrop-filter: blur(15px);
+    }
+
+    .popup-header {
+      background: linear-gradient(
+        135deg,
+        rgba(255, 126, 95, 0.1),
+        rgba(254, 180, 123, 0.05)
+      );
+      padding: 1.5rem 2rem;
+      border-bottom: 1px solid var(--popup-border);
+      border-radius: 20px 20px 0 0;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .popup-header h2 {
+      color: var(--color-primary);
+      font-size: 1.5rem;
+      margin: 0;
+      background: linear-gradient(
+        90deg,
+        var(--color-primary),
+        var(--color-secondary)
+      );
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+    }
+
+    .popup-close,
+    .popup-button {
+      cursor: pointer !important;
+      pointer-events: auto !important;
+    }
+
+    .popup-close:hover {
+      color: var(--color-primary);
+      background: rgba(255, 126, 95, 0.1);
+      transform: scale(1.1);
+    }
+
+    .popup-content {
+      padding: 2rem;
+    }
+
+    .popup-content p {
+      color: var(--color-text-secondary);
+      line-height: 1.6;
+      margin-bottom: 1.5rem;
+      font-size: 1.1rem; /* Tamanho original, não reduzido */
+    }
+
+    .popup-features {
+      margin: 2rem 0;
+    }
+
+    .feature-item {
+      display: flex;
+      align-items: center;
+      margin-bottom: 1rem;
+      padding: 0.8rem;
+      background: rgba(255, 255, 255, 0.05);
+      border-radius: 10px;
+      border-left: 3px solid var(--color-primary);
+      transition: all 0.3s ease;
+    }
+
+    .feature-item:hover {
+      background: rgba(255, 255, 255, 0.08);
+      transform: translateX(5px);
+    }
+
+    .feature-icon {
+      font-size: 1.2rem;
+      margin-right: 1rem;
+      width: 30px;
+      text-align: center;
+    }
+
+    .feature-item span:last-child {
+      color: var(--color-text-secondary);
+      font-size: 0.95rem;
+    }
+
+    .popup-disclaimer {
+      background: rgba(255, 126, 95, 0.1);
+      border: 1px solid rgba(255, 126, 95, 0.2);
+      border-radius: 10px;
+      padding: 1.2rem;
+      margin-top: 1.5rem;
+    }
+
+    .popup-disclaimer p {
+      color: var(--color-text-secondary);
+      font-size: 0.9rem;
+      margin: 0;
+      line-height: 1.5;
+    }
+
+    .popup-disclaimer strong {
+      color: var(--color-primary-light);
+    }
+
+    .popup-footer {
+      padding: 1.5rem 2rem;
+      border-top: 1px solid var(--popup-border);
+      display: flex;
+      justify-content: center;
+      border-radius: 0 0 20px 20px;
+    }
+
+    .popup-button {
+      background: linear-gradient(
+        135deg,
+        var(--color-primary),
+        var(--color-secondary)
+      );
+      color: white;
+      border: none;
+      padding: 0.8rem 2.5rem;
+      border-radius: 50px;
+      font-size: 1rem;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      box-shadow: 0 4px 15px rgba(255, 126, 95, 0.3);
+    }
+
+    .popup-button:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 6px 20px rgba(255, 126, 95, 0.4);
+    }
+
+    .popup-button:active {
+      transform: translateY(0);
+    }
+
+    #welcomePopup {
+      display: none;
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100vw;
+      height: 100vh;
+      z-index: 9999;
+    }
+
+    #welcomePopup.active {
+      display: flex !important;
+    }
+
+    .popup-overlay {
+      z-index: 10000 !important;
+    }
+
+    body.popup-active,
+    body.popup-open {
+      overflow: hidden !important;
+    }
+
+    @keyframes fadeIn {
+      from {
+        opacity: 0;
+      }
+      to {
+        opacity: 1;
+      }
+    }
+
+    @keyframes slideUp {
+      from {
+        opacity: 0;
+        transform: translateY(30px) scale(0.95);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+      }
+    }
+
+    .popup-container::-webkit-scrollbar {
+      width: 8px;
+    }
+
+    .popup-container::-webkit-scrollbar-track {
+      background: rgba(255, 255, 255, 0.1);
+      border-radius: 4px;
+      margin: 5px 0;
+    }
+
+    .popup-container::-webkit-scrollbar-thumb {
+      background: linear-gradient(
+        135deg,
+        var(--color-primary),
+        var(--color-secondary)
+      );
+      border-radius: 4px;
+      border: 2px solid rgba(255, 255, 255, 0.1);
+    }
+
+    .popup-container::-webkit-scrollbar-thumb:hover {
+      background: linear-gradient(
+        135deg,
+        var(--color-primary-light),
+        var(--color-secondary)
+      );
+      transform: scale(1.1);
+    }
+
+    .popup-container::-webkit-scrollbar-thumb:active {
+      background: linear-gradient(
+        135deg,
+        var(--color-primary-dark),
+        var(--color-orange-light)
+      );
+    }
+
+    .popup-container {
+      scrollbar-width: thin;
+      scrollbar-color: var(--color-primary) rgba(255, 255, 255, 0.1);
+      scroll-behavior: smooth;
+    }
+
+    .popup-close {
+      background: rgba(255, 126, 95, 0.2);
+      border: 2px solid rgba(255, 126, 95, 0.5);
+      color: var(--color-primary);
+      font-size: 1.5rem;
+      font-weight: bold;
+      cursor: pointer;
+      padding: 0;
+      width: 40px;
+      height: 40px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border-radius: 50%;
+      transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+      backdrop-filter: blur(10px);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .popup-close::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: linear-gradient(
+        135deg,
+        var(--color-primary),
+        var(--color-secondary)
+      );
+      opacity: 0;
+      transition: opacity 0.3s ease;
+      border-radius: 50%;
+    }
+
+    .popup-close:hover {
+      background: rgba(255, 126, 95, 0.3);
+      border-color: var(--color-primary);
+      transform: scale(1.1) rotate(90deg);
+      color: white;
+      box-shadow: 0 0 20px rgba(255, 126, 95, 0.4);
+    }
+
+    .popup-close:hover::before {
+      opacity: 1;
+    }
+
+    .popup-close:active {
+      transform: scale(0.95) rotate(90deg);
+      transition: transform 0.1s ease;
+    }
+
+    .popup-close span {
+      position: relative;
+      z-index: 2;
+      transition: transform 0.3s ease;
+    }
+
+    .popup-close:hover span {
+      transform: scale(1.2);
+    }
+
+    /* Historical Periods Timeline */
+    .historical-periods {
+      top: -50px;
+      left: -55px;
+      position: relative;
+      height: 40px;
+    }
+
+    .periods-container {
+      top: 50px;
+      position: relative;
+      height: 100%;
+      margin: 0 50px;
+    }
+
+    .periods-line {
+      width: 1200px;
+      position: absolute;
+      top: 5px;
+      left: 0;
+      right: 0;
+      height: 3px;
+      background: linear-gradient(
+        90deg,
+        var(--color-period-line),
+        var(--color-period-range-end)
+      );
+      transform: translateY(-50%);
+      z-index: 1;
+    }
+
+    .periods-track {
+      position: relative;
+      height: 100%;
+      z-index: 2;
+    }
+
+    .period-marker {
+      position: absolute;
+      top: 23px;
+      transform: translateY(-50%);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      z-index: 3;
+      margin-bottom: 0.9rem;
+    }
+
+    .period-marker .period-dot {
+      margin-bottom: 0.9rem; /* Remove margin-bottom já que usamos flex-direction: column-reverse */
+      margin-top: 0.3rem; /* Adiciona espaço acima do dot */
+    }
+
+    .period-range {
+      width: 100%;
+      max-width: 1200px;
+      position: absolute;
+      height: 26px;
+      background: linear-gradient(
+        90deg,
+        var(--color-period-range-start),
+        var(--color-period-range-end)
+      );
+      border-radius: 10px;
+      top: 5px;
+      transform: translateY(-50%);
+      z-index: 2;
+      border: 1px solid rgba(255, 215, 0, 0.6);
+      box-shadow: 0 2px 8px rgba(255, 165, 0, 0.3);
+    }
+
+    .period-dot {
+      width: 16px;
+      height: 16px;
+      background: var(--color-period-dot);
+      border-radius: 50%;
+      margin-bottom: 0.3rem;
+      box-shadow: 0 0 0 3px rgba(255, 215, 0, 0.3),
+        0 2px 6px rgba(255, 165, 0, 0.4);
+      transition: all 0.3s ease;
+      border: 2px solid var(--color-period-dot-border);
+    }
+
+    .period-label {
+      color: var(--color-period-label);
+      font-size: 0.9rem;
+      font-weight: 600;
+      white-space: nowrap;
+      background: rgba(255, 215, 0, 0.1);
+      padding: 0.1rem 0.8rem;
+      border-radius: 15px;
+      border: 1px solid rgba(255, 215, 0, 0.3);
+      transition: all 0.3s ease;
+    }
+
+    .period-marker:hover .period-dot {
+      transform: scale(1.3);
+      background: var(--color-gold-light);
+      box-shadow: 0 0 0 5px rgba(255, 215, 0, 0.4),
+        0 4px 12px rgba(255, 165, 0, 0.6);
+    }
+
+    .period-marker:hover .period-label {
+      background: rgba(255, 215, 0, 0.2);
+      border-color: rgba(255, 215, 0, 0.6);
+      transform: translateY(-2px);
+    }
+
+    .period-marker.active .period-dot {
+      animation: periodPulse 2s ease-in-out infinite;
+    }
+
+    .period-marker.active .period-label {
+      background: rgba(255, 215, 0, 0.25);
+      border-color: var(--color-period-dot);
+      color: var(--color-text-primary);
+      font-weight: bold;      
+    }
+
+    @keyframes periodPulse {
+      0%,
+      100% {
+        transform: scale(1);
+        box-shadow: 0 0 0 3px rgba(255, 215, 0, 0.3),
+          0 2px 6px rgba(255, 165, 0, 0.4);
+      }
+      50% {
+        transform: scale(1.2);
+        box-shadow: 0 0 0 6px  rgb(95, 255, 111),
+          0 4px 12px rgba(255, 165, 0, 0.6);
+      }
+    }
+
+    .active-period {
+      background: linear-gradient(
+        90deg,
+        var(--color-period-active),
+        var(--color-period-range-end)
+      ) !important;
+      border-color: var(--color-period-dot) !important;
+      box-shadow: 0 0 20px rgba(255, 165, 0, 0.4) !important;
+    }
+
+    /* Responsive adjustments */
+    @media (max-width: 768px) {
+      .timeline-container {
+        padding: 0 1rem;
+      }
+
+      .timeline {
+        gap: 1rem;
+      }
+
+      .timeline-event {
+        flex: 0 0 240px;
+      }
+
+      .year-title {
+        flex: 0 0 160px;
+        font-size: 1.8rem;
+      }
+
+      .popup-container {
+        width: 95%;
+        margin: 1rem;
+      }
+    }
+
+    @media (max-width: 480px) {
+      .timeline-container {
+        padding: 0 0.5rem;
+      }
+
+      .timeline-event {
+        flex: 0 0 220px;
+      }
+
+      .year-title {
+        flex: 0 0 140px;
+        font-size: 1.6rem;
+        padding: 1rem 0.5rem;
+      }
+
+      .nav-btn {
+        padding: 0.8rem 1.2rem;
+        min-width: 120px;
+        font-size: 0.9rem;
+      }
+    }
+  </style>
+
+  <body>
+    <header>
+      <h1>A Timeline For Horizon</h1>
+      <p class="subtitle">
+        Explore the main events from Aloy's universe in an interactive way.
+      </p>
+      <br />
+      <p class="quote">
+        <i>"The strength to stand alone is the strength to make a stand."</i>
+      </p>
+    </header>
+
+    <!-- Year Navigation Timeline -->
+    <div class="year-navigation-container">
+      <!-- Historical Periods Timeline -->
+      <div class="historical-periods">
+        <h3 class="timeline-section-title">Historical Period</h3>
+        <div class="periods-container">
+          <div class="periods-line"></div>
+          <div class="periods-track" id="periodsTrack">
+            <!-- Period markers will be inserted via JavaScript -->
+          </div>
+        </div>
+      </div>
+
+      <!-- Years bar -->
+      <div class="year-timeline">
+        <h3 class="timeline-section-title">Years</h3>
+        <div class="year-timeline-line"></div>
+        <div class="year-markers" id="yearMarkers">
+          <!-- Year markers will be inserted via JavaScript -->
+        </div>
+      </div>
+    </div>
+
+    <!-- Main Events Timeline -->
+    <div class="timeline-container">
+      <h3 class="timeline-section-title">Events</h3>
+      <div class="timeline-line"></div>
+      <div class="timeline" id="timeline">
+        <!-- Events will be inserted via JavaScript -->
+      </div>
+    </div>
+
+    <div class="navigation">
+      <button class="nav-btn" id="prevBtn">
+        <span>&lArr; Previous Event</span>
+      </button>
+      <button class="nav-btn" id="nextBtn">
+        <span>Next Event &rArr;</span>
+      </button>
+    </div>
+
+    <footer>
+      <div class="footer-disclaimer">
+        <p>
+          This timeline is an unofficial fan project. All rights to the Horizon
+          series, including characters, stories, locations, and worlds, are
+          property of Guerrilla Games and Sony Interactive Entertainment.
+        </p>
+        <br />
+        <p>
+          This project is not endorsed, sponsored, or affiliated with Guerrilla
+          Games or Sony. All information was compiled and adapted from the
+          <a
+            href="https://horizon.fandom.com/wiki/Timeline"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            Horizon Wiki Timeline </a
+          >, developed by the fan community, and rewritten for this
+          presentation.
+        </p>
+        <br />
+        <p>
+          This non-commercial site is made by fans, for fans. No information
+          presented here is for sale, rent, or trade. © 2025 Fan Project. All
+          original presentation rights reserved.
+        </p>
+      </div>
+    </footer>
+
+    <!-- popup -->
+    <div id="welcomePopup" class="popup-overlay">
+      <div class="popup-container">
+        <div class="popup-header">
+          <h2>Welcome to: A Timeline For Horizon!</h2>
+          <button class="popup-close" id="closePopup">&times;</button>
+        </div>
+
+        <div class="popup-content">
+          <p>
+            <strong style="color: red">Made by fan, for fans ❤️</strong> → This
+            is an
+            <strong style="color: rgb(248, 3, 248)"
+              >unofficial interactive timeline</strong
+            >, showcasing the main events of the Horizon game series.
+          </p>
+
+          <div class="popup-features">
+            <div class="feature-item">
+              <span class="feature-icon">🎮</span>
+              <span>Explore events in chronological order</span>
+            </div>
+            <div class="feature-item">
+              <span class="feature-icon">📅</span>
+              <span>Navigate through years using the top timeline</span>
+            </div>
+            <div class="feature-item">
+              <span class="feature-icon">🔍</span>
+              <span>Click on any card to view details</span>
+            </div>
+            <div class="feature-item">
+              <span class="feature-icon">⚡</span>
+              <span>Use the buttons for quick navigation</span>
+            </div>
+          </div>
+
+          <div class="popup-disclaimer">
+            <p>
+              <strong>Important:</strong> This is an independent fan project and
+              is not affiliated with Guerrilla Games or Sony. All content is
+              based on public community information.
+            </p>
+          </div>
+        </div>
+
+        <div class="popup-footer">
+          <button class="popup-button" id="acknowledgeButton">
+            I understand. I am aware that this is NOT an Official Website. ✅
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <script>
+      // Timeline data
+      const timelineEvents = [
+        {
+          year: '2009',
+          yearTitleCard: '2009',
+          month: 'Unknown Month',
+          day: 'Unknown Day',
+          title: "Harriet Choi's birth",
+          description:
+            'Born around 2009, she later in her life became a bioterrorist and member of the Naysay Doom cult, a death cult that existed in the 21st Century. This group engineered the "Doom Plague" viral cocktail, which was later released in  New York, London, Moscow, Tokyo, and Shanghai in the year 2039, killing millions of people. Following the attack in 2039, many countries outlawed burgeoning research on genetic testing.',
+        },
+        {
+          year: '2013',
+          yearTitleCard: '2013',
+          month: 'December',
+          day: '24th',
+          title: "Ted Faro's birth",
+          description:
+            "The future reponsible for humanity's doom, Theodor 'Ted' Faro, was born on this date.",
+        },
+        {
+          year: '2017',
+          yearTitleCard: '2017',
+          month: 'Unknown Month',
+          day: 'Unknown Day',
+          title: 'Law changes in the US',
+          description:
+            "The United States Interior Department decides to remove the grizzly bear species from it's endangered species list.",
+        },
+        {
+          year: '2020',
+          yearTitleCard: '2020',
+          month: 'March',
+          day: '12',
+          title: 'Franchise Reboot',
+          description:
+            'Series restart with new graphics engine, maintaining the essence of the original story.',
+        },
+        {
+          year: '2023',
+          yearTitleCard: '2023',
+          month: 'October',
+          day: '27',
+          title: 'Multiverse Expansion',
+          description:
+            'Largest expansion ever released, introducing the concept of multiverse and alternate realities.',
+        },
+      ];
+
+      // Global variables
+      let currentIndex = 0;
+      let currentPosition = 0;
+      const eventWidth = 330;
+      let maxIndex = 0;
+      let maxPosition = 0;
+
+      // Wait for DOM to be fully loaded
+      document.addEventListener('DOMContentLoaded', function () {
+        console.log('DOM fully loaded - initializing application');
+        initializeApplication();
+      });
+
+      // Historical periods data
+      const historicalPeriods = [
+        {
+          id: 'old-world',
+          name: 'Old World (2009 - 2068)',
+          startYear: 2009,
+          endYear: 2068,
+          color: '#ffd700',
+          description:
+            'The era of advanced technology and the creation of the Faro Plague',
+        },
+        {
+          id: 'new-world',
+          name: 'New World',
+          startYear: 2326,
+          endYear: 3020,
+          color: '#ffa500',
+          description: 'The rebirth of life on Earth through Project Zero Dawn',
+        },
+        {
+          id: 'zero-dawn',
+          name: 'Horizon Zero Dawn',
+          startYear: 3040,
+          endYear: 3040,
+          color: '#32cd32',
+          description:
+            "Aloy's journey to uncover the truth about the Old World",
+        },
+        {
+          id: 'frozen-wilds',
+          name: 'Frozen Wilds',
+          startYear: 3040,
+          endYear: 3040,
+          color: '#32cd32',
+          description: "Aloy's journey to Banuk territory",
+        },
+        {
+          id: 'forbidden-west',
+          name: 'Horizon Forbidden West',
+          startYear: 3040,
+          endYear: 3041,
+          color: '#1e90ff',
+          description:
+            "Aloy's quest to restore GAIA and save the world from extinction",
+        },
+        {
+          id: 'burning-shores',
+          name: 'Burning Shores',
+          startYear: 3041,
+          endYear: 3041,
+          color: '#32cd32',
+          description: "Aloy's journey to the Burning Shores",
+        },
+      ];
+
+      function throttle(func, limit) {
+        let inThrottle;
+        return function () {
+          const args = arguments;
+          const context = this;
+          if (!inThrottle) {
+            func.apply(context, args);
+            inThrottle = true;
+            setTimeout(() => (inThrottle = false), limit);
+          }
+        };
+      }
+
+      // Use throttle para eventos de redimensionamento
+      window.addEventListener(
+        'resize',
+        throttle(() => {
+          if (currentIndex >= 0) {
+            navigateToIndex(currentIndex);
+          }
+        }, 250)
+      );
+
+      // Initialize historical periods
+      function initializeHistoricalPeriods() {
+        const periodsTrack = document.getElementById('periodsTrack');
+        if (!periodsTrack) return;
+
+        // Get all unique years from timeline
+        const allYears = [
+          ...new Set(timelineEvents.map((event) => parseInt(event.year))),
+        ].sort((a, b) => a - b);
+        const minYear = Math.min(...allYears);
+        const maxYear = Math.max(...allYears);
+        const totalYears = maxYear - minYear;
+
+        // Create period ranges and markers
+        historicalPeriods.forEach((period) => {
+          // Calculate position for period range
+          const startPos = ((period.startYear - minYear) / totalYears) * 100;
+          const endPos = ((period.endYear - minYear) / totalYears) * 100;
+          const width = endPos - startPos;
+
+          // Create period range
+          const periodRange = document.createElement('div');
+          periodRange.className = 'period-range';
+          periodRange.style.left = `${startPos}%`;
+          periodRange.style.width = `${width}%`;
+          periodRange.title = `${period.name}: ${period.startYear}-${period.endYear}\n${period.description}`;
+          periodsTrack.appendChild(periodRange);
+
+          // Create period marker (start)
+          const periodMarker = document.createElement('div');
+          periodMarker.className = 'period-marker';
+          periodMarker.style.left = `${startPos}%`;
+          periodMarker.innerHTML = `
+            <div class="period-dot"></div>
+            <div class="period-label">${period.name}</div>
+        `;
+          periodMarker.title = `${period.name}: ${period.startYear}-${period.endYear}\n${period.description}`;
+
+          periodMarker.addEventListener('click', () => {
+            // Find first event in this period
+            const firstEventInPeriod = timelineEvents.find(
+              (event) =>
+                parseInt(event.year) >= period.startYear &&
+                parseInt(event.year) <= period.endYear
+            );
+            if (firstEventInPeriod) {
+              navigateToYear(firstEventInPeriod.year);
+            }
+          });
+
+          periodsTrack.appendChild(periodMarker);
+        });
+      }
+
+      // Update active historical period based on current year
+      function updateActivePeriod(currentYear) {
+        const year = parseInt(currentYear);
+
+        // Remove active class from all periods
+        document
+          .querySelectorAll('.period-marker, .period-range')
+          .forEach((el) => {
+            el.classList.remove('active', 'active-period');
+          });
+
+        // Find current period
+        const currentPeriod = historicalPeriods.find(
+          (period) => year >= period.startYear && year <= period.endYear
+        );
+
+        if (currentPeriod) {
+          // Add active class to current period
+          const periodMarkers = document.querySelectorAll('.period-marker');
+          const periodRanges = document.querySelectorAll('.period-range');
+
+          periodMarkers.forEach((marker) => {
+            if (
+              marker.querySelector('.period-label').textContent ===
+              currentPeriod.name
+            ) {
+              marker.classList.add('active');
+            }
+          });
+
+          periodRanges.forEach((range) => {
+            if (range.title.includes(currentPeriod.name)) {
+              range.classList.add('active-period');
+            }
+          });
+        }
+      }
+
+      function setupKeyboardNavigation() {
+  document.addEventListener('keydown', function(event) {
+    // Verifica se as teclas são seta esquerda ou direita
+    if (event.key === 'ArrowLeft') {
+      event.preventDefault();
+      if (currentIndex > 0) {
+        navigateToIndex(currentIndex - 1);
+      }
+    } else if (event.key === 'ArrowRight') {
+      event.preventDefault();
+      if (currentIndex < maxIndex) {
+        navigateToIndex(currentIndex + 1);
+      }
+    }
+  });
+}
+
+      function initializeApplication() {
+        // Inicializa o timeline básico
+        initializeTimeline();
+
+        // Inicializa períodos históricos
+        initializeHistoricalPeriods();
+
+        // navegação por teclado
+        setupKeyboardNavigation();
+
+        // Por último o popup
+        initializePopup();
+
+        // Apenas para desenvolvimento
+        // if (
+        //   window.location.hostname === 'localhost' ||
+        //   window.location.hostname === '127.0.0.1'
+        // ) {
+        //   addDebugButtons();
+        // }
+      }
+      // Timeline initialization
+      function initializeTimeline() {
+        const timeline = document.getElementById('timeline');
+        const yearMarkers = document.getElementById('yearMarkers');
+        const prevBtn = document.getElementById('prevBtn');
+        const nextBtn = document.getElementById('nextBtn');
+
+        if (!timeline || !yearMarkers || !prevBtn || !nextBtn) {
+          console.error('Required timeline elements not found');
+          return;
+        }
+
+        // Create year markers
+        const uniqueYears = [
+          ...new Set(timelineEvents.map((event) => event.year)),
+        ].sort();
+        uniqueYears.forEach((year, index) => {
+          const yearMarker = document.createElement('div');
+          yearMarker.className = `year-marker ${index === 0 ? 'active' : ''}`;
+          yearMarker.innerHTML = `
+              <div class="year-dot"></div>
+              <span class="year-label">${year}</span>
+            `;
+          yearMarker.addEventListener('click', () => navigateToYear(year));
+          yearMarkers.appendChild(yearMarker);
+        });
+
+        // Create timeline content
+        const eventsByYear = groupEventsByYear(timelineEvents);
+        let totalElements = 0;
+
+        Object.keys(eventsByYear).forEach((year) => {
+          // Create year title
+          const yearTitle = document.createElement('div');
+          yearTitle.className = 'year-title';
+          yearTitle.textContent = year;
+          yearTitle.dataset.year = year;
+          timeline.appendChild(yearTitle);
+          totalElements++;
+
+          // Add events for this year
+          eventsByYear[year].forEach((event) => {
+            const eventElement = createEventElement(event, year);
+            eventElement.addEventListener('click', () => {
+              const elementIndex = Array.from(timeline.children).indexOf(
+                eventElement
+              );
+              navigateToIndex(elementIndex);
+            });
+            timeline.appendChild(eventElement);
+            totalElements++;
+          });
+        });
+
+        // Setup navigation
+        maxIndex = timeline.children.length - 1;
+        maxPosition = maxIndex * eventWidth;
+
+        // Event listeners for navigation buttons
+        prevBtn.addEventListener('click', () => {
+          if (currentIndex > 0) navigateToIndex(currentIndex - 1);
+        });
+
+        nextBtn.addEventListener('click', () => {
+          if (currentIndex < maxIndex) navigateToIndex(currentIndex + 1);
+        });
+
+        // Initialize first state
+        navigateToIndex(0);
+        enhanceYearTitles();
+      }
+
+      // Helper functions for timeline
+      function groupEventsByYear(events) {
+        return events.reduce((groups, event) => {
+          const year = event.year;
+          if (!groups[year]) groups[year] = [];
+          groups[year].push(event);
+          return groups;
+        }, {});
+      }
+
+      function createEventElement(event, year) {
+        const eventElement = document.createElement('div');
+        eventElement.className = 'timeline-event';
+        eventElement.dataset.year = year;
+        eventElement.innerHTML = `
+            <div class="event-marker"></div>
+            <div class="event-content">
+              <div class="event-date">
+                <h3 class="event-title">${event.title}</h3>
+                ${
+                  event.yearTitleCard
+                    ? `<span class="event-month">${event.yearTitleCard}</span>`
+                    : ''
+                }
+                ${
+                  event.month
+                    ? `<span class="event-month">${event.month}</span>`
+                    : ''
+                }
+                ${
+                  event.day ? `<span class="event-day">${event.day}</span>` : ''
+                }
+              </div>              
+              <p class="event-description">${event.description}</p>
+            </div>
+          `;
+        return eventElement;
+      }
+
+      function navigateToIndex(newIndex) {
+        newIndex = Math.max(0, Math.min(newIndex, maxIndex));
+        currentIndex = newIndex;
+
+        const timeline = document.getElementById('timeline');
+        const container = document.querySelector('.timeline-container');
+
+        if (!timeline || !container) return;
+
+        const containerWidth = container.offsetWidth;
+        const timelineWidth = timeline.scrollWidth;
+
+        // Calcula a posição para centralizar o elemento ativo
+        const activeElement = timeline.children[currentIndex];
+        if (!activeElement) return;
+
+        // Posição do elemento ativo no timeline
+        const activeElementPosition = currentIndex * eventWidth;
+
+        // Centraliza o elemento ativo no container
+        // Metade do container menos metade da largura do elemento
+        currentPosition =
+          activeElementPosition - containerWidth / 2 + eventWidth / 2;
+
+        // Limita a posição para não ultrapassar os limites
+        const minPosition = 0;
+        const maxPosition = Math.max(0, timelineWidth - containerWidth);
+
+        currentPosition = Math.max(
+          minPosition,
+          Math.min(currentPosition, maxPosition)
+        );
+
+        // Aplica a transformação
+        timeline.style.transform = `translateX(-${currentPosition}px)`;
+
+        updateActiveElement();
+        updateButtons();
+        updateYearMarkerFromCurrentIndex();
+      }
+
+      function navigateToYear(targetYear) {
+        const yearTitle = document.querySelector(
+          `.year-title[data-year="${targetYear}"]`
+        );
+        if (yearTitle) {
+          const elementIndex = Array.from(
+            document.getElementById('timeline').children
+          ).indexOf(yearTitle);
+          navigateToIndex(elementIndex);
+        }
+      }
+
+      function updateActiveElement() {
+        const timeline = document.getElementById('timeline');
+        if (!timeline) return;
+
+        const currentElement = timeline.children[currentIndex];
+        if (!currentElement) return;
+
+        // Remove active classes
+        document
+          .querySelectorAll('.timeline-event, .year-title')
+          .forEach((el) => {
+            el.classList.remove('active', 'active-year');
+          });
+
+        // Add appropriate active class
+        if (currentElement.classList.contains('timeline-event')) {
+          currentElement.classList.add('active');
+          const year = currentElement.dataset.year;
+          const yearTitle = document.querySelector(
+            `.year-title[data-year="${year}"]`
+          );
+          if (yearTitle) yearTitle.classList.add('active-year');
+        } else if (currentElement.classList.contains('year-title')) {
+          currentElement.classList.add('active-year');
+        }
+      }
+
+      function updateYearMarkerFromCurrentIndex() {
+        const timeline = document.getElementById('timeline');
+        if (!timeline) return;
+
+        const currentElement = timeline.children[currentIndex];
+        if (!currentElement) return;
+
+        let year;
+        if (currentElement.classList.contains('year-title')) {
+          year = currentElement.dataset.year || currentElement.textContent;
+        } else if (currentElement.classList.contains('timeline-event')) {
+          year = currentElement.dataset.year;
+        }
+
+        if (year) updateYearMarker(year);
+      }
+
+      function updateYearMarker(year) {
+        document.querySelectorAll('.year-marker').forEach((marker) => {
+          const yearLabel = marker.querySelector('.year-label');
+          marker.classList.toggle(
+            'active',
+            yearLabel && yearLabel.textContent === year
+          );
+        });
+
+        // Update active historical period
+        updateActivePeriod(year);
+      }
+      function updateButtons() {
+        const prevBtn = document.getElementById('prevBtn');
+        const nextBtn = document.getElementById('nextBtn');
+        if (prevBtn) prevBtn.disabled = currentIndex === 0;
+        if (nextBtn) nextBtn.disabled = currentIndex >= maxIndex;
+      }
+
+      function enhanceYearTitles() {
+        document.querySelectorAll('.year-title').forEach((title) => {
+          const decoration = document.createElement('div');
+          decoration.className = 'year-decoration';
+          title.appendChild(decoration);
+        });
+      }
+
+      // Popup functions
+      // Popup functions - Modified to force button click
+      function initializePopup() {
+        const popup = document.getElementById('welcomePopup');
+        const closeBtn = document.getElementById('closePopup');
+        const acknowledgeBtn = document.getElementById('acknowledgeButton');
+
+        console.log('=== POPUP DEBUG ===');
+        console.log('Popup element:', popup);
+        console.log('Close button:', closeBtn);
+        console.log('Acknowledge button:', acknowledgeBtn);
+
+        if (!popup) {
+          console.error('❌ Popup element not found!');
+          return;
+        }
+
+        // USE THE NEW FUNCTION instead of the old logic
+        if (shouldShowPopup()) {
+          console.log('✅ Should show popup - scheduling display');
+          setTimeout(showPopup, 1000);
+        } else {
+          console.log('❌ Should NOT show popup');
+        }
+
+        setupPopupEventListeners();
+      }
+
+      function setupPopupEventListeners() {
+        const popup = document.getElementById('welcomePopup');
+        const closeBtn = document.getElementById('closePopup');
+        const acknowledgeBtn = document.getElementById('acknowledgeButton');
+
+        // Close button event - NOW SHOWS ALERT INSTEAD OF CLOSING
+        if (closeBtn) {
+          closeBtn.addEventListener('click', (e) => {
+            e.stopPropagation();
+            showRequiredAlert();
+          });
+        }
+
+        // Acknowledge button event - ONLY WAY TO CLOSE
+        if (acknowledgeBtn) {
+          acknowledgeBtn.addEventListener('click', (e) => {
+            e.stopPropagation();
+            closePopup();
+          });
+        }
+
+        // Overlay click event - DISABLED (user must click button)
+        if (popup) {
+          popup.addEventListener('click', (e) => {
+            if (e.target === popup) {
+              showRequiredAlert();
+            }
+          });
+        }
+
+        // Escape key event - DISABLED (user must click button)
+        document.addEventListener('keydown', (e) => {
+          if (e.key === 'Escape') {
+            const popup = document.getElementById('welcomePopup');
+            if (popup && popup.classList.contains('active')) {
+              e.preventDefault();
+              showRequiredAlert();
+            }
+          }
+        });
+      }
+
+      function showRequiredAlert() {
+        // Create a custom alert instead of browser alert for better UX
+        showCustomAlert(
+          'You must declare that you are aware in order to proceed!'
+        );
+
+        // Optional: Add visual feedback to the button
+        const acknowledgeBtn = document.getElementById('acknowledgeButton');
+        if (acknowledgeBtn) {
+          acknowledgeBtn.style.animation = 'pulseAttention 0.5s ease-in-out';
+          setTimeout(() => {
+            acknowledgeBtn.style.animation = '';
+          }, 500);
+        }
+      }
+      
+      // Custom alert function for better user experience
+      function showCustomAlert(message) {
+        // Remove existing custom alert if any
+        const existingAlert = document.getElementById('customAlert');
+        if (existingAlert) {
+          existingAlert.remove();
+        }
+
+        const alertOverlay = document.createElement('div');
+        alertOverlay.id = 'customAlert';
+        alertOverlay.style.cssText = `
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: rgba(0, 0, 0, 0.7);
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        z-index: 10001;
+        backdrop-filter: blur(5px);
+        animation: fadeIn 0.3s ease-out;
+    `;
+
+        const alertBox = document.createElement('div');
+        alertBox.style.cssText = `
+        background: var(--popup-bg);
+        border: 2px solid var(--color-primary);
+        border-radius: 15px;
+        padding: 2rem;
+        max-width: 400px;
+        width: 90%;
+        text-align: center;
+        box-shadow: 0 20px 40px rgba(0, 0, 0, 0.5);
+        backdrop-filter: blur(15px);
+        animation: slideUp 0.3s ease-out;
+    `;
+
+        const alertMessage = document.createElement('p');
+        alertMessage.textContent = message;
+        alertMessage.style.cssText = `
+        color: var(--color-text-primary);
+        font-size: 1.1rem;
+        margin-bottom: 1.5rem;
+        line-height: 1.5;
+    `;
+
+        const alertButton = document.createElement('button');
+        alertButton.textContent = 'go back and read';
+        alertButton.style.cssText = `
+        background: linear-gradient(135deg, var(--color-primary), var(--color-secondary));
+        color: white;
+        border: none;
+        padding: 0.8rem 2rem;
+        border-radius: 50px;
+        font-size: 1rem;
+        font-weight: 600;
+        cursor: pointer;
+        transition: all 0.3s ease;
+        box-shadow: 0 4px 15px rgba(255, 126, 95, 0.3);
+    `;
+
+        alertButton.addEventListener('click', () => {
+          alertOverlay.remove();
+        });
+
+        alertButton.addEventListener('mouseenter', () => {
+          alertButton.style.transform = 'translateY(-2px)';
+          alertButton.style.boxShadow = '0 6px 20px rgba(255, 126, 95, 0.4)';
+        });
+
+        alertButton.addEventListener('mouseleave', () => {
+          alertButton.style.transform = 'translateY(0)';
+          alertButton.style.boxShadow = '0 4px 15px rgba(255, 126, 95, 0.3)';
+        });
+
+        alertBox.appendChild(alertMessage);
+        alertBox.appendChild(alertButton);
+        alertOverlay.appendChild(alertBox);
+        document.body.appendChild(alertOverlay);
+
+        // Auto-remove after 5 seconds if user doesn't click
+        setTimeout(() => {
+          if (document.getElementById('customAlert')) {
+            alertOverlay.remove();
+          }
+        }, 5000);
+      }
+
+      function showPopup() {
+        const popup = document.getElementById('welcomePopup');
+        if (popup) {
+          console.log('Showing popup');
+          popup.classList.add('active');
+          document.body.style.overflow = 'hidden';
+        }
+      }
+      function closePopup() {
+        const popup = document.getElementById('welcomePopup');
+        if (popup) {
+          console.log('Closing popup and setting acknowledgment');
+          popup.classList.remove('active');
+          document.body.style.overflow = '';
+          localStorage.setItem('horizonTimelineWelcomeSeen', 'true');
+          localStorage.setItem('popupLastSeen', Date.now().toString());
+        }
+      }
+
+      function shouldShowPopup() {
+        // Check URL parameter for forced show
+        const urlParams = new URLSearchParams(window.location.search);
+        if (urlParams.get('showPopup') === 'true') {
+          console.log('🔗 URL parameter forces popup show');
+          return true;
+        }
+
+        // Check if we're in development
+        const isDevelopment =
+          window.location.hostname === 'localhost' ||
+          window.location.hostname === '127.0.0.1' ||
+          window.location.protocol === 'file:';
+
+        console.log('🌐 Development environment:', isDevelopment);
+
+        // For development - ALWAYS SHOW
+        if (isDevelopment) {
+          console.log('🔧 Development mode - showing popup');
+          return true;
+        }
+
+        // Production: normal behavior
+        const hasAcknowledged = localStorage.getItem(
+          'horizonTimelineWelcomeSeen'
+        );
+        console.log('📝 localStorage value:', hasAcknowledged);
+        return !hasAcknowledged;
+      }
+
+      // Debug functions
+      function addDebugButtons() {
+        const debugDiv = document.createElement('div');
+        debugDiv.id = 'debugButtons';
+        debugDiv.style.cssText = `
+            position: fixed; 
+            bottom: 10px; 
+            right: 10px; 
+            z-index: 10000; 
+            display: flex; 
+            flex-direction: column; 
+            gap: 5px;
+          `;
+
+        debugDiv.innerHTML = `
+            <button onclick="resetPopup()" style="background: #ff4444; color: white; border: none; padding: 8px 12px; border-radius: 5px; cursor: pointer; font-size: 12px; font-weight: bold;">Reset Popup</button>
+            <button onclick="forceShowPopup()" style="background: #44ff44; color: black; border: none; padding: 8px 12px; border-radius: 5px; cursor: pointer; font-size: 12px; font-weight: bold;">Show Popup</button>
+          `;
+
+        document.body.appendChild(debugDiv);
+      }
+
+      function resetPopup() {
+        localStorage.removeItem('horizonTimelineWelcomeSeen');
+        setTimeout(showPopup, 100);
+      }
+
+      function forceShowPopup() {
+        showPopup();
+      }
+
+      // Make debug functions globally available
+      window.resetPopup = resetPopup;
+      window.forceShowPopup = forceShowPopup;
+    </script>
+  </body>
+  
+</html>
