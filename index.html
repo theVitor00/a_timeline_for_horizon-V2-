@@ -413,6 +413,19 @@
       }
     }
 
+    @keyframes trianglePulse {
+    0%, 100% {
+        transform: translate(-50%, -50%) scale(1);
+        border-bottom-color: var(--color-accent);
+        filter: drop-shadow(0 4px 8px rgba(0, 0, 0, 0.4));
+    }
+    50% {
+        transform: translate(-50%, -50%) scale(1.1);
+        border-bottom-color: var(--color-accent-light);
+        filter: drop-shadow(0 6px 12px var(--color-accent-light));
+    }
+}
+
     @keyframes labelPulse {
       0%,
       100% {
@@ -554,7 +567,7 @@
     .year-title::before {
       content: '';
       position: absolute;
-      top: 50%;
+      top: 48%;
       left: -25px;
       width: 35px;
       height: 35px;
@@ -824,36 +837,39 @@
 
     .timeline-line {
       opacity: 0.3;
-      position: absolute;
-      top: 59.45% !important;
-      left: 0 !important; /* Começa na borda esquerda */
-      right: 0 !important; /* Vai até a borda direita */
-      width: 100vw !important; /* Largura total */
-      height: 4px;
-      background: linear-gradient(
+    position: absolute;
+    top: calc(50% + 27.5px) !important; /* Ajusta para acomodar os triângulos */
+    left: 50% !important;
+    width: 100% !important;
+    height: 4px;
+    background: linear-gradient(
         90deg,
         rgba(255, 126, 95, 0.8),
         rgba(254, 180, 123, 0.8)
-      ) !important;
-      transform: translateY(-50%);
-      z-index: 1 !important;
-      border-radius: 2px;
+    ) !important;
+    transform: translate(-50%, -50%);
+    z-index: 1 !important;
+    border-radius: 2px;
     }
 
     /*Pontos da linha temporal de baixo */
     .event-marker {
       position: absolute;
-      top: 50% !important;
-      left: 0.1px;
-      width: 22px;
-      height: 22px;
-      background: linear-gradient(135deg, #ff7e5f, #feb47b) !important;
-      border-radius: 50%;
-      transform: translate(-50%, -50%);
-      z-index: 10 !important; /* Alto z-index */
-      border: 4px solid rgba(255, 255, 255, 0.9);
-      opacity: 0.7; /* Reduz opacidade padrão */
-      transition: all 0.3s ease;
+      rotate: 90deg;
+    top: 50% !important;
+    left: -10% !important;
+    width: 0;
+    height: 0;
+    background: transparent !important;
+    border-left: 12px solid transparent;
+    border-right: 12px solid transparent;
+    border-bottom: 20px solid var(--color-primary);
+    border-radius: 0;
+    transform: translate(-50%, -50%);
+    z-index: 10 !important;
+    opacity: 0.7;
+    transition: all 0.3s ease;
+    filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.3));
     }
 
     .timeline-event:not(.active):not(:hover) .event-marker {
@@ -869,26 +885,28 @@
 
     .timeline-event.active .event-marker {
       position: absolute;
-      top: 50% !important;
-      left: -7px;
-      width: 15px;
-      height: 15px;
-      opacity: 1;
-      transform: translate(-50%, -50%);
-      border-radius: 50%;
-      border: 4px solid rgba(255, 255, 255, 0.9);
-      z-index: 10 !important; /* Alto z-index */
-      pointer-events: none;
-      transition: all 0.3s ease;
-      animation: periodPulse 2s ease-in-out infinite;
+    top: 50% !important;
+    left: -10% !important;
+    width: 0;
+    height: 0;
+    background: transparent !important;
+    border-left: 15px solid transparent;
+    border-right: 15px solid transparent;
+    border-bottom: 25px solid var(--color-accent);
+    border-radius: 0;
+    transform: translate(-50%, -50%);
+    z-index: 10 !important;
+    pointer-events: none;
+    transition: all 0.3s ease;
+    animation: trianglePulse 2s ease-in-out infinite;
+    filter: drop-shadow(0 4px 8px rgba(0, 0, 0, 0.4));
     }
 
     .timeline-event:not(.active):hover .event-marker {
-      opacity: 0.8;
-      transform: translate(-50%, -50%) scale(1.1);
-      background: rgba(255, 126, 95, var(--opacity-high));
-      box-shadow: 0 0 0 5px rgba(255, 126, 95, var(--opacity-medium)),
-        0 4px 12px rgba(255, 126, 95, var(--opacity-medium));
+      opacity: 0.9;
+    transform: translate(-50%, -50%) scale(1.1);
+    border-bottom-color: var(--color-accent-light);
+    filter: drop-shadow(0 3px 6px rgba(255, 126, 95, 0.5));
     }
 
     .timeline-event:not(.active):hover .event-content {
@@ -920,6 +938,7 @@
 
     .timeline-event.active:hover .event-marker {
       transform: translate(-50%, -50%) scale(1.15);
+    border-bottom-color: var(--color-accent-alt);
     }
 
     .navigation {
