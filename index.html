@@ -690,12 +690,12 @@
 
     .timeline-event {
       opacity: 0.3;
-      transition: opacity 0.3s ease;
-      flex: 0 0 328px;
       transition: all 0.4s ease;
+      flex: 0 0 328px;
       position: relative;
       z-index: 2; /* Acima da máscara */
       background: var(--color-bg-primary); /* Fundo sólido para conteúdo */
+      cursor: pointer;
     }
 
     .timeline-event.active {
@@ -724,6 +724,7 @@
       border: 1px solid var(--color-border);
       position: relative;
       text-align: left;
+      overflow: hidden;
     }
 
     .event-date {
@@ -795,11 +796,18 @@
       line-height: 1.4; /* Era 1.5 */
       color: var(--color-text-secondary);
       transition: all 0.4s ease;
+      max-height: 0;
+      opacity: 0;
+      overflow: hidden;
+      transition: max-height 0.4s ease, opacity 0.3s ease, margin-top 0.3s ease;
     }
 
     .timeline-event.active .event-description {
       font-size: 0.95rem;
       line-height: 1.6;
+      max-height: 500px;
+      opacity: 1;
+      margin-top: 1rem;
     }
 
     .timeline-event:not(.active):hover {
@@ -1918,6 +1926,7 @@
                 parseInt(event.year) <= period.endYear
             );
             if (firstEventInPeriod) {
+              playSound('period', 0.4);
               navigateToYear(firstEventInPeriod.year);
             }
           });
@@ -2028,6 +2037,7 @@
               const elementIndex = Array.from(timeline.children).indexOf(
                 eventElement
               );
+              playSound('select', 0.3);
               navigateToIndex(elementIndex);
             });            
             timeline.appendChild(eventElement);
@@ -3110,6 +3120,7 @@ window.reinitCardSounds = initCardSounds;
         // Aplica a transformação
         timeline.style.transform = `translateX(-${currentPosition}px)`;
 
+        playSound('navigate', 0.2);
         updateActiveElement();
         updateButtons();
         updateYearMarkerFromCurrentIndex();
@@ -3125,6 +3136,7 @@ window.reinitCardSounds = initCardSounds;
           ).indexOf(yearTitle);
           navigateToIndex(elementIndex);
         }
+        playSound('select', 0.25);
       }
 
       function updateActiveElement() {
@@ -3460,6 +3472,34 @@ window.reinitCardSounds = initCardSounds;
       // Make debug functions globally available
       window.resetPopup = resetPopup;
       window.forceShowPopup = forceShowPopup;
+
+      function initializeApplication() {
+        // Inicializa o timeline básico
+        initializeTimeline();
+
+        // Inicializa períodos históricos
+        initializeHistoricalPeriods();
+
+        // navegação por teclado
+        setupKeyboardNavigation();
+
+        // Inicializa as setas do carrossel - DEPOIS do timeline estar pronto
+        initializeCarouselArrows();
+
+        // INICIALIZA SISTEMA DE SONS
+        initializeSoundSystem();
+
+        // Por último o popup
+        initializePopup();
+
+        // Apenas para desenvolvimento
+        // if (
+        //   window.location.hostname === 'localhost' ||
+        //   window.location.hostname === '127.0.0.1'
+        // ) {
+        //   addDebugButtons();
+        // }
+      }
     </script>
   </body>
 </html>
