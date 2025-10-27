@@ -1574,7 +1574,7 @@
       <p class="quote">
         <i
           >"The strength to stand alone is the strength to make a stand." -
-          Rost, Horizon Zero Dawn</i
+          Rost</i
         >
       </p>
     </header>
@@ -1738,7 +1738,7 @@
           day: 'Unknown Day',
           title: "Harriet Choi's birth",
           description:
-            'Born around 2009, she later in her life became a bioterrorist and member of the Naysay Doom cult, a death cult that existed in the 21st Century. This group engineered the "Doom Plague" viral cocktail, which was later released in  New York, London, Moscow, Tokyo, and Shanghai in the year 2039, killing millions of people. Following the attack in 2039, many countries outlawed burgeoning research on genetic testing.',
+            'Born around 2009, she later in her life became a bioterrorist and member of the Naysay Doom, a death cult that existed in the 21st Century. This group engineered the "Doom Plague" viral cocktail, which was later released in  New York, London, Moscow, Tokyo, and Shanghai in the year 2039, killing millions of people. Following the attack in 2039, many countries outlawed burgeoning research on genetic testing.',
         },
         {
           year: '2013',
@@ -2021,12 +2021,12 @@
           // Add events for this year
           eventsByYear[year].forEach((event) => {
             const eventElement = createEventElement(event, year);
-            eventElement.addEventListener('click', () => {
+            eventElement.addEventListener('click', () => {                            
               const elementIndex = Array.from(timeline.children).indexOf(
                 eventElement
               );
               navigateToIndex(elementIndex);
-            });
+            });            
             timeline.appendChild(eventElement);
             totalElements++;
           });
@@ -2489,15 +2489,203 @@ initHarmonicMusic();
         }
 
         const sounds = {
-        select: () => createSound(440, 0.1, 'square', volume * 0.6),        // Lá - som retro
-        navigate: () => createSound(587.33, 0.15, 'square', volume * 0.8),  // Ré - navegação
-        period: () => {
-            createSound(880, 0.1, 'square', volume * 0.7);                 // Lá agudo
-            setTimeout(() => createSound(659.25, 0.1, 'square', volume * 0.5), 50);
-            setTimeout(() => createSound(523.25, 0.1, 'square', volume * 0.3), 100);
-        },
-        confirm: () => createSound(1046.50, 0.2, 'square', volume)         // Confirmação forte
-    };
+    select: () => {
+        // Lá (440Hz) - nota tônica da música, suave e integrada
+        const now = audioContext.currentTime;
+        const osc = audioContext.createOscillator();
+        const gain = audioContext.createGain();
+        const filter = audioContext.createBiquadFilter();
+
+        osc.type = 'sine';
+        osc.frequency.setValueAtTime(440, now);
+        osc.frequency.setValueAtTime(460, now + 0.02); // Pequeno bend sutil
+
+        filter.type = 'lowpass';
+        filter.frequency.setValueAtTime(1200, now);
+
+        gain.gain.setValueAtTime(0, now);
+        gain.gain.linearRampToValueAtTime(volume * 0.5, now + 0.05);
+        gain.gain.exponentialRampToValueAtTime(0.001, now + 0.3);
+
+        osc.connect(filter);
+        filter.connect(gain);
+        gain.connect(audioContext.destination);
+
+        osc.start(now);
+        osc.stop(now + 0.3);
+    },
+
+    navigate: () => {
+        // Dó (523.25Hz) - harmoniza com o acorde Am
+        const now = audioContext.currentTime;
+        const osc1 = audioContext.createOscillator();
+        const osc2 = audioContext.createOscillator();
+        const gain = audioContext.createGain();
+        const filter = audioContext.createBiquadFilter();
+
+        // Oscilador principal
+        osc1.type = 'triangle';
+        osc1.frequency.setValueAtTime(523.25, now);
+        
+        // Oscilador de oitava acima para riqueza harmônica
+        osc2.type = 'triangle';
+        osc2.frequency.setValueAtTime(1046.50, now);
+
+        filter.type = 'lowpass';
+        filter.frequency.setValueAtTime(1500, now);
+
+        gain.gain.setValueAtTime(0, now);
+        gain.gain.linearRampToValueAtTime(volume * 0.4, now + 0.1);
+        gain.gain.exponentialRampToValueAtTime(0.001, now + 0.4);
+
+        osc1.connect(filter);
+        osc2.connect(filter);
+        filter.connect(gain);
+        gain.connect(audioContext.destination);
+
+        osc1.start(now);
+        osc2.start(now);
+        osc1.stop(now + 0.4);
+        osc2.stop(now + 0.4);
+    },
+
+    period: () => {
+        // Progressão Am (Lá menor) - mesma da música
+        const now = audioContext.currentTime;
+        
+        // Primeira nota - Lá (440Hz)
+        const osc1 = audioContext.createOscillator();
+        const gain1 = audioContext.createGain();
+        osc1.type = 'sine';
+        osc1.frequency.setValueAtTime(440, now);
+        gain1.gain.setValueAtTime(0, now);
+        gain1.gain.linearRampToValueAtTime(volume * 0.6, now + 0.1);
+        gain1.gain.exponentialRampToValueAtTime(0.001, now + 0.3);
+        osc1.connect(gain1);
+        gain1.connect(audioContext.destination);
+        osc1.start(now);
+        osc1.stop(now + 0.3);
+
+        // Segunda nota - Dó (523.25Hz) com delay
+        setTimeout(() => {
+            const osc2 = audioContext.createOscillator();
+            const gain2 = audioContext.createGain();
+            osc2.type = 'sine';
+            osc2.frequency.setValueAtTime(523.25, audioContext.currentTime);
+            gain2.gain.setValueAtTime(0, audioContext.currentTime);
+            gain2.gain.linearRampToValueAtTime(volume * 0.5, audioContext.currentTime + 0.1);
+            gain2.gain.exponentialRampToValueAtTime(0.001, audioContext.currentTime + 0.3);
+            osc2.connect(gain2);
+            gain2.connect(audioContext.destination);
+            osc2.start(audioContext.currentTime);
+            osc2.stop(audioContext.currentTime + 0.3);
+        }, 80);
+
+        // Terceira nota - Mi (659.25Hz) com delay maior
+        setTimeout(() => {
+            const osc3 = audioContext.createOscillator();
+            const gain3 = audioContext.createGain();
+            const filter = audioContext.createBiquadFilter();
+            
+            osc3.type = 'sine';
+            osc3.frequency.setValueAtTime(659.25, audioContext.currentTime);
+            
+            filter.type = 'lowpass';
+            filter.frequency.setValueAtTime(1000, audioContext.currentTime);
+            
+            gain3.gain.setValueAtTime(0, audioContext.currentTime);
+            gain3.gain.linearRampToValueAtTime(volume * 0.4, audioContext.currentTime + 0.1);
+            gain3.gain.exponentialRampToValueAtTime(0.001, audioContext.currentTime + 0.4);
+            
+            osc3.connect(filter);
+            filter.connect(gain3);
+            gain3.connect(audioContext.destination);
+            
+            osc3.start(audioContext.currentTime);
+            osc3.stop(audioContext.currentTime + 0.4);
+        }, 160);
+    },
+
+    confirm: () => {
+        // Acorde Am completo - resolução harmônica
+        const now = audioContext.currentTime;
+        
+        const frequencies = [
+            440.00,   // Lá - tônica
+            523.25,   // Dó - terceira menor
+            659.25,   // Mi - quinta justa
+            880.00    // Lá - oitava
+        ];
+
+        frequencies.forEach((freq, index) => {
+            const osc = audioContext.createOscillator();
+            const gain = audioContext.createGain();
+            const filter = audioContext.createBiquadFilter();
+
+            osc.type = 'sine';
+            osc.frequency.setValueAtTime(freq, now);
+
+            filter.type = 'lowpass';
+            filter.frequency.setValueAtTime(2000, now);
+
+            // Staggered start para efeito de arpejo suave
+            gain.gain.setValueAtTime(0, now + (index * 0.02));
+            gain.gain.linearRampToValueAtTime(volume * (0.7 - (index * 0.1)), now + (index * 0.02) + 0.05);
+            gain.gain.exponentialRampToValueAtTime(0.001, now + 0.5);
+
+            osc.connect(filter);
+            filter.connect(gain);
+            gain.connect(audioContext.destination);
+
+            osc.start(now + (index * 0.02));
+            osc.stop(now + 0.5);
+        });
+
+        // Pulsação final para feedback tátil
+        setTimeout(() => {
+            const pulseOsc = audioContext.createOscillator();
+            const pulseGain = audioContext.createGain();
+            
+            pulseOsc.type = 'sine';
+            pulseOsc.frequency.setValueAtTime(880, audioContext.currentTime);
+            
+            pulseGain.gain.setValueAtTime(0, audioContext.currentTime);
+            pulseGain.gain.linearRampToValueAtTime(volume * 0.3, audioContext.currentTime + 0.05);
+            pulseGain.gain.exponentialRampToValueAtTime(0.001, audioContext.currentTime + 0.2);
+            
+            pulseOsc.connect(pulseGain);
+            pulseGain.connect(audioContext.destination);
+            
+            pulseOsc.start(audioContext.currentTime);
+            pulseOsc.stop(audioContext.currentTime + 0.2);
+        }, 200);
+    }
+};
+
+// Função auxiliar atualizada para manter compatibilidade
+function createSound(freq, duration, type, vol) {
+    const now = audioContext.currentTime;
+    const oscillator = audioContext.createOscillator();
+    const gainNode = audioContext.createGain();
+    const filter = audioContext.createBiquadFilter();
+
+    oscillator.type = type;
+    oscillator.frequency.setValueAtTime(freq, now);
+
+    filter.type = 'lowpass';
+    filter.frequency.setValueAtTime(1500, now);
+
+    gainNode.gain.setValueAtTime(0, now);
+    gainNode.gain.linearRampToValueAtTime(vol, now + 0.02);
+    gainNode.gain.exponentialRampToValueAtTime(0.001, now + duration);
+
+    oscillator.connect(filter);
+    filter.connect(gainNode);
+    gainNode.connect(audioContext.destination);
+
+    oscillator.start(now);
+    oscillator.stop(now + duration);
+}
 
         if (sounds[soundType]) {
           sounds[soundType]();
@@ -2680,6 +2868,135 @@ initHarmonicMusic();
         console.log('Event listeners de som configurados');
       }
 
+      // Adicione esta função ao seu código de sons
+const cardClickSound = () => {
+    // Som similar ao "navigate" mas com identidade própria para cards
+    const now = audioContext.currentTime;
+    
+    // Camada principal - Dó (523.25Hz) para harmonia com a música
+    const mainOsc = audioContext.createOscillator();
+    const mainGain = audioContext.createGain();
+    const mainFilter = audioContext.createBiquadFilter();
+
+    mainOsc.type = 'triangle';
+    mainOsc.frequency.setValueAtTime(523.25, now);
+    mainOsc.frequency.linearRampToValueAtTime(587.33, now + 0.15); // Transição suave para Ré
+
+    mainFilter.type = 'lowpass';
+    mainFilter.frequency.setValueAtTime(1200, now);
+
+    mainGain.gain.setValueAtTime(0, now);
+    mainGain.gain.linearRampToValueAtTime(volume * 0.5, now + 0.08);
+    mainGain.gain.exponentialRampToValueAtTime(0.001, now + 0.35);
+
+    // Camada harmônica - oitava acima para riqueza
+    const harmonicOsc = audioContext.createOscillator();
+    const harmonicGain = audioContext.createGain();
+
+    harmonicOsc.type = 'sine';
+    harmonicOsc.frequency.setValueAtTime(1046.50, now); // Dó uma oitava acima
+
+    harmonicGain.gain.setValueAtTime(0, now);
+    harmonicGain.gain.linearRampToValueAtTime(volume * 0.2, now + 0.05);
+    harmonicGain.gain.exponentialRampToValueAtTime(0.001, now + 0.25);
+
+    // Camada de "impacto" sutil
+    const impactOsc = audioContext.createOscillator();
+    const impactGain = audioContext.createGain();
+    const impactFilter = audioContext.createBiquadFilter();
+
+    impactOsc.type = 'sine';
+    impactOsc.frequency.setValueAtTime(392.00, now); // Sol mais grave
+    impactOsc.frequency.exponentialRampToValueAtTime(523.25, now + 0.1);
+
+    impactFilter.type = 'highpass';
+    impactFilter.frequency.setValueAtTime(200, now);
+
+    impactGain.gain.setValueAtTime(0, now);
+    impactGain.gain.linearRampToValueAtTime(volume * 0.3, now + 0.02);
+    impactGain.gain.exponentialRampToValueAtTime(0.001, now + 0.15);
+
+    // Conectar tudo
+    mainOsc.connect(mainFilter);
+    mainFilter.connect(mainGain);
+    mainGain.connect(audioContext.destination);
+
+    harmonicOsc.connect(harmonicGain);
+    harmonicGain.connect(audioContext.destination);
+
+    impactOsc.connect(impactFilter);
+    impactFilter.connect(impactGain);
+    impactGain.connect(audioContext.destination);
+
+    // Iniciar os osciladores
+    mainOsc.start(now);
+    harmonicOsc.start(now);
+    impactOsc.start(now);
+    
+    // Parar os osciladores
+    mainOsc.stop(now + 0.35);
+    harmonicOsc.stop(now + 0.25);
+    impactOsc.stop(now + 0.15);
+};
+
+// Adicione ao objeto sounds para manter organização
+sounds.cardClick = cardClickSound;
+
+// Função para adicionar o evento de clique aos cards
+function initCardSounds() {
+    // Seletor para todos os cards - ajuste conforme seu HTML
+    const cards = document.querySelectorAll('.card, [class*="card"], [data-card]');
+    
+    cards.forEach(card => {
+        // Remover event listener anterior para evitar duplicação
+        card.removeEventListener('click', handleCardClick);
+        card.addEventListener('click', handleCardClick);
+    });
+
+    console.log(`🎵 Sons de card aplicados a ${cards.length} elementos`);
+}
+
+// Handler para o clique no card
+function handleCardClick(event) {
+    // Tocar o som do card
+    if (sounds.cardClick) {
+        sounds.cardClick();
+    }
+    
+    // Opcional: evitar propagação se necessário
+    // event.stopPropagation();
+}
+
+// Inicializar automaticamente quando a página carregar
+document.addEventListener('DOMContentLoaded', function() {
+    // Inicializar imediatamente
+    initCardSounds();
+    
+    // Re-inicializar a cada 2 segundos para capturar cards carregados dinamicamente
+    setTimeout(initCardSounds, 2000);
+    
+    // Observar mudanças no DOM para cards carregados dinamicamente
+    const observer = new MutationObserver(function(mutations) {
+        let shouldReinit = false;
+        mutations.forEach(function(mutation) {
+            if (mutation.addedNodes.length) {
+                shouldReinit = true;
+            }
+        });
+        if (shouldReinit) {
+            setTimeout(initCardSounds, 100);
+        }
+    });
+    
+    observer.observe(document.body, {
+        childList: true,
+        subtree: true
+    });
+});
+
+// Também pode ser chamada manualmente se você adicionar cards dinamicamente
+window.reinitCardSounds = initCardSounds;
+
       // ========== FIM DO SISTEMA DE SONS ==========
 
       function initializeApplication() {
@@ -2724,6 +3041,11 @@ initHarmonicMusic();
         const eventElement = document.createElement('div');
         eventElement.className = 'timeline-event';
         eventElement.dataset.year = year;
+        eventElement.onclick = () => {
+        if (sounds && sounds.cardClick) {
+            sounds.cardClick();
+        }
+    };
         eventElement.innerHTML = `
             <div class="event-marker"></div>
             <div class="event-content">
