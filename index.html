@@ -728,17 +728,36 @@
 
     .event-content {
       background: var(--color-bg-card);
-      backdrop-filter: blur(10px);
-      border-radius: 15px;
-      padding: 1.2rem; /* Era 1.5rem */
-      box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
-      transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-      height: 100%;
-      border: 1px solid var(--color-border);
-      position: relative;
-      text-align: left;
-      overflow: hidden;
+  backdrop-filter: blur(10px);
+  border-radius: 15px;
+  padding: 1.2rem;
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  height: 100%;
+  border: 1px solid var(--color-border);
+  position: relative;
+  text-align: left;
+  overflow: hidden; /* Mantém o overflow hidden no container principal */
+  display: flex;
+  flex-direction: column;
     }
+
+    .event-header {
+  flex-shrink: 0; /* Impede que o header encolha */
+}
+
+.event-date {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  margin-bottom: 0.8rem;
+  font-size: 1rem;
+  line-height: 1.4;
+  color: var(--color-secondary);
+  flex-wrap: wrap;
+  transition: all 0.4s ease;
+  flex-shrink: 0; /* Mantém o tamanho fixo */
+}
 
     .event-date {
       display: flex;
@@ -805,23 +824,67 @@
     }
 
     .event-description {
-      font-size: 0.85rem; /* Era 0.9rem */
-      line-height: 1.4; /* Era 1.5 */
-      color: var(--color-text-secondary);
-      transition: all 0.4s ease;
-      max-height: 0;
-      opacity: 0;
-      overflow: hidden;
-      transition: max-height 0.4s ease, opacity 0.3s ease, margin-top 0.3s ease;
+      font-size: 0.85rem;
+  line-height: 1.4;
+  color: var(--color-text-secondary);
+  transition: all 0.4s ease;
+  max-height: 0;
+  opacity: 0;
+  overflow: hidden;
+  margin-top: 0;
+  flex: 1;
     }
 
     .timeline-event.active .event-description {
+      padding-bottom: 5px;
       font-size: 0.95rem;
-      line-height: 1.6;
-      max-height: 500px;
-      opacity: 1;
-      margin-top: 1rem;
+  line-height: 1.6;
+  max-height: 200px; /* Altura máxima fixa para ativar o scroll */
+  opacity: 1;
+  margin-top: 1rem;
+  overflow-y: auto; /* Adiciona scroll vertical quando necessário */
+  
+  /* Estilização personalizada da scrollbar */
+  scrollbar-width: thin;
+  scrollbar-color: var(--color-primary) rgba(255, 255, 255, 0.1);
     }
+
+    /* Webkit Scrollbar Styles */
+.timeline-event.active .event-description::-webkit-scrollbar {
+  width: 6px;
+}
+
+.timeline-event.active .event-description::-webkit-scrollbar-track {
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 3px;
+  margin: 5px 0;
+}
+
+.timeline-event.active .event-description::-webkit-scrollbar-thumb {
+  background: linear-gradient(
+    135deg,
+    var(--color-primary),
+    var(--color-secondary)
+  );
+  border-radius: 3px;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.timeline-event.active .event-description::-webkit-scrollbar-thumb:hover {
+  background: linear-gradient(
+    135deg,
+    var(--color-primary-light),
+    var(--color-secondary)
+  );
+}
+
+.timeline-event.active .event-description::-webkit-scrollbar-thumb:active {
+  background: linear-gradient(
+    135deg,
+    var(--color-primary-dark),
+    var(--color-orange-light)
+  );
+}
 
     .timeline-event:not(.active):hover {
       transform: scale(0.95);
@@ -3070,38 +3133,41 @@ window.reinitCardSounds = initCardSounds;
       }
 
       function createEventElement(event, year) {
-        const eventElement = document.createElement('div');
-        eventElement.className = 'timeline-event';
-        eventElement.dataset.year = year;
-        eventElement.onclick = () => {
-        if (sounds && sounds.cardClick) {
-            sounds.cardClick();
-        }
-    };
-        eventElement.innerHTML = `
-            <div class="event-marker"></div>
-            <div class="event-content">
-              <div class="event-date">
-                <h3 class="event-title">${event.title}</h3>
-                ${
-                  event.yearTitleCard
-                    ? `<span class="event-month">${event.yearTitleCard}</span>`
-                    : ''
-                }
-                ${
-                  event.month
-                    ? `<span class="event-month">${event.month}</span>`
-                    : ''
-                }
-                ${
-                  event.day ? `<span class="event-day">${event.day}</span>` : ''
-                }
-              </div>              
-              <p class="event-description">${event.description}</p>
-            </div>
-          `;
-        return eventElement;
-      }
+  const eventElement = document.createElement('div');
+  eventElement.className = 'timeline-event';
+  eventElement.dataset.year = year;
+  eventElement.onclick = () => {
+    if (sounds && sounds.cardClick) {
+      sounds.cardClick();
+    }
+  };
+  
+  eventElement.innerHTML = `
+    <div class="event-marker"></div>
+    <div class="event-content">
+      <div class="event-header">
+        <div class="event-date">
+          <h3 class="event-title">${event.title}</h3>
+          ${
+            event.yearTitleCard
+              ? `<span class="event-month">${event.yearTitleCard}</span>`
+              : ''
+          }
+          ${
+            event.month
+              ? `<span class="event-month">${event.month}</span>`
+              : ''
+          }
+          ${
+            event.day ? `<span class="event-day">${event.day}</span>` : ''
+          }
+        </div>
+      </div>
+      <p class="event-description">${event.description}</p>
+    </div>
+  `;
+  return eventElement;
+}
 
       function navigateToIndex(newIndex) {
         newIndex = Math.max(0, Math.min(newIndex, maxIndex));
