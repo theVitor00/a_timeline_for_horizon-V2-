@@ -1,5 +1,5 @@
-import { 
-  timelineEvents, 
+import {
+  timelineEvents,
   getCurrentIndex,
   setCurrentIndex,
   getMaxIndex,
@@ -8,7 +8,7 @@ import {
   setCurrentPosition,
   getEventWidth,
   getMaxPosition,
-  setMaxPosition
+  setMaxPosition,
 } from '../data/timeline-data.js';
 import { groupEventsByYear } from './utils.js';
 
@@ -24,11 +24,14 @@ function initializeTimeline() {
     return;
   }
 
-  // Create year markers
-  const uniqueYears = [...new Set(timelineEvents.map((event) => event.year))].sort();
+  // Create year markers - AGORA COM LAYOUT HORIZONTAL
+  const uniqueYears = [
+    ...new Set(timelineEvents.map((event) => event.year)),
+  ].sort();
   uniqueYears.forEach((year, index) => {
     const yearMarker = document.createElement('div');
     yearMarker.className = `year-marker ${index === 0 ? 'active' : ''}`;
+    yearMarker.setAttribute('data-year', year); // Adicionar data attribute
     yearMarker.innerHTML = `
       <div class="year-dot"></div>
       <span class="year-label">${year}</span>
@@ -54,7 +57,9 @@ function initializeTimeline() {
     eventsByYear[year].forEach((event) => {
       const eventElement = createEventElement(event, year);
       eventElement.addEventListener('click', () => {
-        const elementIndex = Array.from(timeline.children).indexOf(eventElement);
+        const elementIndex = Array.from(timeline.children).indexOf(
+          eventElement
+        );
         if (typeof playSound === 'function') {
           playSound('select', 0.3);
         }
@@ -75,7 +80,8 @@ function initializeTimeline() {
   });
 
   nextBtn.addEventListener('click', () => {
-    if (getCurrentIndex() < getMaxIndex()) navigateToIndex(getCurrentIndex() + 1);
+    if (getCurrentIndex() < getMaxIndex())
+      navigateToIndex(getCurrentIndex() + 1);
   });
 
   // Initialize first state
@@ -94,8 +100,14 @@ function createEventElement(event, year) {
       <div class="event-header">
         <div class="event-date">
           <h3 class="event-title">${event.title}</h3>
-          ${event.yearTitleCard ? `<span class="event-month">${event.yearTitleCard}</span>` : ''}
-          ${event.month ? `<span class="event-month">${event.month}</span>` : ''}
+          ${
+            event.yearTitleCard
+              ? `<span class="event-month">${event.yearTitleCard}</span>`
+              : ''
+          }
+          ${
+            event.month ? `<span class="event-month">${event.month}</span>` : ''
+          }
           ${event.day ? `<span class="event-day">${event.day}</span>` : ''}
         </div>
       </div>
@@ -126,7 +138,8 @@ function navigateToIndex(newIndex) {
   const activeElementPosition = getCurrentIndex() * getEventWidth();
 
   // Centraliza o elemento ativo no container
-  const newPosition = activeElementPosition - containerWidth / 2 + getEventWidth() / 2;
+  const newPosition =
+    activeElementPosition - containerWidth / 2 + getEventWidth() / 2;
 
   // Limita a posição para não ultrapassar os limites
   const minPosition = 0;
@@ -146,9 +159,13 @@ function navigateToIndex(newIndex) {
 }
 
 function navigateToYear(targetYear) {
-  const yearTitle = document.querySelector(`.year-title[data-year="${targetYear}"]`);
+  const yearTitle = document.querySelector(
+    `.year-title[data-year="${targetYear}"]`
+  );
   if (yearTitle) {
-    const elementIndex = Array.from(document.getElementById('timeline').children).indexOf(yearTitle);
+    const elementIndex = Array.from(
+      document.getElementById('timeline').children
+    ).indexOf(yearTitle);
     navigateToIndex(elementIndex);
   }
   if (typeof playSound === 'function') {
@@ -172,7 +189,9 @@ function updateActiveElement() {
   if (currentElement.classList.contains('timeline-event')) {
     currentElement.classList.add('active');
     const year = currentElement.dataset.year;
-    const yearTitle = document.querySelector(`.year-title[data-year="${year}"]`);
+    const yearTitle = document.querySelector(
+      `.year-title[data-year="${year}"]`
+    );
     if (yearTitle) yearTitle.classList.add('active-year');
   } else if (currentElement.classList.contains('year-title')) {
     currentElement.classList.add('active-year');
@@ -199,7 +218,10 @@ function updateYearMarkerFromCurrentIndex() {
 function updateYearMarker(year) {
   document.querySelectorAll('.year-marker').forEach((marker) => {
     const yearLabel = marker.querySelector('.year-label');
-    marker.classList.toggle('active', yearLabel && yearLabel.textContent === year);
+    marker.classList.toggle(
+      'active',
+      yearLabel && yearLabel.textContent === year
+    );
   });
 
   // Update active historical period
@@ -228,12 +250,12 @@ function enhanceYearTitles() {
   });
 }
 
-export { 
-  initializeTimeline, 
-  navigateToIndex, 
-  navigateToYear, 
-  updateActiveElement, 
+export {
+  initializeTimeline,
+  navigateToIndex,
+  navigateToYear,
+  updateActiveElement,
   updateYearMarkerFromCurrentIndex,
   updateYearMarker,
-  updateButtons 
+  updateButtons,
 };

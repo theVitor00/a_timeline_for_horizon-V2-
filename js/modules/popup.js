@@ -185,14 +185,14 @@ function closePopup() {
     console.log('Closing popup and setting acknowledgment');
     popup.classList.remove('active');
     document.body.style.overflow = '';
-    
+
     // MUDANÇA AQUI: Usar sessionStorage ao invés de localStorage
     sessionStorage.setItem('horizonTimelineWelcomeSeen', 'true');
     sessionStorage.setItem('popupLastSeen', Date.now().toString());
-    
+
     console.log('✅ Saved to sessionStorage:', {
       welcomeSeen: sessionStorage.getItem('horizonTimelineWelcomeSeen'),
-      lastSeen: sessionStorage.getItem('popupLastSeen')
+      lastSeen: sessionStorage.getItem('popupLastSeen'),
     });
   }
 }
@@ -264,11 +264,11 @@ function forceShowPopup() {
 window.resetPopup = resetPopup;
 window.forceShowPopup = forceShowPopup;
 
-export { 
-  initializePopup, 
-  showPopup, 
-  closePopup, 
-  resetPopup, 
+export {
+  initializePopup,
+  showPopup,
+  closePopup,
+  resetPopup,
   forceShowPopup,
-  addDebugButtons 
+  addDebugButtons,
 };

@@ -43,7 +43,12 @@ function initializeCarouselArrows() {
 
   if (carouselNext) {
     carouselNext.addEventListener('click', () => {
-      console.log('Seta próxima clicada, currentIndex:', getCurrentIndex(), 'maxIndex:', getMaxIndex());
+      console.log(
+        'Seta próxima clicada, currentIndex:',
+        getCurrentIndex(),
+        'maxIndex:',
+        getMaxIndex()
+      );
       if (getCurrentIndex() < getMaxIndex()) {
         if (typeof navigateToIndex === 'function') {
           navigateToIndex(getCurrentIndex() + 1);
@@ -77,9 +82,9 @@ function setupResizeHandler() {
   );
 }
 
-export { 
-  setupKeyboardNavigation, 
-  initializeCarouselArrows, 
-  updateCarouselArrows, 
-  setupResizeHandler 
+export {
+  setupKeyboardNavigation,
+  initializeCarouselArrows,
+  updateCarouselArrows,
+  setupResizeHandler,
 };

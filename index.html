@@ -37,27 +37,44 @@
     </header>
 
     <!-- Year Navigation Timeline -->
-    <div class="year-navigation-container">
-      <!-- Historical Periods Timeline -->
-      <div class="historical-periods">
-        <h3 class="timeline-section-title">Historical Period</h3>
-        <div class="periods-container">
-          <div class="periods-line"></div>
-          <div class="periods-track" id="periodsTrack">
-            <!-- Period markers will be inserted via JavaScript -->
-          </div>
-        </div>
-      </div>
-
-      <!-- Years bar -->
-      <div class="year-timeline">
-        <h3 class="timeline-section-title">Years</h3>
-        <div class="year-timeline-line"></div>
-        <div class="year-markers" id="yearMarkers">
-          <!-- Year markers will be inserted via JavaScript -->
-        </div>
+<div class="year-navigation-container">
+  <!-- Historical Periods Timeline -->
+  <div class="historical-periods">
+    <h3 class="timeline-section-title">Historical Period</h3>
+    <div class="periods-container">
+      <div class="periods-line"></div>
+      <div class="periods-track" id="periodsTrack">
+        <!-- Period markers will be inserted via JavaScript -->
       </div>
     </div>
+  </div>
+
+  <!-- Years bar COM SCROLL -->
+  <div class="year-timeline">
+    <h3 class="timeline-section-title">Years</h3>
+    
+    <!-- Botão de scroll esquerdo -->
+    <button class="scroll-indicator left hidden" id="yearScrollLeft">
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none">
+        <path d="M15 18L9 12L15 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+      </svg>
+    </button>
+    
+    <!-- Botão de scroll direito -->
+    <button class="scroll-indicator right" id="yearScrollRight">
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none">
+        <path d="M9 18L15 12L9 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+      </svg>
+    </button>
+    
+    <div class="year-timeline-line"></div>
+    <div class="year-timeline-scroll-container" id="yearScrollContainer">
+      <div class="year-markers" id="yearMarkers">
+        <!-- Year markers will be inserted via JavaScript -->
+      </div>
+    </div>
+  </div>
+</div>
 
     <!-- Main Events Timeline -->
     <div class="timeline-container">
