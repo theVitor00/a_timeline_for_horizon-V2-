@@ -29,8 +29,8 @@ const timelineEvents = [
     yearTitleCard: '2020',
     month: 'March',
     day: '12',
-    title: 'Franchise Reboot',
-    description: 'Series restart with new graphics engine, maintaining the essence of the original story.',
+    title: "Snoring '20s",
+    description: "Start of the 'Snoring '20s', a series of increasingly worsening climate crises leading up to the events called 'Die-Off' on the following decade.",
   },
   {
     year: '2023',

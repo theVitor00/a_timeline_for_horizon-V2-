@@ -557,9 +557,9 @@ h1 {
   margin: 0;
   width: max-content; /* Largura baseada no conteúdo */
   min-width: 100%; /* Garante pelo menos 100% de largura */
-  overflow: visible !important;
-  padding-left: 385px;
-  padding-right: 385px;
+  overflow: visible !important;    
+  padding-left: calc(1200px - 700px); /* ⬅️ CENTRALIZAÇÃO DINÂMICA */
+  padding-right: 885px
 }
 
 .timeline-event.active::before {
@@ -622,7 +622,7 @@ h1 {
     rgba(255, 126, 95, 0.15) 0%,
     rgba(254, 180, 123, 0.1) 100%
   );
-  border-radius: 20px;
+  border-radius: 20px;  
   padding: 1.5rem 0.8rem; /* Reduzido */
   border: 3px solid rgba(255, 126, 95, var(--opacity-medium));
   position: relative;
