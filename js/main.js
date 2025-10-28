@@ -1,24 +1,12 @@
 // Importações de módulos CORRIGIDAS
-import { 
-  timelineEvents, 
-  getCurrentIndex,
-  setCurrentIndex,
-  getMaxIndex,
-  setMaxIndex,
-  getCurrentPosition,
-  setCurrentPosition,
-  getEventWidth,
-  getMaxPosition,
-  setMaxPosition
+import {   
+  getCurrentIndex,  
+  getMaxIndex  
 } from './data/timeline-data.js';
 import { 
   initializeTimeline, 
   navigateToIndex, 
-  navigateToYear, 
-  updateActiveElement, 
-  updateYearMarkerFromCurrentIndex, 
-  updateYearMarker, 
-  updateButtons 
+  navigateToYear  
 } from './modules/timeline-core.js';
 import { initializeHistoricalPeriods, updateActivePeriod } from './modules/historical-periods.js';
 import { setupKeyboardNavigation, initializeCarouselArrows, updateCarouselArrows, setupResizeHandler } from './modules/navigation.js';
