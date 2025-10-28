@@ -128,27 +128,29 @@ function navigateToIndex(newIndex) {
   if (!timeline || !container) return;
 
   const containerWidth = container.offsetWidth;
+  console.log({containerWidth});
   const timelineWidth = timeline.scrollWidth;
+  console.log({timelineWidth});
 
-  // Calcula a posição para centralizar o elemento ativo
-  const activeElement = timeline.children[getCurrentIndex()];
-  if (!activeElement) return;
+//   // Calcula a posição para centralizar o elemento ativo
+  let halfScreen = containerWidth / 2;
+  console.log({halfScreen});
+  let newPosition = halfScreen - getCurrentIndex() * getEventWidth() - ((getEventWidth())/2) - getCurrentIndex() * 32;
 
-  // Posição do elemento ativo no timeline
-  const activeElementPosition = getCurrentIndex() * getEventWidth();
+  console.log({newPosition});
 
-  // Centraliza o elemento ativo no container
-  const newPosition =
-    activeElementPosition - containerWidth / 2 + getEventWidth() / 2;
+  setCurrentPosition(newPosition);
 
-  // Limita a posição para não ultrapassar os limites
-  const minPosition = 0;
-  const maxPosition = Math.max(0, timelineWidth - containerWidth);
+  console.log({newIndex})
+  //first number = 796
+  //second = 436
+  //third = 76
+  //deslocamento = 360 (metade do elemento + 32 de gap)
 
-  setCurrentPosition(Math.max(minPosition, Math.min(newPosition, maxPosition)));
 
   // Aplica a transformação
-  timeline.style.transform = `translateX(-${getCurrentPosition()}px)`;
+  timeline.style.transform = `translateX(${getCurrentPosition()}px)`;
+  console.log({'getCurrentPosition':getCurrentPosition()});
 
   if (typeof playSound === 'function') {
     playSound('navigate', 0.2);

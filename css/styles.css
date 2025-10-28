@@ -109,7 +109,6 @@ body {
   max-width: 1200px;
   margin: 0 auto;
   display: flex;
-  flex-direction: column;
   align-items: center;
   overflow: visible; /* Mude para visible */
 }
@@ -219,7 +218,7 @@ h1 {
 }
 
 .year-timeline .timeline-section-title {
-  top: 35px;
+  top: 10px;
   width: 1200px;
   background: rgba(255, 126, 95, 0.1);
   border-color: rgba(255, 126, 95, 0.3);
@@ -255,11 +254,11 @@ h1 {
 .carousel-arrow:hover {
   background: rgba(255, 255, 255, 0.2);
   border-color: var(--color-primary);
-  transform: translateY(-50%) scale(1.1);
+  transform: translateY(-50%) scale(1.0, 1.1);
 }
 
 .carousel-arrow:active {
-  transform: translateY(-50%) scale(0.95);
+  transform: translateY(-50%) scale(1.0, 0.95);
 }
 
 .carousel-arrow.left {
@@ -280,7 +279,7 @@ h1 {
 
 .carousel-arrow:hover .arrow-icon {
   opacity: 1;
-  transform: scale(1.1);
+  transform: scale(1.0, 1.1);
 }
 
 .carousel-arrow:disabled {
@@ -311,14 +310,14 @@ h1 {
 .year-navigation-container {
   width: 90%;
   max-width: 1200px;
-  margin: 0 auto 3rem auto; /* Centraliza horizontalmente */
+  margin: 0 auto 0 auto; /* Centraliza horizontalmente */
   position: relative;
 }
 
 .year-timeline {
   top: 40px;
   position: relative;
-  margin: 2rem 0;
+  margin: 2rem 0 0 0;
 }
 
 
@@ -326,7 +325,7 @@ h1 {
   position: relative;
   overflow-x: auto;
   overflow-y: hidden;
-  padding: 3rem 2rem; /* Mais espaço para a esfera */
+  padding: 3rem 2rem 0; /* Mais espaço para a esfera */
   clip-path: none; /* Remove qualquer clipping */
   scrollbar-width: thin;
   scrollbar-color: var(--color-primary) transparent;
@@ -361,7 +360,7 @@ h1 {
 
 .year-timeline-line {
   position: absolute;
-  top: 50%;
+  top: 66%;
   left: 0;
   right: 0;
   height: 2px;
@@ -406,7 +405,7 @@ h1 {
 
 .year-marker.active .year-dot {
   background: var(--color-primary);
-  transform: scale(1.2);
+  transform: scale(1.0, 1.2);
   box-shadow: 0 0 15px var(--color-primary-glow);
   animation: dotPulse 2s ease-in-out infinite;
   position: relative;
@@ -485,12 +484,12 @@ h1 {
 @keyframes trianglePulse {
   0%,
   100% {
-    transform: translate(-50%, -50%) scale(1);
+    transform: translate(-50%, -50%) scale(1.0, 1.0);
     border-bottom-color: var(--color-accent);
     filter: drop-shadow(0 4px 8px rgba(0, 0, 0, 0.4));
   }
   50% {
-    transform: translate(-50%, -50%) scale(1.1);
+    transform: translate(-50%, -50%) scale(1.0, 1.1);
     border-bottom-color: var(--color-accent-light);
     filter: drop-shadow(0 6px 12px var(--color-accent-light));
   }
@@ -500,11 +499,11 @@ h1 {
   0%,
   100% {
     color: var(--color-primary);
-    transform: scale(1);
+    transform: scale(1.0, 1.0);
   }
   50% {
     color: var(--color-accent-light);
-    transform: scale(1.05);
+    transform: scale(1.0, 1.05);
   }
 }
 
@@ -526,22 +525,22 @@ h1 {
 }
 
 .year-marker:hover .year-dot {
-  transform: scale(1.2);
+  transform: scale(1.0, 1.2);
   background: var(--color-accent);
 }
 
 .year-marker:hover .year-label {
   color: var(--color-accent);
-  transform: scale(1.1); /* Aumentado de scale(1) */
+  transform: scale(1.0, 1.1); /* Aumentado de scale(1) */
   font-weight: 700;
 }
 
 /* Main Events Timeline */
 .timeline-container {
-  top: -85px;
+  
   position: relative;
   width: 100vw; /* Largura total da viewport */
-  margin: 2rem 0; /* Remove margin auto */
+  margin: 0; /* Remove margin auto */
   overflow: hidden !important;
   padding: 0;
   left: 50%;
@@ -557,9 +556,7 @@ h1 {
   margin: 0;
   width: max-content; /* Largura baseada no conteúdo */
   min-width: 100%; /* Garante pelo menos 100% de largura */
-  overflow: visible !important;    
-  padding-left: calc(1200px - 700px); /* ⬅️ CENTRALIZAÇÃO DINÂMICA */
-  padding-right: 885px
+  overflow: visible !important;      
 }
 
 .timeline-event.active::before {
@@ -628,7 +625,7 @@ h1 {
 
 .year-title {
   flex: 0 0 220px;
-  margin: 0 1rem; /* Reduzido de 2rem */
+  margin: 0 54px; /* Reduzido de 2rem */
   display: flex;
   align-items: center;
   justify-content: center;
@@ -650,7 +647,7 @@ h1 {
   text-shadow: 0 2px 10px rgba(255, 126, 95, var(--opacity-medium));
   transition: all 0.4s ease;
   z-index: 3;
-  transform: scale(1);
+  transform: scale(1.0, 1.0);
 }
 
 .year-title::before {
@@ -685,7 +682,7 @@ h1 {
 }
 
 .year-title:hover {
-  transform: translateY(-5px) scale(1.02);
+  transform: translateY(-5px) scale(1.0, 1.02);
   box-shadow: 0 15px 40px rgba(255, 126, 95, var(--opacity-medium)),
     inset 0 1px 0 rgba(255, 255, 255, 0.2);
   border-color: rgba(255, 126, 95, var(--opacity-high));
@@ -744,7 +741,7 @@ h1 {
   border-color: var(--color-primary);
   box-shadow: 0 0 30px rgba(255, 126, 95, var(--opacity-medium)),
     inset 0 1px 0 rgba(255, 255, 255, 0.2);
-  transform: scale(1.05);
+  transform: scale(1.0, 1.05);
 }
 
 .year-title.active-year::before {
@@ -802,7 +799,7 @@ h1 {
 
 .timeline-event.active {
   opacity: 1;
-  transform: scale(1.05);
+  transform: scale(1.0, 1.05);
   filter: brightness(1);
   z-index: 1000; /* Alto z-index para ficar acima de tudo */
   position: relative;
@@ -810,7 +807,7 @@ h1 {
 
 .timeline-event:not(.active) {
   opacity: 0.6;
-  transform: scale(0.95);
+  transform: scale(1.0, 0.95);
   transition: all 0.4s ease;
   z-index: 2; /* Não negativo */
 }
@@ -976,7 +973,7 @@ h1 {
 }
 
 .timeline-event:not(.active):hover {
-  transform: scale(0.95);
+  transform: scale(1.0, 0.95);
   opacity: 0.9;
   filter: brightness(1);
 }
@@ -1026,7 +1023,7 @@ h1 {
 
 .timeline-event:not(.active):not(:hover) .event-marker {
   opacity: 0.3; /* Muito transparente */
-  transform: translate(-50%, -50%) scale(0.9);
+  transform: translate(-50%, -50%) scale(1.0, 0.9);
 }
 
 .timeline-event .event-content {
@@ -1056,7 +1053,7 @@ h1 {
 
 .timeline-event:not(.active):hover .event-marker {
   opacity: 0.9;
-  transform: translate(-50%, -50%) scale(1.1);
+  transform: translate(-50%, -50%) scale(1.0, 1.1);
   border-bottom-color: var(--color-accent-light);
   filter: drop-shadow(0 3px 6px rgba(255, 126, 95, 0.5));
 }
@@ -1084,12 +1081,12 @@ h1 {
 }
 
 .timeline-event:hover .event-marker {
-  transform: translate(-50%, -50%) scale(1.1);
+  transform: translate(-50%, -50%) scale(1.0, 1.1);
   background: rgba(255, 126, 95, var(--opacity-medium));
 }
 
 .timeline-event.active:hover .event-marker {
-  transform: translate(-50%, -50%) scale(1.15);
+  transform: translate(-50%, -50%) scale(1.0, 1.15);
   border-bottom-color: var(--color-accent-alt);
 }
 
@@ -1097,10 +1094,8 @@ h1 {
   display: flex;
   justify-content: center; /* Centraliza os botões */
   align-items: center;
-  gap: 2rem; /* Espaço consistente entre botões */
-  margin-top: 2rem;
-  width: 100%;
-  padding: 0 1rem;
+  gap: 2rem; /* Espaço consistente entre botões */  
+  width: 100%;  
 }
 
 .nav-btn {
@@ -1263,7 +1258,7 @@ footer {
 .popup-close:hover {
   color: var(--color-primary);
   background: rgba(255, 126, 95, 0.1);
-  transform: scale(1.1);
+  transform: scale(1.0, 1.1);
 }
 
 .popup-content {
@@ -1397,11 +1392,11 @@ body.popup-open {
 @keyframes slideUp {
   from {
     opacity: 0;
-    transform: translateY(30px) scale(0.95);
+    transform: translateY(30px) scale(1.0, 0.95);
   }
   to {
     opacity: 1;
-    transform: translateY(0) scale(1);
+    transform: translateY(0) scale(1.0, 1.0);
   }
 }
 
@@ -1431,7 +1426,7 @@ body.popup-open {
     var(--color-primary-light),
     var(--color-secondary)
   );
-  transform: scale(1.1);
+  transform: scale(1.0, 1.1);
 }
 
 .popup-container::-webkit-scrollbar-thumb:active {
@@ -1488,7 +1483,7 @@ body.popup-open {
 .popup-close:hover {
   background: rgba(255, 126, 95, 0.3);
   border-color: var(--color-primary);
-  transform: scale(1.1) rotate(90deg);
+  transform: scale(1.0, 1.1) rotate(90deg);
   color: white;
   box-shadow: 0 0 20px rgba(255, 126, 95, 0.4);
 }
@@ -1498,7 +1493,7 @@ body.popup-open {
 }
 
 .popup-close:active {
-  transform: scale(0.95) rotate(90deg);
+  transform: scale(1.0, 0.95) rotate(90deg);
   transition: transform 0.1s ease;
 }
 
@@ -1509,7 +1504,7 @@ body.popup-open {
 }
 
 .popup-close:hover span {
-  transform: scale(1.2);
+  transform: scale(1.0, 1.2);
 }
 
 /* Historical Periods Timeline */
@@ -1609,7 +1604,7 @@ body.popup-open {
 }
 
 .period-marker:hover .period-dot {
-  transform: scale(1.3);
+  transform: scale(1.0, 1.3);
   background: var(--color-gold-light);
   box-shadow: 0 0 0 5px rgba(255, 215, 0, 0.4),
     0 4px 12px rgba(255, 165, 0, 0.6);
@@ -1635,12 +1630,12 @@ body.popup-open {
 @keyframes periodPulse {
   0%,
   100% {
-    transform: scale(1);
+    transform: scale(1.0, 1.0);
     box-shadow: 0 0 0 3px rgba(255, 215, 0, 0.3),
       0 2px 6px rgba(255, 165, 0, 0.4);
   }
   50% {
-    transform: scale(1.2);
+    transform: scale(1.0, 1.2);
     box-shadow: 0 0 0 6px rgb(95, 255, 111), 0 4px 12px rgba(255, 165, 0, 0.6);
   }
 }
@@ -1743,7 +1738,7 @@ body.popup-open {
 .sound-toggle:hover {
   background: rgba(255, 255, 255, 0.2);
   border-color: var(--color-primary);
-  transform: scale(1.1);
+  transform: scale(1.0, 1.1);
 }
 
 .sound-toggle.muted {

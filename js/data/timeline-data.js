@@ -80,7 +80,7 @@ timelineEvents.forEach(event => {
 const timelineState = {
   currentIndex: 0,
   currentPosition: 0,
-  eventWidth: 330,
+  eventWidth: 328,
   maxIndex: 0,
   maxPosition: 0
 };
