@@ -6,7 +6,7 @@ let audioContext = null;
 // Inicializar sistema de som
 function initializeSoundSystem() {
   // Verificar preferência salva
-  const savedSoundPreference = localStorage.getItem('horizonTimelineSoundEnabled');
+  const savedSoundPreference = sessionStorage.getItem('horizonTimelineSoundEnabled');
   if (savedSoundPreference !== null) {
     soundEnabled = savedSoundPreference === 'true';
   }
@@ -219,7 +219,7 @@ function toggleSound() {
     }
   }
 
-  localStorage.setItem('horizonTimelineSoundEnabled', soundEnabled.toString());
+  sessionStorage.setItem('horizonTimelineSoundEnabled', soundEnabled.toString());
   console.log('Som ' + (soundEnabled ? 'ativado' : 'desativado'));
 }
 
