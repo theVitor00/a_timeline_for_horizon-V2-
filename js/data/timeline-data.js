@@ -22,7 +22,7 @@ const timelineEvents = [
     month: 'Unknown Month',
     day: 'Unknown Day',
     title: 'Law changes in the US',
-    description: "The United States Interior Department decides to remove the grizzly bear species from it's endangered species list.",
+    description: "The United States Interior Department decided to remove the grizzly bear from the list of endangered species.",
   },
   {
     year: '2020',
