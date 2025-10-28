@@ -198,19 +198,19 @@ function initializePopup() {
       return true;
     }
   
-    // Check if we're in development
-    const isDevelopment =
-      window.location.hostname === 'localhost' ||
-      window.location.hostname === '127.0.0.1' ||
-      window.location.protocol === 'file:';
+    // // Check if we're in development
+    // const isDevelopment =
+    //   window.location.hostname === 'localhost' ||
+    //   window.location.hostname === '127.0.0.1' ||
+    //   window.location.protocol === 'file:';
   
-    console.log('🌐 Development environment:', isDevelopment);
+    // console.log('🌐 Development environment:', isDevelopment);
   
-    // For development - ALWAYS SHOW
-    if (isDevelopment) {
-      console.log('🔧 Development mode - showing popup');
-      return true;
-    }
+    // // For development - ALWAYS SHOW
+    // if (isDevelopment) {
+    //   console.log('🔧 Development mode - showing popup');
+    //   return true;
+    // }
   
     // Production: normal behavior
     const hasAcknowledged = localStorage.getItem('horizonTimelineWelcomeSeen');
