@@ -14,7 +14,7 @@ const timelineEvents = [
     month: 'December',
     day: '24th',
     title: "Ted Faro's birth",
-    description: "The future reponsible for humanity's doom, Theodor 'Ted' Faro, was born on this date.",
+    description: "The reponsible for humanity's doom in the future, Theodor 'Ted' Faro, was born on this date.",
   },
   {
     year: '2017',
