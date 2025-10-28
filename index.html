@@ -4,10 +4,16 @@
     <meta charset="UTF-8" />
     <meta http-equiv="Content-Type" content="text/html;charset=UTF-8" />
     <title>Timeline of events</title>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
-<link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;600;700;800;900&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
     <link
       href="https://fonts.googleapis.com/css2?family=Fira+Sans:wght@700;800&display=swap"
       rel="stylesheet"
@@ -164,11 +170,11 @@
       font-style: normal;
     }
 
-    h1 {      
-    font-family: 'Orbitron', sans-serif;
-    font-weight: 900;
-    font-size: var(--title-font-size);
-    text-transform: uppercase;
+    h1 {
+      font-family: 'Orbitron', sans-serif;
+      font-weight: 900;
+      font-size: var(--title-font-size);
+      text-transform: uppercase;
       line-height: var(--title-line-height);
       background: linear-gradient(
         90deg,
@@ -211,8 +217,8 @@
     .timeline-section-title {
       color: var(--color-primary-light);
       font-family: 'Orbitron', sans-serif;
-    font-weight: 700;
-    text-transform: uppercase;
+      font-weight: 700;
+      text-transform: uppercase;
       letter-spacing: 0.15em;
       margin-bottom: 1rem;
       text-align: center;
@@ -414,17 +420,18 @@
     }
 
     @keyframes trianglePulse {
-    0%, 100% {
+      0%,
+      100% {
         transform: translate(-50%, -50%) scale(1);
         border-bottom-color: var(--color-accent);
         filter: drop-shadow(0 4px 8px rgba(0, 0, 0, 0.4));
-    }
-    50% {
+      }
+      50% {
         transform: translate(-50%, -50%) scale(1.1);
         border-bottom-color: var(--color-accent-light);
         filter: drop-shadow(0 6px 12px var(--color-accent-light));
+      }
     }
-}
 
     @keyframes labelPulse {
       0%,
@@ -728,36 +735,36 @@
 
     .event-content {
       background: var(--color-bg-card);
-  backdrop-filter: blur(10px);
-  border-radius: 15px;
-  padding: 1.2rem;
-  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
-  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-  height: 100%;
-  border: 1px solid var(--color-border);
-  position: relative;
-  text-align: left;
-  overflow: hidden; /* Mantém o overflow hidden no container principal */
-  display: flex;
-  flex-direction: column;
+      backdrop-filter: blur(10px);
+      border-radius: 15px;
+      padding: 1.2rem;
+      box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+      transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+      height: 100%;
+      border: 1px solid var(--color-border);
+      position: relative;
+      text-align: left;
+      overflow: hidden; /* Mantém o overflow hidden no container principal */
+      display: flex;
+      flex-direction: column;
     }
 
     .event-header {
-  flex-shrink: 0; /* Impede que o header encolha */
-}
+      flex-shrink: 0; /* Impede que o header encolha */
+    }
 
-.event-date {
-  display: flex;
-  align-items: center;
-  gap: 0.5rem;
-  margin-bottom: 0.8rem;
-  font-size: 1rem;
-  line-height: 1.4;
-  color: var(--color-secondary);
-  flex-wrap: wrap;
-  transition: all 0.4s ease;
-  flex-shrink: 0; /* Mantém o tamanho fixo */
-}
+    .event-date {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      margin-bottom: 0.8rem;
+      font-size: 1rem;
+      line-height: 1.4;
+      color: var(--color-secondary);
+      flex-wrap: wrap;
+      transition: all 0.4s ease;
+      flex-shrink: 0; /* Mantém o tamanho fixo */
+    }
 
     .event-date {
       display: flex;
@@ -809,7 +816,7 @@
     }
 
     .event-title {
-      font-family: 'Orbitron', sans-serif;  
+      font-family: 'Orbitron', sans-serif;
       font-size: 1.1rem; /* Era 1.2rem */
       margin-bottom: 0.6rem; /* Era 0.8rem */
       color: var(--color-text-primary);
@@ -825,66 +832,66 @@
 
     .event-description {
       font-size: 0.85rem;
-  line-height: 1.4;
-  color: var(--color-text-secondary);
-  transition: all 0.4s ease;
-  max-height: 0;
-  opacity: 0;
-  overflow: hidden;
-  margin-top: 0;
-  flex: 1;
+      line-height: 1.4;
+      color: var(--color-text-secondary);
+      transition: all 0.4s ease;
+      max-height: 0;
+      opacity: 0;
+      overflow: hidden;
+      margin-top: 0;
+      flex: 1;
     }
 
     .timeline-event.active .event-description {
       padding-bottom: 5px;
       font-size: 0.95rem;
-  line-height: 1.6;
-  max-height: 200px; /* Altura máxima fixa para ativar o scroll */
-  opacity: 1;
-  margin-top: 1rem;
-  overflow-y: auto; /* Adiciona scroll vertical quando necessário */
-  
-  /* Estilização personalizada da scrollbar */
-  scrollbar-width: thin;
-  scrollbar-color: var(--color-primary) rgba(255, 255, 255, 0.1);
+      line-height: 1.6;
+      max-height: 200px; /* Altura máxima fixa para ativar o scroll */
+      opacity: 1;
+      margin-top: 1rem;
+      overflow-y: auto; /* Adiciona scroll vertical quando necessário */
+
+      /* Estilização personalizada da scrollbar */
+      scrollbar-width: thin;
+      scrollbar-color: var(--color-primary) rgba(255, 255, 255, 0.1);
     }
 
     /* Webkit Scrollbar Styles */
-.timeline-event.active .event-description::-webkit-scrollbar {
-  width: 6px;
-}
+    .timeline-event.active .event-description::-webkit-scrollbar {
+      width: 6px;
+    }
 
-.timeline-event.active .event-description::-webkit-scrollbar-track {
-  background: rgba(255, 255, 255, 0.1);
-  border-radius: 3px;
-  margin: 5px 0;
-}
+    .timeline-event.active .event-description::-webkit-scrollbar-track {
+      background: rgba(255, 255, 255, 0.1);
+      border-radius: 3px;
+      margin: 5px 0;
+    }
 
-.timeline-event.active .event-description::-webkit-scrollbar-thumb {
-  background: linear-gradient(
-    135deg,
-    var(--color-primary),
-    var(--color-secondary)
-  );
-  border-radius: 3px;
-  border: 1px solid rgba(255, 255, 255, 0.2);
-}
+    .timeline-event.active .event-description::-webkit-scrollbar-thumb {
+      background: linear-gradient(
+        135deg,
+        var(--color-primary),
+        var(--color-secondary)
+      );
+      border-radius: 3px;
+      border: 1px solid rgba(255, 255, 255, 0.2);
+    }
 
-.timeline-event.active .event-description::-webkit-scrollbar-thumb:hover {
-  background: linear-gradient(
-    135deg,
-    var(--color-primary-light),
-    var(--color-secondary)
-  );
-}
+    .timeline-event.active .event-description::-webkit-scrollbar-thumb:hover {
+      background: linear-gradient(
+        135deg,
+        var(--color-primary-light),
+        var(--color-secondary)
+      );
+    }
 
-.timeline-event.active .event-description::-webkit-scrollbar-thumb:active {
-  background: linear-gradient(
-    135deg,
-    var(--color-primary-dark),
-    var(--color-orange-light)
-  );
-}
+    .timeline-event.active .event-description::-webkit-scrollbar-thumb:active {
+      background: linear-gradient(
+        135deg,
+        var(--color-primary-dark),
+        var(--color-orange-light)
+      );
+    }
 
     .timeline-event:not(.active):hover {
       transform: scale(0.95);
@@ -900,39 +907,41 @@
 
     .timeline-line {
       opacity: 0.3;
-    position: absolute;
-    top: calc(50% + 27.5px) !important; /* Ajusta para acomodar os triângulos */
-    left: 50% !important;
-    width: 100% !important;
-    height: 4px;
-    background: linear-gradient(
+      position: absolute;
+      top: calc(
+        50% + 27.5px
+      ) !important; /* Ajusta para acomodar os triângulos */
+      left: 50% !important;
+      width: 100% !important;
+      height: 4px;
+      background: linear-gradient(
         90deg,
         rgba(255, 126, 95, 0.8),
         rgba(254, 180, 123, 0.8)
-    ) !important;
-    transform: translate(-50%, -50%);
-    z-index: 1 !important;
-    border-radius: 2px;
+      ) !important;
+      transform: translate(-50%, -50%);
+      z-index: 1 !important;
+      border-radius: 2px;
     }
 
     /*Pontos da linha temporal de baixo */
     .event-marker {
       position: absolute;
       rotate: 90deg;
-    top: 50% !important;
-    left: -10% !important;
-    width: 0;
-    height: 0;
-    background: transparent !important;
-    border-left: 12px solid transparent;
-    border-right: 12px solid transparent;
-    border-bottom: 20px solid var(--color-primary);
-    border-radius: 0;
-    transform: translate(-50%, -50%);
-    z-index: 10 !important;
-    opacity: 0.7;
-    transition: all 0.3s ease;
-    filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.3));
+      top: 50% !important;
+      left: -10% !important;
+      width: 0;
+      height: 0;
+      background: transparent !important;
+      border-left: 12px solid transparent;
+      border-right: 12px solid transparent;
+      border-bottom: 20px solid var(--color-primary);
+      border-radius: 0;
+      transform: translate(-50%, -50%);
+      z-index: 10 !important;
+      opacity: 0.7;
+      transition: all 0.3s ease;
+      filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.3));
     }
 
     .timeline-event:not(.active):not(:hover) .event-marker {
@@ -948,28 +957,28 @@
 
     .timeline-event.active .event-marker {
       position: absolute;
-    top: 50% !important;
-    left: -10% !important;
-    width: 0;
-    height: 0;
-    background: transparent !important;
-    border-left: 15px solid transparent;
-    border-right: 15px solid transparent;
-    border-bottom: 25px solid var(--color-accent);
-    border-radius: 0;
-    transform: translate(-50%, -50%);
-    z-index: 10 !important;
-    pointer-events: none;
-    transition: all 0.3s ease;
-    animation: trianglePulse 2s ease-in-out infinite;
-    filter: drop-shadow(0 4px 8px rgba(0, 0, 0, 0.4));
+      top: 50% !important;
+      left: -10% !important;
+      width: 0;
+      height: 0;
+      background: transparent !important;
+      border-left: 15px solid transparent;
+      border-right: 15px solid transparent;
+      border-bottom: 25px solid var(--color-accent);
+      border-radius: 0;
+      transform: translate(-50%, -50%);
+      z-index: 10 !important;
+      pointer-events: none;
+      transition: all 0.3s ease;
+      animation: trianglePulse 2s ease-in-out infinite;
+      filter: drop-shadow(0 4px 8px rgba(0, 0, 0, 0.4));
     }
 
     .timeline-event:not(.active):hover .event-marker {
       opacity: 0.9;
-    transform: translate(-50%, -50%) scale(1.1);
-    border-bottom-color: var(--color-accent-light);
-    filter: drop-shadow(0 3px 6px rgba(255, 126, 95, 0.5));
+      transform: translate(-50%, -50%) scale(1.1);
+      border-bottom-color: var(--color-accent-light);
+      filter: drop-shadow(0 3px 6px rgba(255, 126, 95, 0.5));
     }
 
     .timeline-event:not(.active):hover .event-content {
@@ -1001,7 +1010,7 @@
 
     .timeline-event.active:hover .event-marker {
       transform: translate(-50%, -50%) scale(1.15);
-    border-bottom-color: var(--color-accent-alt);
+      border-bottom-color: var(--color-accent-alt);
     }
 
     .navigation {
@@ -2115,13 +2124,13 @@
           // Add events for this year
           eventsByYear[year].forEach((event) => {
             const eventElement = createEventElement(event, year);
-            eventElement.addEventListener('click', () => {                            
+            eventElement.addEventListener('click', () => {
               const elementIndex = Array.from(timeline.children).indexOf(
                 eventElement
               );
               playSound('select', 0.3);
               navigateToIndex(elementIndex);
-            });            
+            });
             timeline.appendChild(eventElement);
             totalElements++;
           });
@@ -2190,8 +2199,8 @@
         if (carouselNext) {
           carouselNext.disabled = currentIndex >= maxIndex;
         }
-      }      // ========== FIM DO CÓDIGO DAS SETAS ==========
-      
+      } // ========== FIM DO CÓDIGO DAS SETAS ==========
+
       // ========== SISTEMA DE SONS COM WEB AUDIO API (SEM ARQUIVOS) ==========
 
       let soundEnabled = true;
@@ -2270,309 +2279,339 @@
       }
 
       class HarmonicThemeMusic {
-    constructor() {
-        this.audioContext = new (window.AudioContext || window.webkitAudioContext)();
-        this.isPlaying = false;
-        this.currentStep = 0;
-        this.mainVolume = 0.3;
-    }
+        constructor() {
+          this.audioContext = new (window.AudioContext ||
+            window.webkitAudioContext)();
+          this.isPlaying = false;
+          this.currentStep = 0;
+          this.mainVolume = 0.3;
+        }
 
-    // Criar oscilador suave para harmonia
-    createHarmonicOscillator(freq, type, duration, volume, detune = 0, fadeIn = 0.1) {
-        const now = this.audioContext.currentTime;
-        const osc = this.audioContext.createOscillator();
-        const gain = this.audioContext.createGain();
-        const filter = this.audioContext.createBiquadFilter();
+        // Criar oscilador suave para harmonia
+        createHarmonicOscillator(
+          freq,
+          type,
+          duration,
+          volume,
+          detune = 0,
+          fadeIn = 0.1
+        ) {
+          const now = this.audioContext.currentTime;
+          const osc = this.audioContext.createOscillator();
+          const gain = this.audioContext.createGain();
+          const filter = this.audioContext.createBiquadFilter();
 
-        osc.type = type;
-        osc.frequency.setValueAtTime(freq, now);
-        osc.detune.setValueAtTime(detune, now);
+          osc.type = type;
+          osc.frequency.setValueAtTime(freq, now);
+          osc.detune.setValueAtTime(detune, now);
 
-        // Filtro suave para som mais orgânico
-        filter.type = 'lowpass';
-        filter.frequency.setValueAtTime(1800, now);
-        filter.Q.setValueAtTime(1, now);
+          // Filtro suave para som mais orgânico
+          filter.type = 'lowpass';
+          filter.frequency.setValueAtTime(1800, now);
+          filter.Q.setValueAtTime(1, now);
 
-        // Envelope suave
-        gain.gain.setValueAtTime(0, now);
-        gain.gain.linearRampToValueAtTime(volume, now + fadeIn);
-        gain.gain.exponentialRampToValueAtTime(0.001, now + duration);
+          // Envelope suave
+          gain.gain.setValueAtTime(0, now);
+          gain.gain.linearRampToValueAtTime(volume, now + fadeIn);
+          gain.gain.exponentialRampToValueAtTime(0.001, now + duration);
 
-        osc.connect(filter);
-        filter.connect(gain);
-        gain.connect(this.audioContext.destination);
+          osc.connect(filter);
+          filter.connect(gain);
+          gain.connect(this.audioContext.destination);
 
-        osc.start(now);
-        osc.stop(now + duration);
-    }
+          osc.start(now);
+          osc.stop(now + duration);
+        }
 
-    // Pad harmônico principal - base da música
-    playHarmonicPad() {
-        if (this.currentStep % 16 === 0) {
+        // Pad harmônico principal - base da música
+        playHarmonicPad() {
+          if (this.currentStep % 16 === 0) {
             // Acorde Am (Lá menor) - melancólico e atmosférico
             const amChord = [
-                220.00, // A3
-                261.63, // C4
-                329.63, // E4
-                440.00  // A4
+              220.0, // A3
+              261.63, // C4
+              329.63, // E4
+              440.0, // A4
             ];
-            
-            amChord.forEach((freq, index) => {
-                setTimeout(() => {
-                    this.createHarmonicOscillator(freq, 'sine', 4.0, this.mainVolume * 0.4, index * 2);
-                }, index * 100);
-            });
-        }
-    }
 
-    // Melodia principal suave
-    playMainMelody() {
-        const melodyNotes = [
-            { step: 0, freq: 440.00, duration: 1.5, vol: 0.6 },  // A4
-            { step: 4, freq: 523.25, duration: 1.0, vol: 0.5 },  // C5
-            { step: 8, freq: 493.88, duration: 1.0, vol: 0.5 },  // B4
-            { step: 12, freq: 440.00, duration: 2.0, vol: 0.4 }, // A4
-            { step: 16, freq: 392.00, duration: 1.5, vol: 0.5 }, // G4
+            amChord.forEach((freq, index) => {
+              setTimeout(() => {
+                this.createHarmonicOscillator(
+                  freq,
+                  'sine',
+                  4.0,
+                  this.mainVolume * 0.4,
+                  index * 2
+                );
+              }, index * 100);
+            });
+          }
+        }
+
+        // Melodia principal suave
+        playMainMelody() {
+          const melodyNotes = [
+            { step: 0, freq: 440.0, duration: 1.5, vol: 0.6 }, // A4
+            { step: 4, freq: 523.25, duration: 1.0, vol: 0.5 }, // C5
+            { step: 8, freq: 493.88, duration: 1.0, vol: 0.5 }, // B4
+            { step: 12, freq: 440.0, duration: 2.0, vol: 0.4 }, // A4
+            { step: 16, freq: 392.0, duration: 1.5, vol: 0.5 }, // G4
             { step: 20, freq: 349.23, duration: 1.0, vol: 0.5 }, // F4
             { step: 24, freq: 329.63, duration: 1.0, vol: 0.6 }, // E4
-            { step: 28, freq: 293.66, duration: 2.0, vol: 0.4 }  // D4
-        ];
+            { step: 28, freq: 293.66, duration: 2.0, vol: 0.4 }, // D4
+          ];
 
-        const currentNote = melodyNotes.find(note => note.step === this.currentStep % 32);
-        if (currentNote) {
+          const currentNote = melodyNotes.find(
+            (note) => note.step === this.currentStep % 32
+          );
+          if (currentNote) {
             this.createHarmonicOscillator(
-                currentNote.freq,
-                'triangle',
-                currentNote.duration,
-                this.mainVolume * currentNote.vol,
-                Math.random() * 4 - 2, // Detune sutil
-                0.3 // Fade-in mais longo
+              currentNote.freq,
+              'triangle',
+              currentNote.duration,
+              this.mainVolume * currentNote.vol,
+              Math.random() * 4 - 2, // Detune sutil
+              0.3 // Fade-in mais longo
             );
+          }
         }
-    }
 
-    // Contraponto melódico secundário
-    playCounterMelody() {
-        const counterNotes = [
-            { step: 8, freq: 659.25, duration: 2.0, vol: 0.3 },  // E5
+        // Contraponto melódico secundário
+        playCounterMelody() {
+          const counterNotes = [
+            { step: 8, freq: 659.25, duration: 2.0, vol: 0.3 }, // E5
             { step: 16, freq: 587.33, duration: 1.5, vol: 0.3 }, // D5
-            { step: 24, freq: 523.25, duration: 2.0, vol: 0.3 }  // C5
-        ];
+            { step: 24, freq: 523.25, duration: 2.0, vol: 0.3 }, // C5
+          ];
 
-        const currentNote = counterNotes.find(note => note.step === this.currentStep % 32);
-        if (currentNote) {
+          const currentNote = counterNotes.find(
+            (note) => note.step === this.currentStep % 32
+          );
+          if (currentNote) {
             this.createHarmonicOscillator(
-                currentNote.freq,
-                'sine',
-                currentNote.duration,
-                this.mainVolume * currentNote.vol,
-                5, // Detune fixo para destaque sutil
-                0.4
+              currentNote.freq,
+              'sine',
+              currentNote.duration,
+              this.mainVolume * currentNote.vol,
+              5, // Detune fixo para destaque sutil
+              0.4
             );
+          }
         }
-    }
 
-    // Baixo harmônico
-    playBassLine() {
-        const bassNotes = [
-            { step: 0, freq: 110.00, duration: 4.0 }, // A2
-            { step: 16, freq: 98.00, duration: 4.0 }  // G2
-        ];
+        // Baixo harmônico
+        playBassLine() {
+          const bassNotes = [
+            { step: 0, freq: 110.0, duration: 4.0 }, // A2
+            { step: 16, freq: 98.0, duration: 4.0 }, // G2
+          ];
 
-        const currentNote = bassNotes.find(note => note.step === this.currentStep % 32);
-        if (currentNote) {
+          const currentNote = bassNotes.find(
+            (note) => note.step === this.currentStep % 32
+          );
+          if (currentNote) {
             this.createHarmonicOscillator(
-                currentNote.freq,
-                'sine',
-                currentNote.duration,
-                this.mainVolume * 0.3,
-                0,
-                0.5
+              currentNote.freq,
+              'sine',
+              currentNote.duration,
+              this.mainVolume * 0.3,
+              0,
+              0.5
             );
+          }
         }
-    }
 
-    // Texturas atmosféricas sutis
-    playAtmosphericTextures() {
-        if (this.currentStep % 8 === 0 && Math.random() < 0.4) {
+        // Texturas atmosféricas sutis
+        playAtmosphericTextures() {
+          if (this.currentStep % 8 === 0 && Math.random() < 0.4) {
             // Harmônicos agudos sutis
-            const harmonics = [880.00, 1318.51, 1760.00];
-            const randomHarmonic = harmonics[Math.floor(Math.random() * harmonics.length)];
-            
+            const harmonics = [880.0, 1318.51, 1760.0];
+            const randomHarmonic =
+              harmonics[Math.floor(Math.random() * harmonics.length)];
+
             this.createHarmonicOscillator(
-                randomHarmonic,
-                'sine',
-                3.0,
-                this.mainVolume * 0.15,
-                10,
-                0.8
+              randomHarmonic,
+              'sine',
+              3.0,
+              this.mainVolume * 0.15,
+              10,
+              0.8
             );
+          }
         }
-    }
 
-    // Progressão harmônica variada
-    playChordProgression() {
-        const progressions = [
-            { step: 0, chord: [220.00, 261.63, 329.63, 440.00] }, // Am
-            { step: 8, chord: [196.00, 246.94, 293.66, 392.00] }, // G
-            { step: 16, chord: [174.61, 220.00, 261.63, 349.23] }, // F
-            { step: 24, chord: [164.81, 196.00, 246.94, 329.63] }  // Em
-        ];
+        // Progressão harmônica variada
+        playChordProgression() {
+          const progressions = [
+            { step: 0, chord: [220.0, 261.63, 329.63, 440.0] }, // Am
+            { step: 8, chord: [196.0, 246.94, 293.66, 392.0] }, // G
+            { step: 16, chord: [174.61, 220.0, 261.63, 349.23] }, // F
+            { step: 24, chord: [164.81, 196.0, 246.94, 329.63] }, // Em
+          ];
 
-        const currentProgression = progressions.find(prog => prog.step === this.currentStep % 32);
-        if (currentProgression) {
+          const currentProgression = progressions.find(
+            (prog) => prog.step === this.currentStep % 32
+          );
+          if (currentProgression) {
             currentProgression.chord.forEach((freq, index) => {
-                setTimeout(() => {
-                    this.createHarmonicOscillator(
-                        freq,
-                        'sine',
-                        8.0,
-                        this.mainVolume * 0.25,
-                        index * 3,
-                        0.6
-                    );
-                }, index * 150);
+              setTimeout(() => {
+                this.createHarmonicOscillator(
+                  freq,
+                  'sine',
+                  8.0,
+                  this.mainVolume * 0.25,
+                  index * 3,
+                  0.6
+                );
+              }, index * 150);
             });
+          }
         }
-    }
 
-    // Loop principal da música harmônica
-    playStep() {
-        if (!this.isPlaying) return;
+        // Loop principal da música harmônica
+        playStep() {
+          if (!this.isPlaying) return;
 
-        // Executar camadas harmônicas
-        this.playHarmonicPad();
-        this.playMainMelody();
-        this.playCounterMelody();
-        this.playBassLine();
-        this.playChordProgression();
-        this.playAtmosphericTextures();
+          // Executar camadas harmônicas
+          this.playHarmonicPad();
+          this.playMainMelody();
+          this.playCounterMelody();
+          this.playBassLine();
+          this.playChordProgression();
+          this.playAtmosphericTextures();
 
-        this.currentStep++;
-        
-        // Timing mais lento para música atmosférica (500ms por step)
-        setTimeout(() => this.playStep(), 500);
-    }
+          this.currentStep++;
 
-    // Iniciar música
-    start() {
-        if (this.isPlaying) return;
-        
-        this.audioContext.resume();
-        this.isPlaying = true;
-        this.currentStep = 0;
-        this.playStep();
-        
-        console.log('🎵 Música Harmônica Iniciada');
-    }
+          // Timing mais lento para música atmosférica (500ms por step)
+          setTimeout(() => this.playStep(), 500);
+        }
 
-    // Parar música
-    stop() {
-        this.isPlaying = false;
-        console.log('🎵 Música Harmônica Parada');
-    }
+        // Iniciar música
+        start() {
+          if (this.isPlaying) return;
 
-    // Ajustar volume
-    setVolume(level) {
-        this.mainVolume = Math.max(0, Math.min(1, level));
-    }
+          this.audioContext.resume();
+          this.isPlaying = true;
+          this.currentStep = 0;
+          this.playStep();
 
-    // Alternar play/pause
-    toggle() {
-        if (this.isPlaying) {
+          console.log('🎵 Música Harmônica Iniciada');
+        }
+
+        // Parar música
+        stop() {
+          this.isPlaying = false;
+          console.log('🎵 Música Harmônica Parada');
+        }
+
+        // Ajustar volume
+        setVolume(level) {
+          this.mainVolume = Math.max(0, Math.min(1, level));
+        }
+
+        // Alternar play/pause
+        toggle() {
+          if (this.isPlaying) {
             this.stop();
-        } else {
+          } else {
             this.start();
+          }
+          return this.isPlaying;
         }
-        return this.isPlaying;
-    }
-}
+      }
 
-// Instância global da música harmônica
-const harmonicMusic = new HarmonicThemeMusic();
+      // Instância global da música harmônica
+      const harmonicMusic = new HarmonicThemeMusic();
 
-// Controles automáticos para o site
-function initHarmonicMusicControls() {
-    if (!document.getElementById('harmonicMusicToggle')) {
-        const toggleBtn = document.createElement('button');
-        toggleBtn.id = 'harmonicMusicToggle';
-        toggleBtn.innerHTML = '🎵 Play Music';
-        toggleBtn.style.position = 'fixed';
-        toggleBtn.style.bottom = '20px';
-        toggleBtn.style.right = '20px';
-        toggleBtn.style.zIndex = '1000';
-        toggleBtn.style.padding = '10px 15px';
-        toggleBtn.style.background = 'linear-gradient(45deg, #2a2a2a, #4a4a4a)';
-        toggleBtn.style.color = 'white';
-        toggleBtn.style.border = '1px solid #666';
-        toggleBtn.style.borderRadius = '8px';
-        toggleBtn.style.cursor = 'pointer';
-        toggleBtn.style.fontFamily = 'Arial, sans-serif';
-        toggleBtn.style.fontSize = '14px';
-        toggleBtn.style.transition = 'all 0.3s ease';
+      // Controles automáticos para o site
+      function initHarmonicMusicControls() {
+        if (!document.getElementById('harmonicMusicToggle')) {
+          const toggleBtn = document.createElement('button');
+          toggleBtn.id = 'harmonicMusicToggle';
+          toggleBtn.innerHTML = '🎵 Play Music';
+          toggleBtn.style.position = 'fixed';
+          toggleBtn.style.bottom = '20px';
+          toggleBtn.style.right = '20px';
+          toggleBtn.style.zIndex = '1000';
+          toggleBtn.style.padding = '10px 15px';
+          toggleBtn.style.background =
+            'linear-gradient(45deg, #2a2a2a, #4a4a4a)';
+          toggleBtn.style.color = 'white';
+          toggleBtn.style.border = '1px solid #666';
+          toggleBtn.style.borderRadius = '8px';
+          toggleBtn.style.cursor = 'pointer';
+          toggleBtn.style.fontFamily = 'Arial, sans-serif';
+          toggleBtn.style.fontSize = '14px';
+          toggleBtn.style.transition = 'all 0.3s ease';
 
-        toggleBtn.addEventListener('mouseenter', () => {
+          toggleBtn.addEventListener('mouseenter', () => {
             toggleBtn.style.transform = 'scale(1.05)';
-            toggleBtn.style.background = 'linear-gradient(45deg, #3a3a3a, #5a5a5a)';
-        });
+            toggleBtn.style.background =
+              'linear-gradient(45deg, #3a3a3a, #5a5a5a)';
+          });
 
-        toggleBtn.addEventListener('mouseleave', () => {
+          toggleBtn.addEventListener('mouseleave', () => {
             toggleBtn.style.transform = 'scale(1)';
-            toggleBtn.style.background = 'linear-gradient(45deg, #2a2a2a, #4a4a4a)';
-        });
+            toggleBtn.style.background =
+              'linear-gradient(45deg, #2a2a2a, #4a4a4a)';
+          });
 
-        toggleBtn.addEventListener('click', () => {
+          toggleBtn.addEventListener('click', () => {
             const isPlaying = harmonicMusic.toggle();
             toggleBtn.innerHTML = isPlaying ? '🎵 Stop Music' : '🎵 Play Music';
-            toggleBtn.style.background = isPlaying ? 
-                'linear-gradient(45deg, #4a7a4a, #6a9a6a)' : 
-                'linear-gradient(45deg, #2a2a2a, #4a4a4a)';
-        });
+            toggleBtn.style.background = isPlaying
+              ? 'linear-gradient(45deg, #4a7a4a, #6a9a6a)'
+              : 'linear-gradient(45deg, #2a2a2a, #4a4a4a)';
+          });
 
-        document.body.appendChild(toggleBtn);
+          document.body.appendChild(toggleBtn);
 
-        // Controle de volume sutil
-        const volumeSlider = document.createElement('input');
-        volumeSlider.type = 'range';
-        volumeSlider.min = '0';
-        volumeSlider.max = '100';
-        volumeSlider.value = '30';
-        volumeSlider.style.position = 'fixed';
-        volumeSlider.style.bottom = '60px';
-        volumeSlider.style.right = '20px';
-        volumeSlider.style.width = '100px';
-        volumeSlider.style.zIndex = '1000';
+          // Controle de volume sutil
+          const volumeSlider = document.createElement('input');
+          volumeSlider.type = 'range';
+          volumeSlider.min = '0';
+          volumeSlider.max = '100';
+          volumeSlider.value = '30';
+          volumeSlider.style.position = 'fixed';
+          volumeSlider.style.bottom = '60px';
+          volumeSlider.style.right = '20px';
+          volumeSlider.style.width = '100px';
+          volumeSlider.style.zIndex = '1000';
 
-        volumeSlider.addEventListener('input', (e) => {
+          volumeSlider.addEventListener('input', (e) => {
             harmonicMusic.setVolume(e.target.value / 100);
-        });
+          });
 
-        document.body.appendChild(volumeSlider);
-    }
-}
-
-// Iniciar quando a página carregar
-document.addEventListener('DOMContentLoaded', initHarmonicMusicControls);
-
-// Sistema de inicialização com interação do usuário
-function initHarmonicMusic() {
-    document.addEventListener('click', function startMusicOnClick() {
-        harmonicMusic.start();
-        
-        // Atualizar botão
-        const toggleBtn = document.getElementById('harmonicMusicToggle');
-        if (toggleBtn) {
-            toggleBtn.innerHTML = '🎵 Stop Music';
-            toggleBtn.style.background = 'linear-gradient(45deg, #4a7a4a, #6a9a6a)';
+          document.body.appendChild(volumeSlider);
         }
-        
-        document.removeEventListener('click', startMusicOnClick);
-    }, { once: true });
-}
+      }
 
-// Iniciar sistema de música
-initHarmonicMusic();
+      // Iniciar quando a página carregar
+      document.addEventListener('DOMContentLoaded', initHarmonicMusicControls);
 
+      // Sistema de inicialização com interação do usuário
+      function initHarmonicMusic() {
+        document.addEventListener(
+          'click',
+          function startMusicOnClick() {
+            harmonicMusic.start();
+
+            // Atualizar botão
+            const toggleBtn = document.getElementById('harmonicMusicToggle');
+            if (toggleBtn) {
+              toggleBtn.innerHTML = '🎵 Stop Music';
+              toggleBtn.style.background =
+                'linear-gradient(45deg, #4a7a4a, #6a9a6a)';
+            }
+
+            document.removeEventListener('click', startMusicOnClick);
+          },
+          { once: true }
+        );
+      }
+
+      // Iniciar sistema de música
+      initHarmonicMusic();
 
       // Sons específicos para diferentes interações
       function playSound(soundType, volume = 0.3) {
@@ -2584,203 +2623,224 @@ initHarmonicMusic();
         }
 
         const sounds = {
-    select: () => {
-        // Lá (440Hz) - nota tônica da música, suave e integrada
-        const now = audioContext.currentTime;
-        const osc = audioContext.createOscillator();
-        const gain = audioContext.createGain();
-        const filter = audioContext.createBiquadFilter();
-
-        osc.type = 'sine';
-        osc.frequency.setValueAtTime(440, now);
-        osc.frequency.setValueAtTime(460, now + 0.02); // Pequeno bend sutil
-
-        filter.type = 'lowpass';
-        filter.frequency.setValueAtTime(1200, now);
-
-        gain.gain.setValueAtTime(0, now);
-        gain.gain.linearRampToValueAtTime(volume * 0.5, now + 0.05);
-        gain.gain.exponentialRampToValueAtTime(0.001, now + 0.3);
-
-        osc.connect(filter);
-        filter.connect(gain);
-        gain.connect(audioContext.destination);
-
-        osc.start(now);
-        osc.stop(now + 0.3);
-    },
-
-    navigate: () => {
-        // Dó (523.25Hz) - harmoniza com o acorde Am
-        const now = audioContext.currentTime;
-        const osc1 = audioContext.createOscillator();
-        const osc2 = audioContext.createOscillator();
-        const gain = audioContext.createGain();
-        const filter = audioContext.createBiquadFilter();
-
-        // Oscilador principal
-        osc1.type = 'triangle';
-        osc1.frequency.setValueAtTime(523.25, now);
-        
-        // Oscilador de oitava acima para riqueza harmônica
-        osc2.type = 'triangle';
-        osc2.frequency.setValueAtTime(1046.50, now);
-
-        filter.type = 'lowpass';
-        filter.frequency.setValueAtTime(1500, now);
-
-        gain.gain.setValueAtTime(0, now);
-        gain.gain.linearRampToValueAtTime(volume * 0.4, now + 0.1);
-        gain.gain.exponentialRampToValueAtTime(0.001, now + 0.4);
-
-        osc1.connect(filter);
-        osc2.connect(filter);
-        filter.connect(gain);
-        gain.connect(audioContext.destination);
-
-        osc1.start(now);
-        osc2.start(now);
-        osc1.stop(now + 0.4);
-        osc2.stop(now + 0.4);
-    },
-
-    period: () => {
-        // Progressão Am (Lá menor) - mesma da música
-        const now = audioContext.currentTime;
-        
-        // Primeira nota - Lá (440Hz)
-        const osc1 = audioContext.createOscillator();
-        const gain1 = audioContext.createGain();
-        osc1.type = 'sine';
-        osc1.frequency.setValueAtTime(440, now);
-        gain1.gain.setValueAtTime(0, now);
-        gain1.gain.linearRampToValueAtTime(volume * 0.6, now + 0.1);
-        gain1.gain.exponentialRampToValueAtTime(0.001, now + 0.3);
-        osc1.connect(gain1);
-        gain1.connect(audioContext.destination);
-        osc1.start(now);
-        osc1.stop(now + 0.3);
-
-        // Segunda nota - Dó (523.25Hz) com delay
-        setTimeout(() => {
-            const osc2 = audioContext.createOscillator();
-            const gain2 = audioContext.createGain();
-            osc2.type = 'sine';
-            osc2.frequency.setValueAtTime(523.25, audioContext.currentTime);
-            gain2.gain.setValueAtTime(0, audioContext.currentTime);
-            gain2.gain.linearRampToValueAtTime(volume * 0.5, audioContext.currentTime + 0.1);
-            gain2.gain.exponentialRampToValueAtTime(0.001, audioContext.currentTime + 0.3);
-            osc2.connect(gain2);
-            gain2.connect(audioContext.destination);
-            osc2.start(audioContext.currentTime);
-            osc2.stop(audioContext.currentTime + 0.3);
-        }, 80);
-
-        // Terceira nota - Mi (659.25Hz) com delay maior
-        setTimeout(() => {
-            const osc3 = audioContext.createOscillator();
-            const gain3 = audioContext.createGain();
-            const filter = audioContext.createBiquadFilter();
-            
-            osc3.type = 'sine';
-            osc3.frequency.setValueAtTime(659.25, audioContext.currentTime);
-            
-            filter.type = 'lowpass';
-            filter.frequency.setValueAtTime(1000, audioContext.currentTime);
-            
-            gain3.gain.setValueAtTime(0, audioContext.currentTime);
-            gain3.gain.linearRampToValueAtTime(volume * 0.4, audioContext.currentTime + 0.1);
-            gain3.gain.exponentialRampToValueAtTime(0.001, audioContext.currentTime + 0.4);
-            
-            osc3.connect(filter);
-            filter.connect(gain3);
-            gain3.connect(audioContext.destination);
-            
-            osc3.start(audioContext.currentTime);
-            osc3.stop(audioContext.currentTime + 0.4);
-        }, 160);
-    },
-
-    confirm: () => {
-        // Acorde Am completo - resolução harmônica
-        const now = audioContext.currentTime;
-        
-        const frequencies = [
-            440.00,   // Lá - tônica
-            523.25,   // Dó - terceira menor
-            659.25,   // Mi - quinta justa
-            880.00    // Lá - oitava
-        ];
-
-        frequencies.forEach((freq, index) => {
+          select: () => {
+            // Lá (440Hz) - nota tônica da música, suave e integrada
+            const now = audioContext.currentTime;
             const osc = audioContext.createOscillator();
             const gain = audioContext.createGain();
             const filter = audioContext.createBiquadFilter();
 
             osc.type = 'sine';
-            osc.frequency.setValueAtTime(freq, now);
+            osc.frequency.setValueAtTime(440, now);
+            osc.frequency.setValueAtTime(460, now + 0.02); // Pequeno bend sutil
 
             filter.type = 'lowpass';
-            filter.frequency.setValueAtTime(2000, now);
+            filter.frequency.setValueAtTime(1200, now);
 
-            // Staggered start para efeito de arpejo suave
-            gain.gain.setValueAtTime(0, now + (index * 0.02));
-            gain.gain.linearRampToValueAtTime(volume * (0.7 - (index * 0.1)), now + (index * 0.02) + 0.05);
-            gain.gain.exponentialRampToValueAtTime(0.001, now + 0.5);
+            gain.gain.setValueAtTime(0, now);
+            gain.gain.linearRampToValueAtTime(volume * 0.5, now + 0.05);
+            gain.gain.exponentialRampToValueAtTime(0.001, now + 0.3);
 
             osc.connect(filter);
             filter.connect(gain);
             gain.connect(audioContext.destination);
 
-            osc.start(now + (index * 0.02));
-            osc.stop(now + 0.5);
-        });
+            osc.start(now);
+            osc.stop(now + 0.3);
+          },
 
-        // Pulsação final para feedback tátil
-        setTimeout(() => {
-            const pulseOsc = audioContext.createOscillator();
-            const pulseGain = audioContext.createGain();
-            
-            pulseOsc.type = 'sine';
-            pulseOsc.frequency.setValueAtTime(880, audioContext.currentTime);
-            
-            pulseGain.gain.setValueAtTime(0, audioContext.currentTime);
-            pulseGain.gain.linearRampToValueAtTime(volume * 0.3, audioContext.currentTime + 0.05);
-            pulseGain.gain.exponentialRampToValueAtTime(0.001, audioContext.currentTime + 0.2);
-            
-            pulseOsc.connect(pulseGain);
-            pulseGain.connect(audioContext.destination);
-            
-            pulseOsc.start(audioContext.currentTime);
-            pulseOsc.stop(audioContext.currentTime + 0.2);
-        }, 200);
-    }
-};
+          navigate: () => {
+            // Dó (523.25Hz) - harmoniza com o acorde Am
+            const now = audioContext.currentTime;
+            const osc1 = audioContext.createOscillator();
+            const osc2 = audioContext.createOscillator();
+            const gain = audioContext.createGain();
+            const filter = audioContext.createBiquadFilter();
 
-// Função auxiliar atualizada para manter compatibilidade
-function createSound(freq, duration, type, vol) {
-    const now = audioContext.currentTime;
-    const oscillator = audioContext.createOscillator();
-    const gainNode = audioContext.createGain();
-    const filter = audioContext.createBiquadFilter();
+            // Oscilador principal
+            osc1.type = 'triangle';
+            osc1.frequency.setValueAtTime(523.25, now);
 
-    oscillator.type = type;
-    oscillator.frequency.setValueAtTime(freq, now);
+            // Oscilador de oitava acima para riqueza harmônica
+            osc2.type = 'triangle';
+            osc2.frequency.setValueAtTime(1046.5, now);
 
-    filter.type = 'lowpass';
-    filter.frequency.setValueAtTime(1500, now);
+            filter.type = 'lowpass';
+            filter.frequency.setValueAtTime(1500, now);
 
-    gainNode.gain.setValueAtTime(0, now);
-    gainNode.gain.linearRampToValueAtTime(vol, now + 0.02);
-    gainNode.gain.exponentialRampToValueAtTime(0.001, now + duration);
+            gain.gain.setValueAtTime(0, now);
+            gain.gain.linearRampToValueAtTime(volume * 0.4, now + 0.1);
+            gain.gain.exponentialRampToValueAtTime(0.001, now + 0.4);
 
-    oscillator.connect(filter);
-    filter.connect(gainNode);
-    gainNode.connect(audioContext.destination);
+            osc1.connect(filter);
+            osc2.connect(filter);
+            filter.connect(gain);
+            gain.connect(audioContext.destination);
 
-    oscillator.start(now);
-    oscillator.stop(now + duration);
-}
+            osc1.start(now);
+            osc2.start(now);
+            osc1.stop(now + 0.4);
+            osc2.stop(now + 0.4);
+          },
+
+          period: () => {
+            // Progressão Am (Lá menor) - mesma da música
+            const now = audioContext.currentTime;
+
+            // Primeira nota - Lá (440Hz)
+            const osc1 = audioContext.createOscillator();
+            const gain1 = audioContext.createGain();
+            osc1.type = 'sine';
+            osc1.frequency.setValueAtTime(440, now);
+            gain1.gain.setValueAtTime(0, now);
+            gain1.gain.linearRampToValueAtTime(volume * 0.6, now + 0.1);
+            gain1.gain.exponentialRampToValueAtTime(0.001, now + 0.3);
+            osc1.connect(gain1);
+            gain1.connect(audioContext.destination);
+            osc1.start(now);
+            osc1.stop(now + 0.3);
+
+            // Segunda nota - Dó (523.25Hz) com delay
+            setTimeout(() => {
+              const osc2 = audioContext.createOscillator();
+              const gain2 = audioContext.createGain();
+              osc2.type = 'sine';
+              osc2.frequency.setValueAtTime(523.25, audioContext.currentTime);
+              gain2.gain.setValueAtTime(0, audioContext.currentTime);
+              gain2.gain.linearRampToValueAtTime(
+                volume * 0.5,
+                audioContext.currentTime + 0.1
+              );
+              gain2.gain.exponentialRampToValueAtTime(
+                0.001,
+                audioContext.currentTime + 0.3
+              );
+              osc2.connect(gain2);
+              gain2.connect(audioContext.destination);
+              osc2.start(audioContext.currentTime);
+              osc2.stop(audioContext.currentTime + 0.3);
+            }, 80);
+
+            // Terceira nota - Mi (659.25Hz) com delay maior
+            setTimeout(() => {
+              const osc3 = audioContext.createOscillator();
+              const gain3 = audioContext.createGain();
+              const filter = audioContext.createBiquadFilter();
+
+              osc3.type = 'sine';
+              osc3.frequency.setValueAtTime(659.25, audioContext.currentTime);
+
+              filter.type = 'lowpass';
+              filter.frequency.setValueAtTime(1000, audioContext.currentTime);
+
+              gain3.gain.setValueAtTime(0, audioContext.currentTime);
+              gain3.gain.linearRampToValueAtTime(
+                volume * 0.4,
+                audioContext.currentTime + 0.1
+              );
+              gain3.gain.exponentialRampToValueAtTime(
+                0.001,
+                audioContext.currentTime + 0.4
+              );
+
+              osc3.connect(filter);
+              filter.connect(gain3);
+              gain3.connect(audioContext.destination);
+
+              osc3.start(audioContext.currentTime);
+              osc3.stop(audioContext.currentTime + 0.4);
+            }, 160);
+          },
+
+          confirm: () => {
+            // Acorde Am completo - resolução harmônica
+            const now = audioContext.currentTime;
+
+            const frequencies = [
+              440.0, // Lá - tônica
+              523.25, // Dó - terceira menor
+              659.25, // Mi - quinta justa
+              880.0, // Lá - oitava
+            ];
+
+            frequencies.forEach((freq, index) => {
+              const osc = audioContext.createOscillator();
+              const gain = audioContext.createGain();
+              const filter = audioContext.createBiquadFilter();
+
+              osc.type = 'sine';
+              osc.frequency.setValueAtTime(freq, now);
+
+              filter.type = 'lowpass';
+              filter.frequency.setValueAtTime(2000, now);
+
+              // Staggered start para efeito de arpejo suave
+              gain.gain.setValueAtTime(0, now + index * 0.02);
+              gain.gain.linearRampToValueAtTime(
+                volume * (0.7 - index * 0.1),
+                now + index * 0.02 + 0.05
+              );
+              gain.gain.exponentialRampToValueAtTime(0.001, now + 0.5);
+
+              osc.connect(filter);
+              filter.connect(gain);
+              gain.connect(audioContext.destination);
+
+              osc.start(now + index * 0.02);
+              osc.stop(now + 0.5);
+            });
+
+            // Pulsação final para feedback tátil
+            setTimeout(() => {
+              const pulseOsc = audioContext.createOscillator();
+              const pulseGain = audioContext.createGain();
+
+              pulseOsc.type = 'sine';
+              pulseOsc.frequency.setValueAtTime(880, audioContext.currentTime);
+
+              pulseGain.gain.setValueAtTime(0, audioContext.currentTime);
+              pulseGain.gain.linearRampToValueAtTime(
+                volume * 0.3,
+                audioContext.currentTime + 0.05
+              );
+              pulseGain.gain.exponentialRampToValueAtTime(
+                0.001,
+                audioContext.currentTime + 0.2
+              );
+
+              pulseOsc.connect(pulseGain);
+              pulseGain.connect(audioContext.destination);
+
+              pulseOsc.start(audioContext.currentTime);
+              pulseOsc.stop(audioContext.currentTime + 0.2);
+            }, 200);
+          },
+        };
+
+        // Função auxiliar atualizada para manter compatibilidade
+        function createSound(freq, duration, type, vol) {
+          const now = audioContext.currentTime;
+          const oscillator = audioContext.createOscillator();
+          const gainNode = audioContext.createGain();
+          const filter = audioContext.createBiquadFilter();
+
+          oscillator.type = type;
+          oscillator.frequency.setValueAtTime(freq, now);
+
+          filter.type = 'lowpass';
+          filter.frequency.setValueAtTime(1500, now);
+
+          gainNode.gain.setValueAtTime(0, now);
+          gainNode.gain.linearRampToValueAtTime(vol, now + 0.02);
+          gainNode.gain.exponentialRampToValueAtTime(0.001, now + duration);
+
+          oscillator.connect(filter);
+          filter.connect(gainNode);
+          gainNode.connect(audioContext.destination);
+
+          oscillator.start(now);
+          oscillator.stop(now + duration);
+        }
 
         if (sounds[soundType]) {
           sounds[soundType]();
@@ -2964,133 +3024,135 @@ function createSound(freq, duration, type, vol) {
       }
 
       // Adicione esta função ao seu código de sons
-const cardClickSound = () => {
-    // Som similar ao "navigate" mas com identidade própria para cards
-    const now = audioContext.currentTime;
-    
-    // Camada principal - Dó (523.25Hz) para harmonia com a música
-    const mainOsc = audioContext.createOscillator();
-    const mainGain = audioContext.createGain();
-    const mainFilter = audioContext.createBiquadFilter();
+      const cardClickSound = () => {
+        // Som similar ao "navigate" mas com identidade própria para cards
+        const now = audioContext.currentTime;
 
-    mainOsc.type = 'triangle';
-    mainOsc.frequency.setValueAtTime(523.25, now);
-    mainOsc.frequency.linearRampToValueAtTime(587.33, now + 0.15); // Transição suave para Ré
+        // Camada principal - Dó (523.25Hz) para harmonia com a música
+        const mainOsc = audioContext.createOscillator();
+        const mainGain = audioContext.createGain();
+        const mainFilter = audioContext.createBiquadFilter();
 
-    mainFilter.type = 'lowpass';
-    mainFilter.frequency.setValueAtTime(1200, now);
+        mainOsc.type = 'triangle';
+        mainOsc.frequency.setValueAtTime(523.25, now);
+        mainOsc.frequency.linearRampToValueAtTime(587.33, now + 0.15); // Transição suave para Ré
 
-    mainGain.gain.setValueAtTime(0, now);
-    mainGain.gain.linearRampToValueAtTime(volume * 0.5, now + 0.08);
-    mainGain.gain.exponentialRampToValueAtTime(0.001, now + 0.35);
+        mainFilter.type = 'lowpass';
+        mainFilter.frequency.setValueAtTime(1200, now);
 
-    // Camada harmônica - oitava acima para riqueza
-    const harmonicOsc = audioContext.createOscillator();
-    const harmonicGain = audioContext.createGain();
+        mainGain.gain.setValueAtTime(0, now);
+        mainGain.gain.linearRampToValueAtTime(volume * 0.5, now + 0.08);
+        mainGain.gain.exponentialRampToValueAtTime(0.001, now + 0.35);
 
-    harmonicOsc.type = 'sine';
-    harmonicOsc.frequency.setValueAtTime(1046.50, now); // Dó uma oitava acima
+        // Camada harmônica - oitava acima para riqueza
+        const harmonicOsc = audioContext.createOscillator();
+        const harmonicGain = audioContext.createGain();
 
-    harmonicGain.gain.setValueAtTime(0, now);
-    harmonicGain.gain.linearRampToValueAtTime(volume * 0.2, now + 0.05);
-    harmonicGain.gain.exponentialRampToValueAtTime(0.001, now + 0.25);
+        harmonicOsc.type = 'sine';
+        harmonicOsc.frequency.setValueAtTime(1046.5, now); // Dó uma oitava acima
 
-    // Camada de "impacto" sutil
-    const impactOsc = audioContext.createOscillator();
-    const impactGain = audioContext.createGain();
-    const impactFilter = audioContext.createBiquadFilter();
+        harmonicGain.gain.setValueAtTime(0, now);
+        harmonicGain.gain.linearRampToValueAtTime(volume * 0.2, now + 0.05);
+        harmonicGain.gain.exponentialRampToValueAtTime(0.001, now + 0.25);
 
-    impactOsc.type = 'sine';
-    impactOsc.frequency.setValueAtTime(392.00, now); // Sol mais grave
-    impactOsc.frequency.exponentialRampToValueAtTime(523.25, now + 0.1);
+        // Camada de "impacto" sutil
+        const impactOsc = audioContext.createOscillator();
+        const impactGain = audioContext.createGain();
+        const impactFilter = audioContext.createBiquadFilter();
 
-    impactFilter.type = 'highpass';
-    impactFilter.frequency.setValueAtTime(200, now);
+        impactOsc.type = 'sine';
+        impactOsc.frequency.setValueAtTime(392.0, now); // Sol mais grave
+        impactOsc.frequency.exponentialRampToValueAtTime(523.25, now + 0.1);
 
-    impactGain.gain.setValueAtTime(0, now);
-    impactGain.gain.linearRampToValueAtTime(volume * 0.3, now + 0.02);
-    impactGain.gain.exponentialRampToValueAtTime(0.001, now + 0.15);
+        impactFilter.type = 'highpass';
+        impactFilter.frequency.setValueAtTime(200, now);
 
-    // Conectar tudo
-    mainOsc.connect(mainFilter);
-    mainFilter.connect(mainGain);
-    mainGain.connect(audioContext.destination);
+        impactGain.gain.setValueAtTime(0, now);
+        impactGain.gain.linearRampToValueAtTime(volume * 0.3, now + 0.02);
+        impactGain.gain.exponentialRampToValueAtTime(0.001, now + 0.15);
 
-    harmonicOsc.connect(harmonicGain);
-    harmonicGain.connect(audioContext.destination);
+        // Conectar tudo
+        mainOsc.connect(mainFilter);
+        mainFilter.connect(mainGain);
+        mainGain.connect(audioContext.destination);
 
-    impactOsc.connect(impactFilter);
-    impactFilter.connect(impactGain);
-    impactGain.connect(audioContext.destination);
+        harmonicOsc.connect(harmonicGain);
+        harmonicGain.connect(audioContext.destination);
 
-    // Iniciar os osciladores
-    mainOsc.start(now);
-    harmonicOsc.start(now);
-    impactOsc.start(now);
-    
-    // Parar os osciladores
-    mainOsc.stop(now + 0.35);
-    harmonicOsc.stop(now + 0.25);
-    impactOsc.stop(now + 0.15);
-};
+        impactOsc.connect(impactFilter);
+        impactFilter.connect(impactGain);
+        impactGain.connect(audioContext.destination);
 
-// Adicione ao objeto sounds para manter organização
-sounds.cardClick = cardClickSound;
+        // Iniciar os osciladores
+        mainOsc.start(now);
+        harmonicOsc.start(now);
+        impactOsc.start(now);
 
-// Função para adicionar o evento de clique aos cards
-function initCardSounds() {
-    // Seletor para todos os cards - ajuste conforme seu HTML
-    const cards = document.querySelectorAll('.card, [class*="card"], [data-card]');
-    
-    cards.forEach(card => {
-        // Remover event listener anterior para evitar duplicação
-        card.removeEventListener('click', handleCardClick);
-        card.addEventListener('click', handleCardClick);
-    });
+        // Parar os osciladores
+        mainOsc.stop(now + 0.35);
+        harmonicOsc.stop(now + 0.25);
+        impactOsc.stop(now + 0.15);
+      };
 
-    console.log(`🎵 Sons de card aplicados a ${cards.length} elementos`);
-}
+      // Adicione ao objeto sounds para manter organização
+      sounds.cardClick = cardClickSound;
 
-// Handler para o clique no card
-function handleCardClick(event) {
-    // Tocar o som do card
-    if (sounds.cardClick) {
-        sounds.cardClick();
-    }
-    
-    // Opcional: evitar propagação se necessário
-    // event.stopPropagation();
-}
+      // Função para adicionar o evento de clique aos cards
+      function initCardSounds() {
+        // Seletor para todos os cards - ajuste conforme seu HTML
+        const cards = document.querySelectorAll(
+          '.card, [class*="card"], [data-card]'
+        );
 
-// Inicializar automaticamente quando a página carregar
-document.addEventListener('DOMContentLoaded', function() {
-    // Inicializar imediatamente
-    initCardSounds();
-    
-    // Re-inicializar a cada 2 segundos para capturar cards carregados dinamicamente
-    setTimeout(initCardSounds, 2000);
-    
-    // Observar mudanças no DOM para cards carregados dinamicamente
-    const observer = new MutationObserver(function(mutations) {
-        let shouldReinit = false;
-        mutations.forEach(function(mutation) {
-            if (mutation.addedNodes.length) {
-                shouldReinit = true;
-            }
+        cards.forEach((card) => {
+          // Remover event listener anterior para evitar duplicação
+          card.removeEventListener('click', handleCardClick);
+          card.addEventListener('click', handleCardClick);
         });
-        if (shouldReinit) {
-            setTimeout(initCardSounds, 100);
-        }
-    });
-    
-    observer.observe(document.body, {
-        childList: true,
-        subtree: true
-    });
-});
 
-// Também pode ser chamada manualmente se você adicionar cards dinamicamente
-window.reinitCardSounds = initCardSounds;
+        console.log(`🎵 Sons de card aplicados a ${cards.length} elementos`);
+      }
+
+      // Handler para o clique no card
+      function handleCardClick(event) {
+        // Tocar o som do card
+        if (sounds.cardClick) {
+          sounds.cardClick();
+        }
+
+        // Opcional: evitar propagação se necessário
+        // event.stopPropagation();
+      }
+
+      // Inicializar automaticamente quando a página carregar
+      document.addEventListener('DOMContentLoaded', function () {
+        // Inicializar imediatamente
+        initCardSounds();
+
+        // Re-inicializar a cada 2 segundos para capturar cards carregados dinamicamente
+        setTimeout(initCardSounds, 2000);
+
+        // Observar mudanças no DOM para cards carregados dinamicamente
+        const observer = new MutationObserver(function (mutations) {
+          let shouldReinit = false;
+          mutations.forEach(function (mutation) {
+            if (mutation.addedNodes.length) {
+              shouldReinit = true;
+            }
+          });
+          if (shouldReinit) {
+            setTimeout(initCardSounds, 100);
+          }
+        });
+
+        observer.observe(document.body, {
+          childList: true,
+          subtree: true,
+        });
+      });
+
+      // Também pode ser chamada manualmente se você adicionar cards dinamicamente
+      window.reinitCardSounds = initCardSounds;
 
       // ========== FIM DO SISTEMA DE SONS ==========
 
@@ -3133,16 +3195,16 @@ window.reinitCardSounds = initCardSounds;
       }
 
       function createEventElement(event, year) {
-  const eventElement = document.createElement('div');
-  eventElement.className = 'timeline-event';
-  eventElement.dataset.year = year;
-  eventElement.onclick = () => {
-    if (sounds && sounds.cardClick) {
-      sounds.cardClick();
-    }
-  };
-  
-  eventElement.innerHTML = `
+        const eventElement = document.createElement('div');
+        eventElement.className = 'timeline-event';
+        eventElement.dataset.year = year;
+        eventElement.onclick = () => {
+          if (sounds && sounds.cardClick) {
+            sounds.cardClick();
+          }
+        };
+
+        eventElement.innerHTML = `
     <div class="event-marker"></div>
     <div class="event-content">
       <div class="event-header">
@@ -3154,20 +3216,16 @@ window.reinitCardSounds = initCardSounds;
               : ''
           }
           ${
-            event.month
-              ? `<span class="event-month">${event.month}</span>`
-              : ''
+            event.month ? `<span class="event-month">${event.month}</span>` : ''
           }
-          ${
-            event.day ? `<span class="event-day">${event.day}</span>` : ''
-          }
+          ${event.day ? `<span class="event-day">${event.day}</span>` : ''}
         </div>
       </div>
       <p class="event-description">${event.description}</p>
     </div>
   `;
-  return eventElement;
-}
+        return eventElement;
+      }
 
       function navigateToIndex(newIndex) {
         newIndex = Math.max(0, Math.min(newIndex, maxIndex));
