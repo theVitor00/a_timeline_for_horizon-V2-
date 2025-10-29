@@ -1177,6 +1177,11 @@ h1 {
 }
 
 .year-title.active-year {
+  text-shadow: 
+    -1px -1px 0 black,
+     1px -1px 0 black,
+    -1px  1px 0 black,
+     1px  1px 0 black;
   background: linear-gradient(
     135deg,
     rgba(255, 126, 95, 0.25) 0%,
@@ -1317,6 +1322,11 @@ h1 {
 }
 
 .timeline-event.active .event-month {
+  text-shadow: 
+    -1px -1px 0 black,
+     1px -1px 0 black,
+    -1px  1px 0 black,
+     1px  1px 0 black;
   font-size: 1.2rem;
   background: rgba(254, 180, 123, 0.15);
 }
@@ -1334,6 +1344,11 @@ h1 {
 }
 
 .timeline-event.active .event-day {
+  text-shadow: 
+    -1px -1px 0 black,
+     1px -1px 0 black,
+    -1px  1px 0 black,
+     1px  1px 0 black;
   font-size: 1.6rem;
   background: rgba(255, 126, 95, 0.15);
 }
@@ -1348,6 +1363,11 @@ h1 {
 }
 
 .timeline-event.active .event-title {
+  text-shadow: 
+    -1px -1.5px 0 black,
+     1px -1.5px 0 black,
+    -1px  1.5px 0 black,
+     1px  1.5px 0 black;
   font-weight: 700;
   font-size: 1.4rem;
   margin-bottom: 1rem;
@@ -1367,6 +1387,11 @@ h1 {
 
 .timeline-event.active .event-description {
   padding-bottom: 5px;
+  text-shadow: 
+    -1px -1px 0 black,
+     1px -1px 0 black,
+    -1px  1px 0 black,
+     1px  1px 0 black;
   font-size: 0.95rem;
   line-height: 1.6;
   max-height: 200px; /* Altura máxima fixa para ativar o scroll */
