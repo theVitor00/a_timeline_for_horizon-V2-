@@ -171,7 +171,6 @@ h1 {
   font-size: var(--subtitle-font-size);
   font-weight: 400;
   line-height: var(--subtitle-line-height);
-  max-width: var(--subtitle-max-width);
   margin: 0 auto;
   padding: 0 1rem;
   text-align: center;

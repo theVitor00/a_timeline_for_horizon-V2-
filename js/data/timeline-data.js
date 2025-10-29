@@ -38,7 +38,7 @@ const timelineEvents = [
     month: 'March',
     day: '11th',
     title: "Elisabet's' birth",
-    description: "Elisabet Sobeck was born on this date, in Carson City, Nevada, USA.",
+    description: "Elisabet Sobeck was born on this date, in Carson City, Nevada, USA. She later became an American scientist, roboticist, and engineer. Brilliant and talented, with a deep altruistic concern for the world, Sobeck spent her entire career at the forefront of efforts to use technology to reduce and reverse the impact of global damage to the environment.",
   },
   {
     year: '2023',
