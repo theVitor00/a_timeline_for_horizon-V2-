@@ -293,7 +293,7 @@ h1 {
   scale: 1.5;
   position: fixed;
   top: -105px;
-  right: 45%;
+  right: 44.7%;
   width: 200px;
   height: 200px;
   z-index: -1;
@@ -305,7 +305,7 @@ h1 {
   scale: 1.0;
   position: fixed;
   top: -105px;
-  right: 64%;
+  right: 63.5%;
   width: 200px;
   height: 200px;
   z-index: -1;
@@ -328,7 +328,7 @@ h1 {
 .sphere-3d-s4 {
   scale: 0.5;
   position: fixed;
-  top: -102px;
+  top: -95px;
   right: 82%;
   width: 200px;
   height: 200px;
@@ -340,7 +340,7 @@ h1 {
 .sphere-3d-s5 {
   scale: 0.5;
   position: fixed;
-  top: -102px;
+  top: -95px;
   right: 8%;
   width: 200px;
   height: 200px;
