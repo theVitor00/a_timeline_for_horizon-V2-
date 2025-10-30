@@ -668,7 +668,7 @@ h1 {
 
 
 .timeline-container .timeline-section-title { 
-  
+  width: 50vw;
   background: rgba(0, 255, 128, 0.1);
   border-color: rgba(0, 255, 128, 0.3);
   color: var(--color-accent-light);
