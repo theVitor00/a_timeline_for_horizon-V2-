@@ -2203,3 +2203,19 @@ body.popup-open {
   height: 20px;
   filter: brightness(0) invert(1);
 }
+
+/* SOBRESCREVER O ESTILO PADRÃO DE BOTÃO OUTLINE DARK DO BOOTSTRAP */
+.btn-outline-dark {
+    /* Cores Padrão */
+    --bs-btn-color: var(--color-accent); 
+    --bs-btn-border-color: var(--color-accent);
+
+    /* Hover */
+    --bs-btn-hover-bg: var(--color-accent-light); 
+    --bs-btn-hover-border-color: var(--color-accent);
+    --bs-btn-hover-color: #ffffff; /* Cor do texto no hover (branco) */
+
+    /* Active */
+    --bs-btn-active-bg: var(--color-border-accent); /* Roxo mais escuro */
+    --bs-btn-active-border-color: var(--color-border-active);
+}
