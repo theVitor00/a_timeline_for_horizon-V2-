@@ -27,6 +27,8 @@ import {
 import { initializePopup, /*addDebugButtons*/ } from './modules/popup.js';
 import YearTimelineScroll from './modules/year-timeline-scroll.js'; // NOVA IMPORTACAO
 
+import { searchTerms } from './modules/search-control.js';
+
 // Wait for DOM to be fully loaded
 document.addEventListener('DOMContentLoaded', function () {
   console.log('DOM fully loaded - initializing application');
@@ -67,6 +69,9 @@ function initializeApplication() {
   // Inicializar controles de música
   initHarmonicMusicControls();
   initHarmonicMusic();
+
+  // Inicializar o modal de busca
+  searchTerms();
 
   // Apenas para desenvolvimento
   if (
