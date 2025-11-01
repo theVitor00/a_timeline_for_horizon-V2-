@@ -25,7 +25,8 @@ import {
   initCardSounds,
 } from './modules/sound-system.js';
 import { initializePopup, /*addDebugButtons*/ } from './modules/popup.js';
-import YearTimelineScroll from './modules/year-timeline-scroll.js'; // NOVA IMPORTACAO
+import  YearTimelineScroll  from './modules/year-timeline-scroll.js';
+import { repositionSpheres, repositionSpheresVerticallyWithCustomOffset } from './modules/sphereUtils.js';
 
 // Wait for DOM to be fully loaded
 document.addEventListener('DOMContentLoaded', function () {
@@ -85,6 +86,29 @@ window.harmonicMusic = harmonicMusic;
 window.updateActivePeriod = updateActivePeriod;
 window.updateCarouselArrows = updateCarouselArrows;
 window.updateYearMarker = updateYearMarker; // Exportar para o scroll system
+window.repositionSpheres = repositionSpheres;
+window.repositionSpheresVerticallyWithCustomOffset = repositionSpheresVerticallyWithCustomOffset;
+
+//spheres distance 
+
+
+
+function updateSpherePositions() {
+  repositionSpheres(); // horizontal
+
+  
+repositionSpheresVerticallyWithCustomOffset({
+  offsetForEvent: -100,   // deslocamento quando um card de evento estiver ativo
+  offsetForYear: -100    // deslocamento quando um título de ano estiver ativo
+});
+
+}
+window.updateSpherePositions = updateSpherePositions;
+
+document.addEventListener('DOMContentLoaded', updateSpherePositions);
+window.addEventListener('resize', updateSpherePositions);
+window.addEventListener('scroll', updateSpherePositions);
+
 
 export {
   navigateToIndex,
@@ -95,4 +119,6 @@ export {
   updateYearMarker,
   getCurrentIndex,
   getMaxIndex,
+  repositionSpheres,
+  repositionSpheresVerticallyWithCustomOffset
 };

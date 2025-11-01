@@ -6,8 +6,7 @@ import {
   setMaxIndex,
   getCurrentPosition,
   setCurrentPosition,
-  getEventWidth,
-  getMaxPosition,
+  getEventWidth,  
   setMaxPosition,
 } from '../data/timeline-data.js';
 import { groupEventsByYear } from './utils.js';
@@ -124,40 +123,34 @@ function navigateToIndex(newIndex) {
 
   const timeline = document.getElementById('timeline');
   const container = document.querySelector('.timeline-container');
-
   if (!timeline || !container) return;
 
   const containerWidth = container.offsetWidth;
-  console.log({containerWidth});
   const timelineWidth = timeline.scrollWidth;
-  console.log({timelineWidth});
 
-//   // Calcula a posição para centralizar o elemento ativo
   let halfScreen = containerWidth / 2;
-  console.log({halfScreen});
-  let newPosition = halfScreen - getCurrentIndex() * getEventWidth() - ((getEventWidth())/2) - getCurrentIndex() * 32;
-
-  console.log({newPosition});
+  let newPosition = halfScreen - getCurrentIndex() * getEventWidth() - (getEventWidth() / 2) - getCurrentIndex() * 32;
 
   setCurrentPosition(newPosition);
-
-  console.log({newIndex})
-  //first number = 796
-  //second = 436
-  //third = 76
-  //deslocamento = 360 (metade do elemento + 32 de gap)
-
-
-  // Aplica a transformação
   timeline.style.transform = `translateX(${getCurrentPosition()}px)`;
-  console.log({'getCurrentPosition':getCurrentPosition()});
 
   if (typeof playSound === 'function') {
     playSound('navigate', 0.2);
   }
+
   updateActiveElement();
   updateButtons();
   updateYearMarkerFromCurrentIndex();
+
+  requestAnimationFrame(() => {
+    requestAnimationFrame(() => {
+      if (typeof updateSpherePositions === 'function') {
+        updateSpherePositions();
+      }
+    });
+  });
+  
+
 }
 
 function navigateToYear(targetYear) {

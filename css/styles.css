@@ -287,14 +287,18 @@ h1 {
   scale: 0.4;
 }
 
-/* CSS da Esfera 3D */
+/* CSS das Esferas 3D */
 /* Esfera central */
+
+.sphere-container{  
+position: inherit;
+}
 
 .sphere-3d-s1 {
   scale: 1.5;
   position: fixed;
-  top: 50%;
-  right: 44.7%;
+  top: 50vh;
+  right: 44.7vw;
   width: 200px;
   height: 200px;
   z-index: -1;
@@ -305,8 +309,8 @@ h1 {
 .sphere-3d-s2 {
   scale: 1.0;
   position: fixed;
-  top: 50%;
-  right: 63.5%;
+  top: 50vh;
+  right: 63.5vw;
   width: 200px;
   height: 200px;
   z-index: -1;
@@ -317,8 +321,8 @@ h1 {
 .sphere-3d-s3 {
   scale: 1.0;
   position: fixed;
-  top: 50%;
-  right: 26%;
+  top: 50vh;
+  right: 26vw;
   width: 200px;
   height: 200px;
   z-index: -1;
@@ -329,8 +333,8 @@ h1 {
 .sphere-3d-s4 {
   scale: 0.5;
   position: fixed;
-  top: 50%;
-  right: 82%;
+  top: 50vh;
+  right: 82vw;
   width: 200px;
   height: 200px;
   z-index: -1;
@@ -341,8 +345,8 @@ h1 {
 .sphere-3d-s5 {
   scale: 0.5;
   position: fixed;
-  top: 50%;
-  right: 8%;
+  top: 50vh;
+  right: 8vw;
   width: 200px;
   height: 200px;
   z-index: -1;
@@ -1458,6 +1462,7 @@ h1 {
   border-radius: 2px;
   position: absolute;
   top: calc(50% + 8.8px);
+  z-index: 0;
 }
 
 
