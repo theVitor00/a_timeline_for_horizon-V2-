@@ -42,20 +42,22 @@ function insertResult(result) {
     entry.setAttribute("role", "button");
 
     if(foundEntries.hasChildNodes()) {
-        entry.classList.add("list-group-item", "list-group-item-action", "active", "bg-info-subtle", "flex-column");
+        entry.classList.add("list-group-item", "list-group-item-action", "active", "bg-info-subtle", "flex-column", "click-result");
         entry.setAttribute("aria-current", "true");
     } else {
-        entry.classList.add("list-group-item", "list-group-item-action");
+        entry.classList.add("list-group-item", "list-group-item-action", "click-result");
     }
-    entry.innerText = `${result}`;
 
+
+    entry.innerText = `${result}`;
     foundEntries.appendChild(entry);
 
+    
     return foundEntries;
 }
 
 function getIndexOfEntry(entries, register) {
-    alert(entries.indexOf(register))
+    return;
 }
 
 export { searchTerms }
