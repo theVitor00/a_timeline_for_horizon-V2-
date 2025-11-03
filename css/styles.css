@@ -199,12 +199,11 @@ h1 {
   }
 }
 .subtitle {
+  margin-top: 5vh;
   color: var(--color-text-muted);
   font-size: var(--subtitle-font-size);
   font-weight: 400;
-  line-height: var(--subtitle-line-height);
-  margin: 0 auto;
-  padding: 0 1rem;
+  line-height: var(--subtitle-line-height);    
   text-align: center;
   letter-spacing: 0.01em;
 }
@@ -754,7 +753,8 @@ position: inherit;
 
 /* Year Navigation Timeline */
 
-.middle-part{  
+.middle-part {
+  margin-top: 2vh;  
   display: flex;
   flex-direction: column;
   
@@ -779,11 +779,9 @@ position: inherit;
 }
 
 .animated-sphere {
-  position: absolute;
+  position: absolute;  
   top: 10px;
-  right: 10px;  
-  z-index: 10;
-  /* A esfera pode "vazar" sem ser cortada */
+  right: 10px;    
 }
 
 .year-timeline-scroll-container::-webkit-scrollbar {
@@ -804,7 +802,7 @@ position: inherit;
   background: var(--color-secondary);
 }
 
-.year-timeline-line {
+.year-timeline-line {   
   height: 2px;
   background: linear-gradient(
     90deg,
@@ -817,9 +815,7 @@ position: inherit;
 
 .year-markers {
   display: flex;
-  gap: 2rem;  
-  position: relative;
-  z-index: 2;
+  gap: 2rem;
 }
 
 .year-marker {
@@ -829,23 +825,30 @@ position: inherit;
   cursor: pointer;
   transition: all 0.3s ease;
   flex-shrink: 0;
-  position: relative;
 }
 
 .year-marker:hover {
   transform: translateY(-2px);
 }
 
-.year-marker.active {
+.year-marker.active {  
   animation: yearPulse 2s ease-in-out infinite;
+}
+
+.year-dot {  
+  width: 12px;
+  height: 12px;
+  background: var(--color-primary-dark);
+  border-radius: 50%;
+  transition: all 0.3s ease;
+  margin-bottom: 0.5rem;
 }
 
 .year-marker.active .year-dot {
   background: var(--color-primary);
   transform: scale(1, 1.2);
   box-shadow: 0 0 15px var(--color-primary-glow);
-  animation: dotPulse 2s ease-in-out infinite;
-  position: relative;
+  animation: dotPulse 2s ease-in-out infinite;  
 }
 
 .year-marker.active .year-label {
@@ -864,8 +867,7 @@ position: inherit;
   color: white;
   width: 30px;
   height: 50px;
-  cursor: pointer;  
-  z-index: 10;
+  cursor: pointer;    
   display: flex;
   align-items: center;
   justify-content: center;
@@ -944,14 +946,7 @@ position: inherit;
   }
 }
 
-.year-dot {
-  width: 12px;
-  height: 12px;
-  background: var(--color-primary-dark);
-  border-radius: 50%;
-  transition: all 0.3s ease;
-  margin-bottom: 0.5rem;
-}
+
 
 .year-label {
   font-size: 0.9rem;
@@ -1445,6 +1440,7 @@ position: inherit;
 }
 
 .low-part{
+  margin-top: 5vh;
   display:flex;
   flex-direction: column;
   justify-content: flex-start;   
@@ -1974,15 +1970,14 @@ body.popup-open {
 
 /* Historical Periods Timeline */
 
-.superior-part{  
+.superior-part{
+  padding-top: 5vh;  
   display: flex;
   flex-direction: column;
-  justify-content: flex-start; 
-  
+  justify-content: flex-start;     
 }
 
-.historical-periods {  
-  
+.historical-periods {    
   width: -webkit-fill-available;  
 }
 
@@ -2114,6 +2109,7 @@ body.popup-open {
     padding: 0 1rem;
   }
   .year-markers {
+    margin-top:2vh;
     gap: 1.5rem;
     padding: 0 2rem;
   }
