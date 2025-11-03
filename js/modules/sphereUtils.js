@@ -12,7 +12,7 @@ export function repositionSpheresVerticallyWithCustomOffset({
     const activeEvent = document.querySelector('.timeline-event.active');
     const activeYear = document.querySelector('.year-title.active-year');
   
-    // ✅ Prioridade para evento ativo
+    // Prioridade para evento ativo
     if (activeEvent) {
       centerY += offsetForEvent;
     } else if (activeYear) {
