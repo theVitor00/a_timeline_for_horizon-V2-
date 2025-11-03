@@ -146,7 +146,7 @@ function navigateToIndex(newIndex) {
     requestAnimationFrame(() => {
       if (typeof updateSpherePositions === 'function') {
         updateSpherePositions();
-      }
+      }  
     });
   });
   

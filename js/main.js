@@ -24,9 +24,12 @@ import {
   initHarmonicMusic,
   initCardSounds,
 } from './modules/sound-system.js';
-import { initializePopup, /*addDebugButtons*/ } from './modules/popup.js';
-import  YearTimelineScroll  from './modules/year-timeline-scroll.js';
-import { repositionSpheres, repositionSpheresVerticallyWithCustomOffset } from './modules/sphereUtils.js';
+import { initializePopup /*addDebugButtons*/ } from './modules/popup.js';
+import YearTimelineScroll from './modules/year-timeline-scroll.js';
+import {
+  repositionSpheres,
+  repositionSpheresVerticallyWithCustomOffset,
+} from './modules/sphereUtils.js';
 
 // Wait for DOM to be fully loaded
 document.addEventListener('DOMContentLoaded', function () {
@@ -87,28 +90,31 @@ window.updateActivePeriod = updateActivePeriod;
 window.updateCarouselArrows = updateCarouselArrows;
 window.updateYearMarker = updateYearMarker; // Exportar para o scroll system
 window.repositionSpheres = repositionSpheres;
-window.repositionSpheresVerticallyWithCustomOffset = repositionSpheresVerticallyWithCustomOffset;
+window.repositionSpheresVerticallyWithCustomOffset =
+  repositionSpheresVerticallyWithCustomOffset;
 
-//spheres distance 
-
-
+//spheres distance
 
 function updateSpherePositions() {
   repositionSpheres(); // horizontal
+  repositionSpheresVerticallyWithCustomOffset({
+    offsetForEvent: -100,
+    offsetForYear: -100,
+  });
 
-  
-repositionSpheresVerticallyWithCustomOffset({
-  offsetForEvent: -100,   // deslocamento quando um card de evento estiver ativo
-  offsetForYear: -100    // deslocamento quando um título de ano estiver ativo
-});
+  // Deslocamento sutil da Scrollbar da página para alinhamento das esferas
 
+  if (document.body.scrollHeight > window.innerHeight) {
+    window.scrollBy(0, 1);
+    window.scrollBy(0, -1);
+  }
 }
+
 window.updateSpherePositions = updateSpherePositions;
 
 document.addEventListener('DOMContentLoaded', updateSpherePositions);
 window.addEventListener('resize', updateSpherePositions);
 window.addEventListener('scroll', updateSpherePositions);
-
 
 export {
   navigateToIndex,
@@ -120,5 +126,5 @@ export {
   getCurrentIndex,
   getMaxIndex,
   repositionSpheres,
-  repositionSpheresVerticallyWithCustomOffset
+  repositionSpheresVerticallyWithCustomOffset,
 };

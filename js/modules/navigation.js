@@ -31,7 +31,8 @@ function initializeCarouselArrows() {
   });
 
   if (carouselPrev) {
-    carouselPrev.addEventListener('click', () => {
+    carouselPrev.addEventListener('click', (event) => {
+      event.preventDefault(); // Adicionado
       console.log('Seta anterior clicada, currentIndex:', getCurrentIndex());
       if (getCurrentIndex() > 0) {
         if (typeof navigateToIndex === 'function') {
@@ -42,7 +43,8 @@ function initializeCarouselArrows() {
   }
 
   if (carouselNext) {
-    carouselNext.addEventListener('click', () => {
+    carouselNext.addEventListener('click', (event) => {
+      event.preventDefault(); // Adicionado
       console.log(
         'Seta próxima clicada, currentIndex:',
         getCurrentIndex(),
