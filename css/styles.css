@@ -293,17 +293,20 @@ h1 {
 position: inherit;
 }
 
+
 .sphere-3d-s1 {
-  scale: 1.5;
   position: fixed;
   top: 50vh;
-  right: 44.7vw;
+  left: 50%; /* Joga a Esfera central no centro da tela */
+  transform: translateX(-35%); /* Joga a Esfera central no centro da tela */
   width: 200px;
   height: 200px;
   z-index: -1;
   opacity: 0.4;
   pointer-events: none;
+  scale: 1.5;
 }
+
 
 .sphere-3d-s2 {
   scale: 1.0;
