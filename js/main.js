@@ -103,7 +103,6 @@ function updateSpherePositions() {
   });
 
   // Deslocamento sutil da Scrollbar da página para alinhamento das esferas
-
   if (document.body.scrollHeight > window.innerHeight) {
     window.scrollBy(0, 1);
     window.scrollBy(0, -1);
