@@ -201,12 +201,8 @@ function updateYearMarkerFromCurrentIndex() {
   if (!currentElement) return;
 
   let year;
-  if (currentElement.classList.contains('year-title')) {
-    year = currentElement.dataset.year || currentElement.textContent;
-  } else if (currentElement.classList.contains('timeline-event')) {
-    year = currentElement.dataset.year;
-  }
-
+  year = currentElement.dataset.year || currentElement.textContent;
+ 
   if (year) updateYearMarker(year);
 }
 
@@ -250,7 +246,6 @@ export {
   navigateToIndex,
   navigateToYear,
   updateActiveElement,
-  updateYearMarkerFromCurrentIndex,
   updateYearMarker,
   updateButtons,
 };

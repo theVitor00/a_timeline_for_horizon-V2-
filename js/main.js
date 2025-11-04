@@ -5,7 +5,7 @@ import {
   navigateToIndex,
   navigateToYear,
   updateYearMarker,
-} from './modules/timeline-core.js';
+} from './modules/event-timeline.js';
 import {
   initializeHistoricalPeriods,
   updateActivePeriod,
@@ -25,7 +25,7 @@ import {
   initCardSounds,
 } from './modules/sound-system.js';
 import { initializePopup /*addDebugButtons*/ } from './modules/popup.js';
-import YearTimelineScroll from './modules/year-timeline-scroll.js';
+import YearTimelineScroll from './modules/year-timeline.js';
 import {
   repositionSpheres,
   repositionSpheresVerticallyWithCustomOffset,
@@ -73,12 +73,12 @@ function initializeApplication() {
   initHarmonicMusic();
 
   // Apenas para desenvolvimento
-  if (
-    window.location.hostname === 'localhost' ||
-    window.location.hostname === '127.0.0.1'
-  ) {
-    addDebugButtons();
-  }
+  // if (
+  //   window.location.hostname === 'localhost' ||
+  //   window.location.hostname === '127.0.0.1'
+  // ) {
+  //   addDebugButtons();
+  // }
 }
 
 // Make functions globally available if needed

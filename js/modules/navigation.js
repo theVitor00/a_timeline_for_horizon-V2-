@@ -2,7 +2,9 @@ import { getCurrentIndex, getMaxIndex } from '../data/timeline-data.js';
 import { throttle } from './utils.js';
 
 function setupKeyboardNavigation() {
+  // console.log('entrou na função de tecla');
   document.addEventListener('keydown', function (event) {
+    // console.log('Tecla pressionada:', event.key);
     if (event.key === 'ArrowLeft') {
       event.preventDefault();
       if (getCurrentIndex() > 0) {
