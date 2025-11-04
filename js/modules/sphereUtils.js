@@ -49,9 +49,9 @@ export function repositionSpheres() {
   const relativeDistances = {
     //distância horizontal fixa em pixels
     //Distância da esfera 2 em relação a esfera central
-    '.sphere-3d-s2': 460,
+    '.sphere-3d-s2': 485,
     //Distância da esfera 3 em relação a esfera central
-    '.sphere-3d-s3': -252,
+    '.sphere-3d-s3': -250,
     //Distância da esfera 4 em relação a esfera central
     '.sphere-3d-s4': 820,
     //Distância da esfera 5 em relação a esfera central
