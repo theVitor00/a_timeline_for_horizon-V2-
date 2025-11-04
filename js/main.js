@@ -5,7 +5,7 @@ import {
   navigateToIndex,
   navigateToYear,
   updateYearMarker,
-} from './modules/timeline-core.js';
+} from './modules/event-timeline.js';
 import {
   initializeHistoricalPeriods,
   updateActivePeriod,
@@ -24,8 +24,12 @@ import {
   initHarmonicMusic,
   initCardSounds,
 } from './modules/sound-system.js';
-import { initializePopup, /*addDebugButtons*/ } from './modules/popup.js';
-import YearTimelineScroll from './modules/year-timeline-scroll.js'; // NOVA IMPORTACAO
+import { initializePopup /*addDebugButtons*/ } from './modules/popup.js';
+import YearTimelineScroll from './modules/year-timeline.js';
+import {
+  repositionSpheres,
+  repositionSpheresVerticallyWithCustomOffset,
+} from './modules/sphereUtils.js';
 
 import { searchTerms } from './modules/search-control.js';
 
@@ -74,12 +78,12 @@ function initializeApplication() {
   searchTerms();
 
   // Apenas para desenvolvimento
-  if (
-    window.location.hostname === 'localhost' ||
-    window.location.hostname === '127.0.0.1'
-  ) {
-    addDebugButtons();
-  }
+  // if (
+  //   window.location.hostname === 'localhost' ||
+  //   window.location.hostname === '127.0.0.1'
+  // ) {
+  //   addDebugButtons();
+  // }
 }
 
 // Make functions globally available if needed
@@ -90,6 +94,31 @@ window.harmonicMusic = harmonicMusic;
 window.updateActivePeriod = updateActivePeriod;
 window.updateCarouselArrows = updateCarouselArrows;
 window.updateYearMarker = updateYearMarker; // Exportar para o scroll system
+window.repositionSpheres = repositionSpheres;
+window.repositionSpheresVerticallyWithCustomOffset =
+  repositionSpheresVerticallyWithCustomOffset;
+
+//spheres distance
+
+function updateSpherePositions() {
+  repositionSpheres(); // horizontal
+  repositionSpheresVerticallyWithCustomOffset({
+    offsetForEvent: -100,
+    offsetForYear: -100,
+  });
+
+  // Deslocamento sutil da Scrollbar da página para alinhamento das esferas
+  if (document.body.scrollHeight > window.innerHeight) {
+    window.scrollBy(0, 1);
+    window.scrollBy(0, -1);
+  }
+}
+
+window.updateSpherePositions = updateSpherePositions;
+
+document.addEventListener('DOMContentLoaded', updateSpherePositions);
+window.addEventListener('resize', updateSpherePositions);
+window.addEventListener('scroll', updateSpherePositions);
 
 export {
   navigateToIndex,
@@ -100,4 +129,6 @@ export {
   updateYearMarker,
   getCurrentIndex,
   getMaxIndex,
+  repositionSpheres,
+  repositionSpheresVerticallyWithCustomOffset,
 };

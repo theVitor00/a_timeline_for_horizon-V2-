@@ -15,7 +15,7 @@ function initializePopup() {
   }
 
   if (shouldShowPopup()) {
-    console.log('✅ Should show popup - scheduling display');
+    console.log('Should show popup - scheduling display');
     setTimeout(showPopup, 1000);
   } else {
     console.log('❌ Should NOT show popup');
@@ -190,7 +190,7 @@ function closePopup() {
     sessionStorage.setItem('horizonTimelineWelcomeSeen', 'true');
     sessionStorage.setItem('popupLastSeen', Date.now().toString());
 
-    console.log('✅ Saved to sessionStorage:', {
+    console.log('Saved to sessionStorage:', {
       welcomeSeen: sessionStorage.getItem('horizonTimelineWelcomeSeen'),
       lastSeen: sessionStorage.getItem('popupLastSeen'),
     });
