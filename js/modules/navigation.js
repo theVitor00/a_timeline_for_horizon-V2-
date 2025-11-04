@@ -2,7 +2,9 @@ import { getCurrentIndex, getMaxIndex } from '../data/timeline-data.js';
 import { throttle } from './utils.js';
 
 function setupKeyboardNavigation() {
+  // console.log('entrou na função de tecla');
   document.addEventListener('keydown', function (event) {
+    // console.log('Tecla pressionada:', event.key);
     if (event.key === 'ArrowLeft') {
       event.preventDefault();
       if (getCurrentIndex() > 0) {
@@ -31,7 +33,8 @@ function initializeCarouselArrows() {
   });
 
   if (carouselPrev) {
-    carouselPrev.addEventListener('click', () => {
+    carouselPrev.addEventListener('click', (event) => {
+      event.preventDefault(); // Adicionado
       console.log('Seta anterior clicada, currentIndex:', getCurrentIndex());
       if (getCurrentIndex() > 0) {
         if (typeof navigateToIndex === 'function') {
@@ -42,7 +45,8 @@ function initializeCarouselArrows() {
   }
 
   if (carouselNext) {
-    carouselNext.addEventListener('click', () => {
+    carouselNext.addEventListener('click', (event) => {
+      event.preventDefault(); // Adicionado
       console.log(
         'Seta próxima clicada, currentIndex:',
         getCurrentIndex(),
