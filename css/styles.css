@@ -2205,7 +2205,14 @@ body.popup-open {
   filter: brightness(0) invert(1);
 }
 
-/* SOBRESCREVER O ESTILO PADRÃO DE BOTÃO OUTLINE DARK DO BOOTSTRAP */
+/*  CLASSES BOOTSTRAP  
+
+Cada classe bootstrap tem suas proprias variaveis. Ao mudá-las, você consegue sobrescrever o estilo padrão
+*/
+
+
+
+/* SOBRESCREVER O ESTILO PADRÃO DE BOTÃO OUTLINE DARK  */
 .btn-outline-dark {
     /* Cores Padrão */
     --bs-btn-color: var(--color-accent); 
@@ -2214,10 +2221,10 @@ body.popup-open {
     /* Hover */
     --bs-btn-hover-bg: var(--color-accent-light); 
     --bs-btn-hover-border-color: var(--color-accent);
-    --bs-btn-hover-color: #ffffff; /* Cor do texto no hover (branco) */
+    --bs-btn-hover-color: #ffffff; 
 
     /* Active */
-    --bs-btn-active-bg: var(--color-border-accent); /* Roxo mais escuro */
+    --bs-btn-active-bg: var(--color-border-accent); 
     --bs-btn-active-border-color: var(--color-border-active);
 }
 
@@ -2231,17 +2238,13 @@ body.popup-open {
   border-radius: var(--bs-modal-border-radius);
 }
 
-
 .modal-header {
-
-  
   background-color: var(--bs-modal-header-bg);
   border-bottom: 1px solid var(--bs-modal-header-border-color);
   padding: var(--bs-modal-header-padding);
   color: white;
 }
-  
-
+ 
 .modal-header .btn-close {
   --bs-btn-close-color: #ffffff;
   --bs-btn-close-bg: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16' fill='%23ffffff'%3e%3cpath d='M.293.293a1 1 0 0 1 1.414 0L8 6.586 14.293.293a1 1 0 1 1 1.414 1.414L9.414 8l6.293 6.293a1 1 0 0 1-1.414 1.414L8 9.414l-6.293 6.293a1 1 0 0 1-1.414-1.414L6.586 8 .293 1.707a1 1 0 0 1 0-1.414z'/%3e%3c/svg%3e");
